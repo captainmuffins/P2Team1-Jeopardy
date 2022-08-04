@@ -26,7 +26,7 @@ main {
 }
 
 .loginContainer>.container {
-  max-width: 384px;
+  max-width: 512px;
 }
 
 .loginContainer .card {
@@ -144,12 +144,12 @@ main {
   position: absolute;
   width: 100%;
   height: 100%;
-  opacity: 0.5;
+  opacity: 0.75;
 }
 
 /* Logo Spinnder */
 #logoSpinner {
-  font-size: 74px;
+  font-size: 88px;
   text-align: center;
   animation-name: spin, depth;
   animation-timing-function: linear;

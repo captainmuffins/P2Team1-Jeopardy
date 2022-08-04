@@ -1,189 +1,212 @@
 main {
-    height: 100%;
-    perspective: 1000px;
+  height: 100%;
+  perspective: 1000px;
+}
+
+@keyframes statusEntrance {
+  from {
+    opacity: 0;
   }
-  
-  @keyframes statusEntrance {
-    from {
-      opacity: 0;
-    }
-  
-    to {
-      opacity: 1;
-    }
+
+  to {
+    opacity: 1;
   }
-  
-  .login-message .alert {
-    display: none;
+}
+
+.login-message .alert {
+  display: none;
+}
+
+.login-message div.alert.activeStatus {
+  animation: statusEntrance 1s ease 0s 1 normal forwards;
+  display: block;
+}
+
+.loginContainer .hideElem {
+  display: none;
+}
+
+.loginContainer>.container {
+  max-width: 512px;
+}
+
+.loginContainer .card {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Background */
+
+.bg {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: 300% 300%;
+  background-image: linear-gradient(-45deg, #3bade3 0%, #4914BC 25%, #9844b7 51%, #9D030B 100%);
+  -webkit-animation: AnimateBG 20s ease infinite;
+  animation: AnimateBG 20s ease infinite;
+}
+
+@-webkit-keyframes AnimateBG {
+  0% {
+    background-position: 50% 50%;
   }
-  
-  .login-message div.alert.activeStatus {
-    animation: statusEntrance 1s ease 0s 1 normal forwards;
-    display: block;
+
+  50% {
+    background-position: 100% 50%;
   }
-  
-  .loginContainer .hideElem {
-    display: none;
+
+  100% {
+    background-position: 50% 50%;
   }
-  
-  .loginContainer>.container {
-    max-width: 384px;
+}
+
+@keyframes AnimateBG {
+  0% {
+    background-position: 50% 50%;
   }
-  
-  .loginContainer .card {
-    background: rgba(0, 0, 0, 0.3);
+
+  50% {
+    background-position: 100% 50%;
   }
-  
-  /* Background */
-  
-  .bg {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-size: 300% 300%;
-    background-image: linear-gradient(-45deg, #3bade3 0%, #4914BC 25%, #9844b7 51%, #9D030B 100%);
-    -webkit-animation: AnimateBG 20s ease infinite;
-    animation: AnimateBG 20s ease infinite;
+
+  100% {
+    background-position: 50% 50%;
   }
-  
-  @-webkit-keyframes AnimateBG {
-    0% {
-      background-position: 50% 50%;
-    }
-  
-    50% {
-      background-position: 100% 50%;
-    }
-  
-    100% {
-      background-position: 50% 50%;
-    }
+}
+
+/* Animations */
+@-webkit-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 0px 384px;
   }
-  
-  @keyframes AnimateBG {
-    0% {
-      background-position: 50% 50%;
-    }
-  
-    50% {
-      background-position: 100% 50%;
-    }
-  
-    100% {
-      background-position: 50% 50%;
-    }
+}
+
+@-moz-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 0px 384px;
   }
-  
-  /* Animations */
-  @-webkit-keyframes bg-scrolling-reverse {
-    100% {
-      background-position: 0px 384px;
-    }
+}
+
+@-o-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 0px 384px;
   }
-  
-  @-moz-keyframes bg-scrolling-reverse {
-    100% {
-      background-position: 0px 384px;
-    }
+}
+
+@keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 0px 384px;
   }
-  
-  @-o-keyframes bg-scrolling-reverse {
-    100% {
-      background-position: 0px 384px;
-    }
+}
+
+@-webkit-keyframes bg-scrolling {
+  0% {
+    background-position: 0px 384px;
   }
-  
-  @keyframes bg-scrolling-reverse {
-    100% {
-      background-position: 0px 384px;
-    }
+}
+
+@-moz-keyframes bg-scrolling {
+  0% {
+    background-position: 0px 384px;
   }
-  
-  @-webkit-keyframes bg-scrolling {
-    0% {
-      background-position: 0px 384px;
-    }
+}
+
+@-o-keyframes bg-scrolling {
+  0% {
+    background-position: 0px 384px;
   }
-  
-  @-moz-keyframes bg-scrolling {
-    0% {
-      background-position: 0px 384px;
-    }
+}
+
+@keyframes bg-scrolling {
+  0% {
+    background-position: 0px 384px;
   }
-  
-  @-o-keyframes bg-scrolling {
-    0% {
-      background-position: 0px 384px;
-    }
+}
+
+/* Main styles */
+.animatedBackground {
+  /* img size is 50x50 */
+  /* background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5RDYAwDEXRDgmvEocnlrQS2SwUFST9uEfBGWs9c97nbGtDcquqiKhOImLs/UpuzVzWEi1atGjRokWLFi1atGjRokWLFi1atGjRokWLFi1af7Ukz8xWp8z8AAAA//8DAJ4LoEAAlL1nAAAAAElFTkSuQmCC") repeat 0 0; */
+  background: url("/assets/img/border-anim2.png") repeat 0 0;
+  -webkit-animation: bg-scrolling-reverse 10s infinite;
+  /* Safari 4+ */
+  -moz-animation: bg-scrolling-reverse 10s infinite;
+  /* Fx 5+ */
+  -o-animation: bg-scrolling-reverse 10s infinite;
+  /* Opera 12+ */
+  animation: bg-scrolling-reverse 10s infinite;
+  /* IE 10+ */
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -o-animation-timing-function: linear;
+  animation-timing-function: linear;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.75;
+}
+
+/* Logo Spinnder */
+#logoSpinner {
+  font-size: 88px;
+  text-align: center;
+  animation-name: spin, depth;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: 10s;
+  transform-style: preserve-3d;
+  position: relative;
+  font-family: gyparodyhv;
+  color: #fff;
+}
+
+#logoSpinner::before,
+#logoSpinner::after {
+  content: "JEOPARDY!";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  transform: rotateY(0.5deg);
+  transform-origin: 0 50%;
+}
+
+#logoSpinner::after {
+  transform: rotateY(-0.5deg);
+  transform-origin: 100% 50%;
+}
+
+@keyframes spin {
+  from {
+    transform: rotateY(0deg);
   }
-  
-  @keyframes bg-scrolling {
-    0% {
-      background-position: 0px 384px;
-    }
+
+  to {
+    transform: rotateY(-360deg);
   }
-  
-  /* Main styles */
-  .animatedBackground {
-    /* img size is 50x50 */
-    /* background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5RDYAwDEXRDgmvEocnlrQS2SwUFST9uEfBGWs9c97nbGtDcquqiKhOImLs/UpuzVzWEi1atGjRokWLFi1atGjRokWLFi1atGjRokWLFi1af7Ukz8xWp8z8AAAA//8DAJ4LoEAAlL1nAAAAAElFTkSuQmCC") repeat 0 0; */
-    background: url("/assets/img/border-anim2.png") repeat 0 0;
-    -webkit-animation: bg-scrolling-reverse 10s infinite;
-    /* Safari 4+ */
-    -moz-animation: bg-scrolling-reverse 10s infinite;
-    /* Fx 5+ */
-    -o-animation: bg-scrolling-reverse 10s infinite;
-    /* Opera 12+ */
-    animation: bg-scrolling-reverse 10s infinite;
-    /* IE 10+ */
-    -webkit-animation-timing-function: linear;
-    -moz-animation-timing-function: linear;
-    -o-animation-timing-function: linear;
-    animation-timing-function: linear;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0.5;
+}
+
+@keyframes depth {
+  0% {
+    text-shadow: 0 0 black;
   }
-  
-  /* Logo Spinnder */
-  #logoSpinner {
-    font-size: 74px;
-    text-align: center;
-    animation-name: spin, depth;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-duration: 10s;
-    transform-style: preserve-3d;
-    position: relative;
-    font-family: gyparodyhv;
-    color: #fff;
+
+  25% {
+    text-shadow: 1px 0 black, 2px 0 black, 3px 0 black, 4px 0 black, 5px 0 black, 6px 0 black;
   }
-  #logoSpinner::before,
-  #logoSpinner::after {
-    content: "JEOPARDY!";
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    transform: rotateY(0.5deg);
-    transform-origin: 0 50%;
+
+  50% {
+    text-shadow: 0 0 black;
   }
-  #logoSpinner::after {
-    transform: rotateY(-0.5deg);
-    transform-origin: 100% 50%;
+
+  75% {
+    text-shadow: -1px 0 black, -2px 0 black, -3px 0 black, -4px 0 black, -5px 0 black, -6px 0 black;
   }
-  @keyframes spin {
-    from { transform: rotateY(0deg); }
-    to { transform: rotateY(-360deg); }
+
+  100% {
+    text-shadow: 0 0 black;
   }
-  @keyframes depth {
-    0% { text-shadow: 0 0 black; }
-    25% { text-shadow: 1px 0 black, 2px 0 black, 3px 0 black, 4px 0 black, 5px 0 black, 6px 0 black; }
-    50% { text-shadow: 0 0 black; }
-    75% { text-shadow: -1px 0 black, -2px 0 black, -3px 0 black, -4px 0 black, -5px 0 black, -6px 0 black; }
-    100% { text-shadow: 0 0 black; }
-  }  
+}
