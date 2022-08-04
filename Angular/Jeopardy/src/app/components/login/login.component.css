@@ -1,6 +1,5 @@
 main {
   height: 100%;
-  perspective: 1000px;
 }
 
 @keyframes statusEntrance {
@@ -186,4 +185,8 @@ main {
   50% { text-shadow: 0 0 black; }
   75% { text-shadow: -1px 0 black, -2px 0 black, -3px 0 black, -4px 0 black, -5px 0 black, -6px 0 black; }
   100% { text-shadow: 0 0 black; }
+}
+
+.logoSpinnerContainer {
+  perspective: 500px;
 }

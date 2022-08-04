@@ -10,7 +10,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'SignUp',
+    path: 'signup',
     component:  SignUpComponent
   }
 ];
