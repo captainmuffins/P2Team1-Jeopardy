@@ -108,9 +108,9 @@ public class PlayersController {
 	}
 
 	@GetMapping(value = "/byName/{name}")
-	public ResponseEntity<Players> findByName(@PathVariable String name){
+	public ResponseEntity<Players> findByPlayerUsername(@PathVariable String playerUsername){
 
-		Optional<Players> playersOptional = playersDAO.findByName(name);
+		Optional<Players> playersOptional = playersDAO.findByPlayerUsername(playerUsername);
 
 		if(playersOptional.isPresent()){
 			Players p = playersOptional.get();
