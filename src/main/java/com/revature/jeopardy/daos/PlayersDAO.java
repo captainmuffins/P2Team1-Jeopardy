@@ -12,6 +12,6 @@ public interface PlayersDAO extends JpaRepository<Players, Integer> {
 	
 	Players findByPlayerUsernameIgnoreCase(String username);
 
-	Optional<Players> findByName(String name);
+	Optional<Players> findByPlayerUsername(String username);
 	
 }
