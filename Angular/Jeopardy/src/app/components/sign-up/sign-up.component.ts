@@ -1,15 +1,104 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+import '../../../assets/js/register.js';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.css']
+  styleUrls: ['./sign-up.component.css'],
 })
 export class SignUpComponent implements OnInit {
+  // player data to be submitted
+  signUpPlayerData: any = {};
 
-  constructor() { }
+  // for manipulating elements in page
+  registerData = {
+    hideSubmitText: false,
+    hideSubmitLoading: true,
+    disableSubmit: false,
+    hideSuccessStatus: true,
+    hideFailStatus: true,
+    failStatusMessage: '',
+  };
 
-  ngOnInit(): void {
+  constructor(private _auth: AuthService, private router: Router) {}
+
+  signUpPlayer() {
+    const formElem = document.querySelectorAll('form');
+    const password1 = document.getElementById(
+      'playerPassword'
+    ) as HTMLInputElement;
+    const password2 = document.getElementById(
+      'confirmPassword'
+    ) as HTMLInputElement;
+    formElem.forEach((element) => {
+      console.log(element);
+      element.classList.remove('invalid-password');
+      element.classList.remove('valid-password');
+      if (element.checkValidity()) {
+        if (password1 != null && password2 != null) {
+          if (password1.value != password2.value) {
+            element.classList.add('invalid-password');
+          } else {
+            console.log(this.signUpPlayerData);
+            element.classList.add('valid-password');
+            this.registerData.hideSubmitText = true;
+            this.registerData.hideSubmitLoading = false;
+            this.registerData.disableSubmit = true;
+            this.registerData.hideSuccessStatus = true;
+            this.registerData.hideFailStatus = true;
+            this._auth.registerPlayer(this.signUpPlayerData).subscribe({
+              next: (data) => {
+                this.registerData.hideSubmitText = false;
+                this.registerData.hideSubmitLoading = true;
+                this.registerData.disableSubmit = false;
+                this.registerData.hideSuccessStatus = false;
+                // redirect to login route upon successful registration
+                setTimeout(() => {
+                  this.router.navigate(['/login']);
+                }, 1000);
+                console.log(data);
+              },
+              error: (err) => {
+                const data = err.error;
+                this.registerData.hideSubmitText = false;
+                this.registerData.hideSubmitLoading = true;
+                this.registerData.disableSubmit = false;
+                this.registerData.hideFailStatus = false;
+                this.registerData.failStatusMessage = data.statusMessage;
+                console.log(data);
+              },
+            });
+          }
+        }
+      }
+      element.classList.add('was-validated');
+    });
   }
 
+  checkPassword(event: Event) {
+    const formElem = document.querySelectorAll('form');
+    const password1 = document.getElementById(
+      'playerPassword'
+    ) as HTMLInputElement;
+    const password2 = document.getElementById(
+      'confirmPassword'
+    ) as HTMLInputElement;
+    formElem[0].classList.remove('invalid-password');
+    formElem[0].classList.remove('valid-password');
+    if (password1 != null && password2 != null) {
+      if (password1.value.length > 0 && password2.value.length > 0) {
+        if (password1.value != password2.value) {
+          formElem[0].classList.add('invalid-password');
+        } else {
+          formElem[0].classList.add('valid-password');
+        }
+      } else {
+        formElem[0].classList.add('invalid-password');
+      }
+    }
+  }
+
+  ngOnInit(): void {}
 }

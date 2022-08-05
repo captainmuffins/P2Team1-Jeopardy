@@ -22,16 +22,16 @@
                   <div class="row">
                     <div class="col">
                       <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="inputFName" value="" placeholder="First name"
+                        <input type="text" [(ngModel)]="signUpPlayerData.playerFirstname" name="playerFirstname" class="form-control" id="playerFirstname" value="" placeholder="First name"
                           required>
-                        <label for="inputFName" class="form-label">First name</label>
+                        <label for="playerFirstname" class="form-label">First name</label>
                       </div>
                     </div>
                     <div class="col">
                       <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="inputLName" value="" placeholder="Last name"
+                        <input type="text" [(ngModel)]="signUpPlayerData.playerLastname" name="playerLastname" class="form-control" id="playerLastname" value="" placeholder="Last name"
                           required>
-                        <label for="inputLName" class="form-label">Last name</label>
+                        <label for="playerLastname" class="form-label">Last name</label>
                       </div>
                     </div>
                   </div>
@@ -39,9 +39,9 @@
                   <div class="row">
                     <div class="col">
                       <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="inputEmail" value="" placeholder="Email here please"
+                        <input type="text" [(ngModel)]="signUpPlayerData.playerEmail" name="playerEmail" class="form-control" id="playerEmail" value="" placeholder="Email here please"
                           required>
-                        <label for="inputEmail" class="form-label">Email</label>
+                        <label for="playerEmail" class="form-label">Email</label>
                       </div>
                     </div>
                   </div>
@@ -49,26 +49,38 @@
                   <div class="row">
                     <div class="col">
                       <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="inputUsername" value="" placeholder="Username"
+                        <input type="text" [(ngModel)]="signUpPlayerData.playerUsername" name="playerUsername" class="form-control" id="playerUsername" value="" placeholder="Username"
                           required>
-                        <label for="inputUsername" class="form-label">Username</label>
+                        <label for="playerUsername" class="form-label">Username</label>
                       </div>
                     </div>
                   </div>
-                    <!-- Password -->
+                  <!-- Password -->
                   <div class="row">
                     <div class="col">
                       <div class="form-floating mb-3">
-                        <input type="password" class="form-control" id="inputPassword1" value=""
-                          placeholder="New Password" required>
-                        <label for="inputPassword1" class="form-label">New Password</label>
+                        <input type="password" [(ngModel)]="signUpPlayerData.playerPassword" name="playerPassword" class="form-control" id="playerPassword" value=""
+                          placeholder="Password" (keyup)="checkPassword($event)" required>
+                        <label for="playerPassword" class="form-label">New Password</label>
+                        <div class="password-not-match text-danger">
+                          Passwords must match
+                        </div>
+                        <div class="password-match text-success">
+                          Passwords match!
+                        </div>
                       </div>
                     </div>
                     <div class="col">
                       <div class="form-floating mb-3">
-                        <input type="password" class="form-control" id="inputPassword2" value=""
-                          placeholder="Confirm Password" required>
-                        <label for="inputPassword2" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="confirmPassword" value=""
+                          placeholder="Password" (keyup)="checkPassword($event)" required>
+                        <label for="inputPassword" class="form-label">Confirm Password</label>
+                        <div class="password-not-match text-danger">
+                          Passwords must match
+                        </div>
+                        <div class="password-match text-success">
+                          Passwords match!
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -76,9 +88,9 @@
                   <!-- Submit button -->
                   <div class="row">
                     <div class="col">
-                      <button id="submitBtn" href="#" class="w-100 btn btn3d btn-success fw-bold" type="button">
-                        <div id="proceedText" class="proceedText">Submit</div>
-                        <div id="proceedLoading" class="proceedLoading text-center hideElem">
+                      <button id="submitBtn" (click)="signUpPlayer()" [attr.disabled]="registerData.disableSubmit ? 'disabled' : null" class="w-100 btn btn3d btn-success fw-bold" type="button">
+                        <div id="proceedText" class="proceedText" [ngClass]="registerData.hideSubmitText ? 'hideElem' : ''" >Submit</div>
+                        <div id="proceedLoading" class="proceedLoading text-center" [ngClass]="registerData.hideSubmitLoading ? 'hideElem' : ''">
                           <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
                           Loading...
                         </div>
@@ -86,10 +98,11 @@
                     </div>
                   </div>
 
-                   <!-- GO Back button -->
+                  <!-- GO Back button -->
                   <div class="row">
                     <div class="col">
-                      <button id="submitBtn" href="#" class="w-100 btn btn3d btn-primary fw-bold" type="button" routerLink="/login">
+                      <button id="goBack" href="#" class="w-100 btn btn3d btn-primary fw-bold" type="button"
+                        routerLink="/login">
                         <div id="proceedText" class="proceedText">Go Back</div>
                         <div id="proceedLoading" class="proceedLoading text-center hideElem">
                           <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
@@ -101,12 +114,12 @@
 
                   <div class="row">
                     <div class="col login-message mt-3">
-                      <div id="setupAlertSuccess" class="alert alert-success text-center" role="alert">
-                        Sign Up Successful. Redirecting to main page in 2s.
+                      <div id="setupAlertSuccess" class="alert alert-success text-center" [ngClass]="registerData.hideSuccessStatus ? '' : 'activeStatus'" role="alert">
+                        Sign Up Successful. Redirecting to main page in 1s.
                         <!-- sign up takes longer than login ;) -->
                       </div>
-                      <div id="setupAlertFailed" class="alert alert-danger text-center" role="alert">
-                        Failed.
+                      <div id="setupAlertFailed" class="alert alert-danger text-center" [ngClass]="registerData.hideFailStatus ? '' : 'activeStatus'" role="alert">
+                        {{registerData.failStatusMessage}}
                       </div>
                     </div>
                   </div>
@@ -117,6 +130,6 @@
         </div>
       </div>
     </div>
-
   </div>
+  <script src="/assets/js/register.js"></script>
 </main>

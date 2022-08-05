@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { IndexComponent } from './components/index/index.component';
 import { CategorySelectorComponent } from './components/category-selector/category-selector.component';
 import { GameComponent } from './components/game/game.component';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,9 @@ import { GameComponent } from './components/game/game.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
