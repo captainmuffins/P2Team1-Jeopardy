@@ -10,6 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { IndexComponent } from './components/index/index.component';
+import { CategorySelectorComponent } from './components/category-selector/category-selector.component';
+import { GameComponent } from './components/game/game.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { IndexComponent } from './components/index/index.component';
     LoginComponent,
     SignUpComponent,
     IndexComponent,
+    CategorySelectorComponent,
+    GameComponent,
   ],
   imports: [
     BrowserModule,
