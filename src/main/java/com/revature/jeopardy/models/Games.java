@@ -1,55 +1,61 @@
 package com.revature.jeopardy.models;
 
-import org.springframework.stereotype.Component;
-
-import javax.persistence.*;
 import java.sql.Timestamp;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
 
 @Entity
 @Table(name = "games")
 @Component
 public class Games {
-    @Id
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int game_id;
+    private int gameId;
 
     @Column(nullable = false)
-    private Timestamp game_created;
+    private Timestamp gameCreated;
 
-    // BOILERPLATE ------------------------------------------------------------------------------
-    public Games() {
-    }
+	public Games() {
+		super();
+	}
 
-    public Games(int game_id, Timestamp game_created) {
-        this.game_id = game_id;
-        this.game_created = game_created;
-    }
+	public Games(Timestamp gameCreated) {
+		super();
+		this.gameCreated = gameCreated;
+	}
 
-    public Games(Timestamp game_created) {
-        this.game_created = game_created;
-    }
+	public Games(int gameId, Timestamp gameCreated) {
+		super();
+		this.gameId = gameId;
+		this.gameCreated = gameCreated;
+	}
 
-    public int getGame_id() {
-        return game_id;
-    }
+	public int getGameId() {
+		return gameId;
+	}
 
-    public void setGame_id(int game_id) {
-        this.game_id = game_id;
-    }
+	public void setGameId(int gameId) {
+		this.gameId = gameId;
+	}
 
-    public Timestamp getGame_created() {
-        return game_created;
-    }
+	public Timestamp getGameCreated() {
+		return gameCreated;
+	}
 
-    public void setGame_created(Timestamp game_created) {
-        this.game_created = game_created;
-    }
+	public void setGameCreated(Timestamp gameCreated) {
+		this.gameCreated = gameCreated;
+	}
 
-    @Override
-    public String toString() {
-        return "Games [game_created=" + game_created + ", game_id=" + game_id + "]";
-    }
-
+	@Override
+	public String toString() {
+		return "Games [gameId=" + gameId + ", gameCreated=" + gameCreated + "]";
+	}
     
-
 }
