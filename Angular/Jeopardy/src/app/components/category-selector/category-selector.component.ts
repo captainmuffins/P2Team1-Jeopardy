@@ -9,7 +9,7 @@ import { jeopardyservice } from 'src/app/jeopardyservice';
 export class CategorySelectorComponent implements OnInit {
  
   //129 default cause why not... :) :) :sableye :) 
-  public input:number = 360;
+  public Gem:number = 360;
 
   //gonna make a model Category and a model question
   public Category:Category={
@@ -22,7 +22,29 @@ export class CategorySelectorComponent implements OnInit {
   constructor(private Js:jeopardyservice) { }
   
   getCategory(){
-    this.Js.getCategoryFromApi(this.input).subscribe()
+    this.Js.getCategoryFromApi(this.Gem).subscribe()
+  }
+  //Some logic to choose 5 categories, the Gem should be found by clicking the button, 
+  //the button should be made with the get category function, so an id is given to Category, then we will use the Bob array
+  //to pass the 5 categories selected to the Game component. 
+  public a:number=0;
+  public b:number=0;
+  public c:number=0;
+  public d:number=0;
+  public e:number=0;
+  public Bob=[this.a,this.b,this.c,this.d,this.e];
+
+  SelCat(Gem: number){
+    if (this.a==0){
+      this.a = Gem;
+    }else if(this.a==0){
+      this.b=Gem;
+    }else if (this.a==0){
+      this.c = Gem;
+    }else if(this.a==0){
+      this.d=Gem;
+    }else if(this.e == 0){
+      this.e=Gem;}
   }
 
   Counter(){

@@ -12,7 +12,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { IndexComponent } from './components/index/index.component';
 import { CategorySelectorComponent } from './components/category-selector/category-selector.component';
 import { GameComponent } from './components/game/game.component';
-import { Category } from './models/category/category';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,6 @@ import { Category } from './models/category/category';
     IndexComponent,
     CategorySelectorComponent,
     GameComponent,
-    Category,
   ],
   imports: [
     BrowserModule,
