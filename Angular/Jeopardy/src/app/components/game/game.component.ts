@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategorySelectorComponent } from '../category-selector/category-selector.component';
 
 @Component({
   selector: 'app-game',
@@ -6,8 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
-
+  
   constructor() { }
+
 
   ngOnInit(): void {
   }
