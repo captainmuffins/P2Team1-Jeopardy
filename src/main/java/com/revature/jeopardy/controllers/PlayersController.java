@@ -1,11 +1,15 @@
 package com.revature.jeopardy.controllers;
 
+import java.util.Optional;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -84,6 +88,36 @@ public class PlayersController {
 		}
 		response = new Response(400, "Missing session", false, curPlayer);
 		return ResponseEntity.status(response.getStatusCode()).body(response);
+	}
+
+	@GetMapping(value = "/byId/{id}")
+	public ResponseEntity<Players> findById(@PathVariable int id){
+		
+		Optional<Players> playersOptional = playersDAO.findById(id);
+
+		if(playersOptional.isPresent()){
+			Players p = playersOptional.get();
+
+			return ResponseEntity.ok(p);
+		}
+
+		return ResponseEntity.noContent().build();
+
+	}
+
+	@GetMapping(value = "/byName/{name}")
+	public ResponseEntity<Players> findByName(@PathVariable String name){
+
+		Optional<Players> playersOptional = playersDAO.findByName(name);
+
+		if(playersOptional.isPresent()){
+			Players p = playersOptional.get();
+
+			return ResponseEntity.ok(p);
+		}
+
+		return ResponseEntity.noContent().build();
+		
 	}
 
 }
