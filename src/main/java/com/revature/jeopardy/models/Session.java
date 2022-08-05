@@ -1,6 +1,5 @@
 package com.revature.jeopardy.models;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -14,15 +13,15 @@ public class Session {
     private int session_id;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "player_id")
+    @JoinColumn(name = "player_id", nullable = false)
     private Players session_player_fk;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "game_id")
+    @JoinColumn(name = "game_id", nullable = false)
     private Games session_game_fk;
 
-    @Column
-    private boolean session_winner;
+    @Column(nullable = false)
+    private boolean session_winner = false;
 
     // BOILERPLATE ------------------------------------------------------------------------------
     public Session() {
@@ -39,16 +38,6 @@ public class Session {
         this.session_player_fk = session_player_fk;
         this.session_game_fk = session_game_fk;
         this.session_winner = session_winner;
-    }
-
-    @Autowired
-    public Session(Players session_player_fk) {
-        this.session_player_fk = session_player_fk;
-    }
-
-    @Autowired
-    public Session(Games session_game_fk) {
-        this.session_game_fk = session_game_fk;
     }
 
     public int getSession_id() {

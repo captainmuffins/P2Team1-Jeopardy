@@ -1,6 +1,5 @@
 package com.revature.jeopardy.models;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -14,32 +13,20 @@ public class Games {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int game_id;
 
-    @Column
+    @Column(nullable = false)
     private Timestamp game_created;
-
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "player_id")
-    private Players game_player_fk;
-
 
     // BOILERPLATE ------------------------------------------------------------------------------
     public Games() {
     }
 
-    public Games(int game_id, Timestamp game_created, Players game_player_fk) {
+    public Games(int game_id, Timestamp game_created) {
         this.game_id = game_id;
         this.game_created = game_created;
-        this.game_player_fk = game_player_fk;
     }
 
-    public Games(Timestamp game_created, Players game_player_fk) {
+    public Games(Timestamp game_created) {
         this.game_created = game_created;
-        this.game_player_fk = game_player_fk;
-    }
-
-    @Autowired
-    public Games(Players game_player_fk) {
-        this.game_player_fk = game_player_fk;
     }
 
     public int getGame_id() {
@@ -58,20 +45,11 @@ public class Games {
         this.game_created = game_created;
     }
 
-    public Players getGame_player_fk() {
-        return game_player_fk;
-    }
-
-    public void setGame_player_fk(Players game_player_fk) {
-        this.game_player_fk = game_player_fk;
-    }
-
     @Override
     public String toString() {
-        return "Games{" +
-                "game_id=" + game_id +
-                ", game_created=" + game_created +
-                ", game_player_fk=" + game_player_fk +
-                '}';
+        return "Games [game_created=" + game_created + ", game_id=" + game_id + "]";
     }
+
+    
+
 }

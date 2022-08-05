@@ -13,19 +13,19 @@ public class Players {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int player_id;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String player_username;
 
-    @Column
+    @Column(nullable = false)
     private String player_password;
 
-    @Column
+    @Column(nullable = false)
     private String player_email;
 
-    @Column
+    @Column(nullable = false)
     private String player_first_name;
 
-    @Column
+    @Column(nullable = false)
     private String player_last_name;
 
     @Column
