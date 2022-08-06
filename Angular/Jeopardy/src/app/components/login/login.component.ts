@@ -43,11 +43,9 @@ export class LoginComponent implements OnInit {
             this.loginData.disableSubmit = false;
             this.loginData.hideSuccessStatus = false;
             // redirect to login route upon successful registration
-            /*
             setTimeout(() => {
               this.router.navigate(['/']);
             }, 1000);
-            */
           },
           error: (err) => {
             const data = err.error;
