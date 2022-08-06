@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewEncapsulation } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 
@@ -7,7 +6,6 @@ import { Router } from '@angular/router';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  encapsulation: ViewEncapsulation.None,
 })
 export class LoginComponent implements OnInit {
   // player data to be submitted
@@ -53,7 +51,12 @@ export class LoginComponent implements OnInit {
             this.loginData.hideSubmitLoading = true;
             this.loginData.disableSubmit = false;
             this.loginData.hideFailStatus = false;
-            this.loginData.failStatusMessage = data.statusMessage;
+            if (data.statusMessage != undefined) {
+              this.loginData.failStatusMessage = data.statusMessage;
+            } else {
+              this.loginData.failStatusMessage =
+                "Couldn't login. Make sure server is running.";
+            }
           },
         });
       }

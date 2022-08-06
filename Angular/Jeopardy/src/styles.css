@@ -14,27 +14,6 @@ body {
   height: 100%;
 }
 
-app-root,
-app-login {
-  display: block;
-  height: 100%;
-}
-
 * {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.password-match, .password-not-match {
-  display: none;
-  width: 100%;
-  margin-top: 0.25rem;
-  font-size: .875em;
-  font-weight: bold;
-  text-shadow: 1px 1px 1px #000;
-  text-align: center;
-  padding: 0px 1px 2px 1px;
-}
-
-.valid-password .password-match, .invalid-password .password-not-match {
-  display: block;
 }

@@ -13,16 +13,21 @@ public class JeopardyApplication {
 		SpringApplication.run(JeopardyApplication.class, args);
 	}
 	
-	// Global CORS configuration
+	/*
+	 *  Global CORS configuration
+	 */
+	
     @Bean
     WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-            	// allow on all endpoint paths
-            	// allow all methods - GET, POST, PUT, OPTIONS etc
-            	// allow requests from http://localhost (frontend)
-            	// allow credentials (withCredentials from angular)
+            	/*
+            	 *  allow on all endpoint paths
+            	 *  allow all methods - GET, POST, PUT, OPTIONS etc
+            	 *  allow requests from http://localhost (frontend)
+            	 *  allow credentials (withCredentials from angular)
+            	 */
                 registry.addMapping("/**").allowedMethods("*").allowedOrigins("http://localhost").allowCredentials(true);
             }
         };

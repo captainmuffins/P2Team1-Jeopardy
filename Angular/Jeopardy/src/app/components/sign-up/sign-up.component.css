@@ -38,7 +38,7 @@ main {
 
 .bg {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -127,8 +127,6 @@ main {
 
 /* Main styles */
 .animatedBackground {
-  /* img size is 50x50 */
-  /* background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5RDYAwDEXRDgmvEocnlrQS2SwUFST9uEfBGWs9c97nbGtDcquqiKhOImLs/UpuzVzWEi1atGjRokWLFi1atGjRokWLFi1atGjRokWLFi1af7Ukz8xWp8z8AAAA//8DAJ4LoEAAlL1nAAAAAElFTkSuQmCC") repeat 0 0; */
   background: url("/assets/img/border-anim2.png") repeat 0 0;
   -webkit-animation: bg-scrolling-reverse 10s infinite;
   /* Safari 4+ */
@@ -209,4 +207,21 @@ main {
   100% {
     text-shadow: 0 0 black;
   }
+}
+
+.password-match,
+.password-not-match {
+  display: none;
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: .875em;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px #000;
+  text-align: center;
+  padding: 0px 1px 2px 1px;
+}
+
+.valid-password .password-match,
+.invalid-password .password-not-match {
+  display: block;
 }

@@ -62,7 +62,12 @@ export class SignUpComponent implements OnInit {
                 this.registerData.hideSubmitLoading = true;
                 this.registerData.disableSubmit = false;
                 this.registerData.hideFailStatus = false;
-                this.registerData.failStatusMessage = data.statusMessage;
+                if (data.statusMessage != undefined) {
+                  this.registerData.failStatusMessage = data.statusMessage;
+                } else {
+                  this.registerData.failStatusMessage =
+                    "Couldn't register. Make sure server is running.";
+                }
               },
             });
           }
