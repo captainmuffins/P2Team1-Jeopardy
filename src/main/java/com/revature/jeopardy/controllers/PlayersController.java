@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +20,6 @@ import com.revature.jeopardy.dtos.Response;
 import com.revature.jeopardy.models.Players;
 import com.revature.jeopardy.utils.AuthUtil;
 
-@CrossOrigin(maxAge = 3600)
 @RestController
 @RequestMapping(value="/players")
 @Scope("session")

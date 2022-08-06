@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
-import '../../../assets/js/register.js';
 
 @Component({
   selector: 'app-sign-up',
@@ -33,7 +32,6 @@ export class SignUpComponent implements OnInit {
       'confirmPassword'
     ) as HTMLInputElement;
     formElem.forEach((element) => {
-      console.log(element);
       element.classList.remove('invalid-password');
       element.classList.remove('valid-password');
       if (element.checkValidity()) {
@@ -41,7 +39,6 @@ export class SignUpComponent implements OnInit {
           if (password1.value != password2.value) {
             element.classList.add('invalid-password');
           } else {
-            console.log(this.signUpPlayerData);
             element.classList.add('valid-password');
             this.registerData.hideSubmitText = true;
             this.registerData.hideSubmitLoading = false;
@@ -58,7 +55,6 @@ export class SignUpComponent implements OnInit {
                 setTimeout(() => {
                   this.router.navigate(['/login']);
                 }, 1000);
-                console.log(data);
               },
               error: (err) => {
                 const data = err.error;
@@ -67,7 +63,6 @@ export class SignUpComponent implements OnInit {
                 this.registerData.disableSubmit = false;
                 this.registerData.hideFailStatus = false;
                 this.registerData.failStatusMessage = data.statusMessage;
-                console.log(data);
               },
             });
           }
