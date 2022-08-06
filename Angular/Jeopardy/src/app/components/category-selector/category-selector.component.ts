@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { Category } from 'src/app/models/category/category';
 import { jeopardyservice } from 'src/app/jeopardyservice';
+
 @Component({
   selector: 'app-category-selector',
   templateUrl: './category-selector.component.html',
@@ -18,12 +19,28 @@ export class CategorySelectorComponent implements OnInit {
     clues_count: 0 
   }
   public Sableye: number = 0;
+  public thisistest:number=this.Gem;
   //made Js as a service to connect to the Api
   constructor(private Js:jeopardyservice) { }
+
+  getCategory(gem: number){
+    this.Js.getCategoryFromApi(gem).subscribe(
+      (data:any)=>{
+        this.Category=data.body;
+        console.log(this.Category);
+        this.Js.Category=data.body
+      },
+    ()=>{console.log("it got away")}
   
-  getCategory(){
-    this.Js.getCategoryFromApi(this.Gem).subscribe()
+      )
   }
+  buttonPress(gem:number){
+    this.Gem = gem;
+    this.SelCat(gem);
+    this.getCategory(gem);
+    this.thisistest = this.Js.Category.id;
+  }
+  
   //Some logic to choose 5 categories, the Gem should be found by clicking the button, 
   //the button should be made with the get category function, so an id is given to Category, then we will use the Bob array
   //to pass the 5 categories selected to the Game component. 
@@ -33,20 +50,24 @@ export class CategorySelectorComponent implements OnInit {
   public d:number=0;
   public e:number=0;
   public Bob=[this.a,this.b,this.c,this.d,this.e];
-
+  
   SelCat(Gem: number){
     // the previous logic allowed for duplicate categories,
-    
     if (this.a==0){
       this.a = Gem;
+      console.log(this.a);
     }else if(this.b==0 ){
       this.b=Gem;
+      console.log(this.b);
     }else if (this.c==0 ){
       this.c = Gem;
+      console.log(this.c);
     }else if(this.d==0 ){
       this.d=Gem;
+      console.log(this.d);
     }else if(this.e == 0){
-      this.e=Gem;}
+      this.e=Gem;
+      console.log(this.e);}
 
     // I think I need a dup close check. 
     // maybe imlementation of that is better on the button, so the button changes Gem to the specified number
