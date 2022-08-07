@@ -46,3 +46,8 @@
   font-size: 28px;
   text-shadow: 1px 1px 1px #000;
 }
+
+.titleCase {
+  text-transform: capitalize;
+  font-weight: bold;
+}

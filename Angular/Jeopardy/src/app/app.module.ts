@@ -12,8 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { IndexComponent } from './components/index/index.component';
 import { CategorySelectorComponent } from './components/category-selector/category-selector.component';
 import { GameComponent } from './components/game/game.component';
-import { AuthService } from './services/auth.service';
-
+import { AuthService } from './services/auth/auth.service';
+import { PlayersService } from './services/players/players.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +32,8 @@ import { AuthService } from './services/auth.service';
     HttpClientModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    PlayersService
   ],
   bootstrap: [AppComponent]
 })

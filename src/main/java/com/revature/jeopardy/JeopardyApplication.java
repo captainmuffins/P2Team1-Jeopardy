@@ -23,10 +23,10 @@ public class JeopardyApplication {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
             	/*
-            	 *  allow on all endpoint paths
-            	 *  allow all methods - GET, POST, PUT, OPTIONS etc
-            	 *  allow requests from http://localhost (frontend)
-            	 *  allow credentials (withCredentials from angular)
+            	 *  Allow on all API endpoint paths
+            	 *  Allow all methods - GET, POST, PUT, DELETE, OPTIONS, and etc.
+            	 *  Allow cross-origin requests from http://localhost (Frontend)
+            	 *  Allow receiving of credentials (withCredentials from angular)
             	 */
                 registry.addMapping("/**").allowedMethods("*").allowedOrigins("http://localhost").allowCredentials(true);
             }
