@@ -29,7 +29,7 @@ export class jeopardyservice {
   getCategoryFromApi(id:number):Observable<HttpResponse<Category>>{
     return this.http.get("http://jservice.io/api/category?id="+id,{observe:"response"}) as Observable<HttpResponse<Category>>
   }
-  getQuestionFromApi(Gem:number):Observable<HttpResponse<Clue>>{
-    return this.http.get("http://jservice.io/api/clues?category="+Gem,{observe:"response"}) as Observable<HttpResponse<Clue>>
+  getQuestionFromApi(Gem:number,i:number):Observable<HttpResponse<Clue>>{
+    return this.http.get("http://jservice.io/api/clues?value="+i+"&category="+Gem,{observe:"response"}) as Observable<HttpResponse<Clue>>
   }
 }

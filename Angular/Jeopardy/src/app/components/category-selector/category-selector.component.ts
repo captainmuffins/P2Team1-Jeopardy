@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { Category } from 'src/app/models/category/category';
 import { jeopardyservice } from 'src/app/jeopardyservice';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-category-selector',
   templateUrl: './category-selector.component.html',
@@ -21,14 +21,14 @@ export class CategorySelectorComponent implements OnInit {
   public Sableye: number = 0;
   public thisistest:number=this.Gem;
   //made Js as a service to connect to the Api
-  constructor(private Js:jeopardyservice) { }
+  constructor(private Js:jeopardyservice, private _router: Router) { }
 
   getCategory(gem: number){
     this.Js.getCategoryFromApi(gem).subscribe(
       (data:any)=>{
         this.Category=data.body;
-        console.log(this.Category);
-        this.Js.Category=data.body
+        console.log(this.Category)
+        
       },
     ()=>{console.log("it got away")}
   
@@ -53,6 +53,28 @@ export class CategorySelectorComponent implements OnInit {
   
   SelCat(Gem: number){
     // the previous logic allowed for duplicate categories,
+    // now it shall be fixxed!!
+    if(Gem==this.a){
+      this.a = 0
+      return
+    }
+    if(Gem==this.b){
+      this.b = 0
+      return
+    }
+    if(Gem==this.c){
+      this.c = 0
+      return
+    }
+    if(Gem==this.d){
+      this.d = 0
+      return
+    }
+    if(Gem==this.e){
+      this.e = 0
+      return
+    }
+   
     if (this.a==0){
       this.a = Gem;
       console.log(this.a);
@@ -78,7 +100,9 @@ export class CategorySelectorComponent implements OnInit {
       if (this.a!=0 && this.b!=0 && this.c!=0 && this.d!=0 && this.e!=0){
         //go to Game component with Bob.{
       this.Bob=[this.a,this.b,this.c,this.d,this.e]
-    console.log(this.Bob);}
+    console.log(this.Bob);
+    this._router.navigate(['/GemlinTest'], { queryParams: { a: this.a, b:this.b, c: this.c, d:this.d,e:this.e} });
+    }
       
   }
 
