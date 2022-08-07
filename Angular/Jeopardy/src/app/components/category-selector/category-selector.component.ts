@@ -67,7 +67,7 @@ export class CategorySelectorComponent implements OnInit {
       console.log(this.d);
     }else if(this.e == 0){
       this.e=Gem;
-      console.log(this.e);}
+      console.log(this.e);} 
 
     // I think I need a dup close check. 
     // maybe imlementation of that is better on the button, so the button changes Gem to the specified number
@@ -76,8 +76,10 @@ export class CategorySelectorComponent implements OnInit {
     // this will make the first instance of a duplicate 0 which should work fine as the SelCat works from start to end,
     //so if our 5th choice is the same as our 1st choice then our 1st choice becomes zero and waits for the input of the next button. 
       if (this.a!=0 && this.b!=0 && this.c!=0 && this.d!=0 && this.e!=0){
-        //go to Game component with Bob.
-      }
+        //go to Game component with Bob.{
+      this.Bob=[this.a,this.b,this.c,this.d,this.e]
+    console.log(this.Bob);}
+      
   }
 
   ngOnInit(): void {
