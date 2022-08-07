@@ -234,3 +234,7 @@ main {
 .invalid-password .password-not-match {
   display: block;
 }
+
+.welcomePlayer {
+  text-transform: capitalize;
+}

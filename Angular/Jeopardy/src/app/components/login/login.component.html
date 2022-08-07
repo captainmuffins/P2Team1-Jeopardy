@@ -72,11 +72,11 @@
                     <div class="col login-message mt-3">
                       <div id="setupAlertSuccess" class="alert alert-success text-center"
                         [ngClass]="loginData.hideSuccessStatus ? '' : 'activeStatus'" role="alert">
-                        Login Success. Redirecting to main page in 1s.
+                        <span class="welcomePlayer">{{loginData.successStatusMessage}}</span> Redirecting to main in 1s
                       </div>
                       <div id="setupAlertFailed" class="alert alert-danger text-center"
                         [ngClass]="loginData.hideFailStatus ? '' : 'activeStatus'" role="alert">
-                        {{loginData.failStatusMessage}}
+                        <span>{{loginData.failStatusMessage}}</span>
                       </div>
                     </div>
                   </div>
@@ -87,6 +87,5 @@
         </div>
       </div>
     </div>
-
   </div>
 </main>

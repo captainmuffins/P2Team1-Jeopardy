@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
     disableSubmit: false,
     hideSuccessStatus: true,
     hideFailStatus: true,
+    successStatusMessage: '',
     failStatusMessage: '',
   };
 
@@ -40,6 +41,8 @@ export class LoginComponent implements OnInit {
             this.loginData.hideSubmitLoading = true;
             this.loginData.disableSubmit = false;
             this.loginData.hideSuccessStatus = false;
+            const curPlayer = data.statusObject;
+            this.loginData.successStatusMessage = 'Welcome ' + curPlayer.playerFirstname + ' ' + curPlayer.playerLastname + '!';
             // redirect to login route upon successful registration
             setTimeout(() => {
               this.router.navigate(['/']);
