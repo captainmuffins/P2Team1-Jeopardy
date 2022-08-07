@@ -21,7 +21,7 @@ export class SignUpComponent implements OnInit {
     failStatusMessage: '',
   };
 
-  constructor(private _auth: AuthService, private router: Router) {}
+  constructor(private _auth: AuthService, private _router: Router) {}
 
   signUpPlayer() {
     const formElem = document.querySelectorAll('form');
@@ -53,7 +53,7 @@ export class SignUpComponent implements OnInit {
                 this.registerData.hideSuccessStatus = false;
                 // redirect to login route upon successful registration
                 setTimeout(() => {
-                  this.router.navigate(['/login']);
+                  this._router.navigate(['/login']);
                 }, 1000);
               },
               error: (err) => {

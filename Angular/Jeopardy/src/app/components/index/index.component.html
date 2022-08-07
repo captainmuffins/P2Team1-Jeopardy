@@ -21,15 +21,17 @@
               <li class="nav-item dropdown ">
                 <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
                   aria-expanded="false">
-                  <i class="bi bi-person-circle me-2"></i><span>Welcome, </span><span class="me-1 titleCase">{{currentPlayerData.playerFirstname + ' ' + currentPlayerData.playerLastname}}</span>
+                  <i class="bi bi-person-circle me-2"></i><span>Welcome, </span><span
+                    class="me-1 titleCase">{{currentPlayerData.playerFirstname !== undefined ?
+                    (currentPlayerData.playerFirstname + ' ' +
+                    currentPlayerData.playerLastname) : 'Guest'}}</span>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><a class="dropdown-item" href="#">My Profile</a></li>
                   <li>
                     <hr class="dropdown-divider">
                   </li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><a class="dropdown-item" (click)="doLogout()">Logout</a></li>
                 </ul>
               </li>
             </ul>

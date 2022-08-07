@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PlayersService } from 'src/app/services/players/players.service';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie';
 
 @Component({
   selector: 'app-index',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 export class IndexComponent implements OnInit {
   currentPlayerData: any = {};
 
-  constructor(private _player: PlayersService, private router: Router) {}
+  constructor(private _player: PlayersService, private _router: Router, private _cookieService: CookieService) {}
 
   ngOnInit(): void {
     this.initPlayer();
@@ -20,7 +21,6 @@ export class IndexComponent implements OnInit {
     this._player.getCurrentSession().subscribe({
       next: (data) => {
         console.log('--- success ---');
-        console.log(data);
         this.currentPlayerData = data.statusObject;
       },
       error: (err) => {
@@ -28,5 +28,12 @@ export class IndexComponent implements OnInit {
         console.log(err);
       },
     });
+  }
+
+  doLogout() {
+    // Delete all cookies
+    this._cookieService.removeAll();
+    // Redirect to login page
+    this._router.navigate(['/login']);
   }
 }

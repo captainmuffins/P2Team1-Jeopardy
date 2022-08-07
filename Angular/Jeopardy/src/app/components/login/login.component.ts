@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     failStatusMessage: '',
   };
 
-  constructor(private _auth: AuthService, private router: Router) {}
+  constructor(private _auth: AuthService, private _router: Router) {}
 
   ngOnInit(): void {}
 
@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
             this.loginData.successStatusMessage = 'Welcome ' + curPlayer.playerFirstname + ' ' + curPlayer.playerLastname + '!';
             // redirect to login route upon successful registration
             setTimeout(() => {
-              this.router.navigate(['/']);
+              this._router.navigate(['/']);
             }, 1000);
           },
           error: (err) => {

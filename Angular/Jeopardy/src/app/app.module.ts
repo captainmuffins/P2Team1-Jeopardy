@@ -14,6 +14,7 @@ import { CategorySelectorComponent } from './components/category-selector/catego
 import { GameComponent } from './components/game/game.component';
 import { AuthService } from './services/auth/auth.service';
 import { PlayersService } from './services/players/players.service';
+import { CookieModule } from 'ngx-cookie';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,8 @@ import { PlayersService } from './services/players/players.service';
     NgbModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CookieModule.withOptions()
   ],
   providers: [
     AuthService,
