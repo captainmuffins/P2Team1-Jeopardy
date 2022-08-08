@@ -10,14 +10,18 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
+          <li class="nav-item withShadow">
             <a class="nav-link text-white" href="/">Home</a>
           </li>
         </ul>
         <div class="d-flex">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-white">
-            <li class="nav-item dropdown ">
-              <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
+            <li class="nav-item withShadow" [hidden]="!indexData.isGuest">
+              <a class="nav-link text-white" routerLink="/login" role="button"><i
+                  class="bi bi-box-arrow-in-right me-2"></i><span>Login</span></a>
+            </li>
+            <li class="nav-item dropdown" [hidden]="indexData.isGuest">
+              <a class="nav-link dropdown-toggle text-white withShadow" href="#" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 <i class="bi bi-person-circle me-2"></i><span>Welcome, </span><span
                   class="me-1 titleCase">{{currentPlayerData.playerFirstname !== undefined ?
@@ -57,7 +61,7 @@
           </div>
         </div>
       </div>
-      <div class="col d-flex justify-content-center my-3">
+      <div class="col d-flex justify-content-center my-3" [hidden]="indexData.isGuest">
         <div class="card text-center j-menu-item" style="width: 18em">
           <div class="menu-item-image card-img-top d-flex align-items-center justify-content-center">
             <img src="/assets/img/sableyeregandshiny.png">
@@ -71,7 +75,7 @@
           </div>
         </div>
       </div>
-      <div class="col d-flex justify-content-center my-3">
+      <div class="col d-flex justify-content-center my-3" [hidden]="indexData.isGuest">
         <div class="card text-center j-menu-item" style="width: 18em">
           <div class="menu-item-image card-img-top d-flex align-items-center justify-content-center">
             <img src="/assets/img/trophy.png">
@@ -103,6 +107,22 @@
     <div class="offcanvas-body-wrapper w-100 m-auto" style="max-width: 576px;">
       <div class="offcanvas-body">
         <div class="container">
+          <div class="row">
+            <div class="col">
+              <form enctype="multipart/form-data" action="#" method="POST" class="avatar-upload">
+                <div class="avatar-edit">
+                  <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" name="avatar"
+                    (change)="avatarUpload($event)" />
+                  <label for="imageUpload"><i class="bi bi-pencil"></i></label>
+                </div>
+                <div class="avatar-preview container2">
+                  <img id="imagePreview" [src]="imagePreviewUrl">
+                  <div id="uploadAvatarCon" class="d-flex justify-content-center">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
           <form id="updateProfileForm" class="updateProfileForm needs-validation" novalidate>
             <div class="row">
               <div class="col pb-2">

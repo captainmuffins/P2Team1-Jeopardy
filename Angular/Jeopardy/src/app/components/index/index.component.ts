@@ -32,9 +32,12 @@ export class IndexComponent implements OnInit {
     hideFailStatus: true,
     successStatusMessage: '',
     failStatusMessage: '',
+    isGuest: true,
   };
 
-  confirmPassword: String = '';
+  confirmPassword = '';
+
+  imagePreviewUrl: any = '/assets/img/default_avatar.png';
 
   constructor(
     private _player: PlayersService,
@@ -60,6 +63,7 @@ export class IndexComponent implements OnInit {
         );
 
         receivedData.playerPassword = null;
+        this.indexData.isGuest = false;
 
         this.currentPlayerData = receivedData;
         this.newPlayerData = receivedData;
@@ -87,6 +91,18 @@ export class IndexComponent implements OnInit {
       })
       .join(' ');
   };
+
+  avatarUpload(event: Event) {
+    let inputFile = event.target as HTMLInputElement;
+    if (inputFile.files && inputFile.files[0]) {
+      let reader = new FileReader();
+      reader.readAsDataURL(inputFile.files[0]);
+
+      reader.onload = (event) => {
+        this.imagePreviewUrl = event.target?.result;
+      };
+    }
+  }
 
   checkPassword(event: Event) {
     const formElem = document.getElementById(
