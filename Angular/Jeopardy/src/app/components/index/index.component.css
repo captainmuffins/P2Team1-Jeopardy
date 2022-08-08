@@ -1,8 +1,6 @@
 /* Background */
 
 .bg {
-  width: 100%;
-  min-height: 100vh;
   background-size: 300% 300%;
   background-image: linear-gradient(-45deg,
       #3bade3 0%,
@@ -11,6 +9,12 @@
       #9d030b 100%);
   -webkit-animation: AnimateBG 20s ease infinite;
   animation: AnimateBG 20s ease infinite;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
 }
 
 @-webkit-keyframes AnimateBG {
@@ -78,9 +82,58 @@ a {
 
 .menu-item-image {
   height: 180px;
-  background-image: radial-gradient(circle farthest-corner at 50% 50%, rgba(173, 0, 171, 1) 0%, rgba(15, 51, 92, 1) 66%)
+  background-image: radial-gradient(circle farthest-corner at 50% 50%, rgba(255, 255, 255, 0.25) 0%, rgba(0, 0, 0, 0.25) 67%)
 }
 
 .menu-item-image img {
   height: 50%
+}
+
+#offcanvasProfile {
+  border: none;
+  background: transparent;
+  backdrop-filter: blur(20px);
+}
+
+/* If browser is firefox */
+@-moz-document url-prefix() {
+  main div#offcanvasProfile {
+    backdrop-filter: unset !important;
+    background: rgba(0, 0, 0, 0.75) !important;
+  }
+}
+
+.password-match,
+.password-not-match {
+  display: none;
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: .875em;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px #000;
+  text-align: center;
+  padding: 0px 1px 2px 1px;
+}
+
+.valid-password .password-match,
+.invalid-password .password-not-match {
+  display: block;
+}
+
+#offcanvasProfile .alert {
+  display: none;
+}
+
+#offcanvasProfile div.alert.activeStatus {
+  animation: statusEntrance 1s ease 0s 1 normal forwards;
+  display: block;
+}
+
+#offcanvasProfile .hideElem {
+  display: none;
+}
+
+#offcanvasProfile .btn {
+  font-weight: bold;
+  font-size: 14px;
 }

@@ -26,7 +26,7 @@ public class JeopardyApplication {
             	 *  Allow on all API endpoint paths
             	 *  Allow all methods - GET, POST, PUT, DELETE, OPTIONS, and etc.
             	 *  Allow cross-origin requests from http://localhost (Frontend)
-            	 *  Allow receiving of credentials (withCredentials from angular)
+            	 *  Allow receiving of credentials (if using withCredentials option with observables from angular)
             	 */
                 registry.addMapping("/**").allowedMethods("*").allowedOrigins("http://localhost").allowCredentials(true);
             }
