@@ -219,13 +219,40 @@ export class GameComponent implements OnInit {
   };
   // shall I make 25 different variables so I can have one for each shell yes I shall,
   CheckCheck(){
-    console.log(this.C1C1.id)
+    console.log(this.C1C1.answer)
+    console.log(this.C1C2.answer)
+    console.log(this.C1C3.answer)
+    console.log(this.C1C4.answer)
+    console.log(this.C1C5.answer)
+
+    console.log(this.C5C1.answer)
+    console.log(this.C5C2.answer)
+    console.log(this.C5C3.answer)
+    console.log(this.C5C4.answer)
+    console.log(this.C5C5.answer)
+
+    console.log(this.C2C1.answer)
+    console.log(this.C2C2.answer)
+    console.log(this.C2C3.answer)
+    console.log(this.C2C4.answer)
+    console.log(this.C2C5.answer)
+
+    console.log(this.C3C1.answer)
+    console.log(this.C3C2.answer)
+    console.log(this.C3C3.answer)
+    console.log(this.C3C4.answer)
+    console.log(this.C3C5.answer)
+    
+    console.log(this.C4C1.answer)
+    console.log(this.C4C2.answer)
+    console.log(this.C4C3.answer)
+    console.log(this.C4C4.answer)
+    console.log(this.C4C5.answer)
   }
   //check check
   async StartGame(){
-    for (this.i;this.i<5;this.i++){
       for(this.value;this.value<=5;this.value=this.value+1){
-        this.Js.getQuestionFromApi(this.Bob[this.i], this.value*100).subscribe(
+        this.Js.getQuestionFromApi(this.Bob[0], this.value*100).subscribe(
           (data:any)=>{this.MAN=data.body[0]
             if(this.C1C1.id==0){
               this.C1C1=this.MAN;
@@ -233,8 +260,7 @@ export class GameComponent implements OnInit {
             } else if (this.C1C2.id==0){
               this.C1C2=this.MAN;
               console.log(this.C1C2)
-            }
-            else if (this.C1C3.id==0){
+            }else if (this.C1C3.id==0){
               this.C1C3=this.MAN;
               console.log(this.C1C3)
             }else if (this.C1C4.id==0){
@@ -245,15 +271,106 @@ export class GameComponent implements OnInit {
               console.log(this.C1C5)
               this.value=1;
             }
+          },()=>{console.log("it got away")});
+        }this.value=1;
+    for(this.value;this.value<=5;this.value=this.value+1){
+      this.Js.getQuestionFromApi(this.Bob[1], this.value*100).subscribe(
+        (data:any)=>{this.MAN=data.body[0]
+          if(this.C2C1.id==0){
+            this.C2C1=this.MAN;
+            console.log(this.C2C1)
+          } else if (this.C2C2.id==0){
+            this.C2C2=this.MAN;
+            console.log(this.C2C2)
+          }else if (this.C2C3.id==0){
+            this.C2C3=this.MAN;
+            console.log(this.C2C3)
+          }else if (this.C2C4.id==0){
+            this.C2C4=this.MAN;
+            console.log(this.C2C4)
+          }else if (this.C2C5.id==0){
+            this.C2C5=this.MAN;
+            console.log(this.C2C5)
+          }
+        },()=>{console.log("it got away")}
+        
+        );
+        
+      } this.value=1;
+      for(this.value;this.value<=5;this.value=this.value+1){
+        this.Js.getQuestionFromApi(this.Bob[2], this.value*100).subscribe(
+          (data:any)=>{this.MAN=data.body[0]
+            if(this.C3C1.id==0){
+              this.C3C1=this.MAN;
+              console.log(this.C3C1)
+            } else if (this.C3C2.id==0){
+              this.C3C2=this.MAN;
+              console.log(this.C3C2)
+            }
+            else if (this.C3C3.id==0){
+              this.C3C3=this.MAN;
+              console.log(this.C3C3)
+            }else if (this.C3C4.id==0){
+              this.C3C4=this.MAN;
+              console.log(this.C3C4)
+            }else if (this.C3C5.id==0){
+              this.C3C5=this.MAN;
+              console.log(this.C3C5)
+            }
           },()=>{console.log("it got away")}
           
           );
-          console.log(this.Bob[this.i]);
-          console.log(this.value);
+        }this.value=1;
+    for(this.value;this.value<=5;this.value=this.value+1){
+      this.Js.getQuestionFromApi(this.Bob[3], this.value*100).subscribe(
+        (data:any)=>{this.MAN=data.body[0]
+          if(this.C5C1.id==0){
+            this.C5C1=this.MAN;
+            console.log(this.C5C1)
+          } else if (this.C5C2.id==0){
+            this.C5C2=this.MAN;
+            console.log(this.C5C2)
+          }else if (this.C5C3.id==0){
+            this.C5C3=this.MAN;
+            console.log(this.C5C3)
+          }else if (this.C5C4.id==0){
+            this.C5C4=this.MAN;
+            console.log(this.C5C4)
+          }else if (this.C5C5.id==0){
+            this.C5C5=this.MAN;
+            console.log(this.C5C5)
+          }
+        },()=>{console.log("it got away")}
+        
+        );  
+      }this.value=1;
+      for(this.value;this.value<=5;this.value=this.value+1){
+        this.Js.getQuestionFromApi(this.Bob[4], this.value*100).subscribe(
+          (data:any)=>{this.MAN=data.body[0]
+            if(this.C4C1.id==0){
+              this.C4C1=this.MAN;
+              console.log(this.C4C1)
+            } else if (this.C4C2.id==0){
+              this.C4C2=this.MAN;
+              console.log(this.C4C2)
+            }else if (this.C4C3.id==0){
+              this.C4C3=this.MAN;
+              console.log(this.C4C3)
+            }else if (this.C4C4.id==0){
+              this.C4C4=this.MAN;
+              console.log(this.C4C4)
+            }else if (this.C4C5.id==0){
+              this.C4C5=this.MAN;
+              console.log(this.C4C5)
+            }
+          },()=>{console.log("it got away")}
+          
+          );
+          
         }
-        console.log(this.Bob[this.i]);
-    }
   }
+  
+
   
  
   
