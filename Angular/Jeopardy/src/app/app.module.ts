@@ -17,6 +17,7 @@ import { PlayersService } from './services/players/players.service';
 import { CookieModule } from 'ngx-cookie';
 import { ConfirmationDialogComponent } from './services/confirmation-dialog/confirmation-dialog.component';
 import { ConfirmationDialogService } from './services/confirmation-dialog/confirmation-dialog.service';
+import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +27,7 @@ import { ConfirmationDialogService } from './services/confirmation-dialog/confir
     CategorySelectorComponent,
     GameComponent,
     ConfirmationDialogComponent,
+    ScoreboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,13 +36,9 @@ import { ConfirmationDialogService } from './services/confirmation-dialog/confir
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    CookieModule.withOptions()
+    CookieModule.withOptions(),
   ],
-  providers: [
-    AuthService,
-    PlayersService,
-    ConfirmationDialogService
-  ],
-  bootstrap: [AppComponent]
+  providers: [AuthService, PlayersService, ConfirmationDialogService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
