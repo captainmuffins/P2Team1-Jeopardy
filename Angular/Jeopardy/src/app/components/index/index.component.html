@@ -25,7 +25,7 @@
             <li class="nav-item dropdown" *ngIf="!indexData.isGuest; else loginLink">
               <a class="nav-link dropdown-toggle text-white withShadow" href="#" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
-                <i class="bi bi-person-circle me-2"></i><span>Welcome, </span><span
+                <img class="showAvatar m-2" [src]="imagePreviewUrl"><span>Welcome, </span><span
                   class="me-1 titleCase">{{currentPlayerData.playerFirstname !== undefined ?
                   (currentPlayerData.playerFirstname + ' ' +
                   currentPlayerData.playerLastname) : 'Guest'}}</span>
@@ -111,10 +111,10 @@
         <div class="container">
           <div class="row">
             <div class="col">
-              <form enctype="multipart/form-data" action="#" method="POST" class="avatar-upload">
-                <div class="avatar-edit">
+              <form id="avatar-upload" class="avatar-upload" [formGroup]="formAvatar">
+                <div class="avatar-edit form-group">
                   <input type='file' id="playerAvatar" accept=".png, .jpg, .jpeg" name="playerAvatar"
-                    (change)="avatarUpload($event)" />
+                    (change)="selectAvatar($event)" class="form-control" />
                   <label for="playerAvatar"><i class="bi bi-pencil"></i></label>
                 </div>
                 <div class="avatar-preview container2">

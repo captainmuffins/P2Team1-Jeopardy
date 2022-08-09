@@ -1,11 +1,21 @@
 package com.revature.jeopardy.controllers;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.tika.config.TikaConfig;
+import org.apache.tika.io.TikaInputStream;
+import org.apache.tika.metadata.Metadata;
+import org.apache.tika.mime.MimeType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -224,14 +234,15 @@ public class PlayersController {
 	}
 
 	@RequestMapping(method = RequestMethod.PUT, value = "/avatar", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public ResponseEntity<Response> updateAvatar(@RequestPart("playerAvatar") MultipartFile document, HttpServletRequest request) {
+	public ResponseEntity<Response> updateAvatar(@RequestPart("playerAvatar") MultipartFile document,
+			HttpServletRequest request) {
 		Optional<Players> getPlayer = null;
 		Players session = null;
 		Response response = null;
 		try {
 			// Security measure. User must be logged in to use this endpoint.
 			session = (Players) request.getSession().getAttribute("currentplayer");
-			
+
 			if (session != null) {
 				getPlayer = playersDAO.findById(session.getPlayerId());
 				if (!getPlayer.isEmpty()) {
@@ -254,4 +265,49 @@ public class PlayersController {
 
 	}
 
-}
+	@GetMapping(value = "/avatar/{playerId}")
+	public ResponseEntity<InputStreamResource> getAvatar(@PathVariable("playerId") int playerId) {
+
+		Optional<Players> getPlayer = null;
+		try {
+
+			getPlayer = playersDAO.findById(playerId);
+			if (!getPlayer.isEmpty()) {
+				Players p = getPlayer.get();
+				if(p.getPlayerAvatar() != null) {
+					TikaConfig tika = new TikaConfig();
+					Metadata metaData = new Metadata();
+
+					InputStream is = new ByteArrayInputStream(p.getPlayerAvatar());
+					InputStreamResource isr = new InputStreamResource(is);
+
+					org.apache.tika.mime.MediaType mediaType = tika.getDetector().detect(TikaInputStream.get(is), metaData);
+					MimeType mimeType = tika.getMimeRepository().forName(mediaType.toString());
+					HttpHeaders responseHeaders = new HttpHeaders();
+					responseHeaders.set("Content-Disposition",
+							"inline; filename=\"" + System.currentTimeMillis() + mimeType.getExtension() + "\"");
+					responseHeaders.set("Content-Type", mediaType.getType() + "/" + mediaType.getSubtype());
+					return ResponseEntity.ok().headers(responseHeaders).body(isr);
+				} else {
+					Resource resource = new ClassPathResource("img/default_avatar_alt.png");
+
+					InputStream input = resource.getInputStream();
+					InputStreamResource isr = new InputStreamResource(input);
+					HttpHeaders responseHeaders = new HttpHeaders();
+					responseHeaders.set("Content-Disposition",
+							"inline; filename=\"default_avatar_alt.png\"");
+					responseHeaders.set("Content-Type", "image/png");
+					return ResponseEntity.ok().headers(responseHeaders).body(isr);
+				}
+				
+			}
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+		return ResponseEntity.status(404).body(null);
+
+	}
+
+};

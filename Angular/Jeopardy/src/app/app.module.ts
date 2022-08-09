@@ -7,7 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { IndexComponent } from './components/index/index.component';
 import { CategorySelectorComponent } from './components/category-selector/category-selector.component';
@@ -25,7 +25,7 @@ import { ConfirmationDialogService } from './services/confirmation-dialog/confir
     IndexComponent,
     CategorySelectorComponent,
     GameComponent,
-    ConfirmationDialogComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +34,8 @@ import { ConfirmationDialogService } from './services/confirmation-dialog/confir
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    CookieModule.withOptions()
+    CookieModule.withOptions(),
+    ReactiveFormsModule
   ],
   providers: [
     AuthService,

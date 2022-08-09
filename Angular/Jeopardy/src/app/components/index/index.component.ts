@@ -3,6 +3,7 @@ import { PlayersService } from 'src/app/services/players/players.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie';
 import { ConfirmationDialogService } from 'src/app/services/confirmation-dialog/confirmation-dialog.service';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-index',
@@ -38,23 +39,30 @@ export class IndexComponent implements OnInit {
 
   confirmPassword = '';
 
-  imagePreviewUrl: any = '/assets/img/default_avatar.png';
+  imageBackup: any = '';
+  imagePreviewUrl: any = '/assets/img/default_avatar_alt.png';
+
+  formAvatar: FormGroup;
 
   constructor(
     private _player: PlayersService,
     private _router: Router,
     private _cookieService: CookieService,
-    private _confirmationDialogService: ConfirmationDialogService
-  ) {}
+    private _confirmationDialogService: ConfirmationDialogService,
+    private _fb: FormBuilder
+  ) {
+    this.formAvatar = this._fb.group({
+      playerAvatar: [null],
+    });
+  }
 
   ngOnInit(): void {
-    if(this._cookieService.get('JSESSIONID') != undefined) {
-      console.log("%c[User is logged in]", "color: blue")
+    if (this._cookieService.get('JSESSIONID') != undefined) {
+      console.log('%c[User is logged in]', 'color: blue');
       this.initPlayer();
     } else {
-      console.log("%c[User is a guest]", "color: orange")
+      console.log('%c[User is a guest]', 'color: orange');
     }
-
   }
 
   initPlayer() {
@@ -74,6 +82,9 @@ export class IndexComponent implements OnInit {
 
         this.currentPlayerData = receivedData;
         this.newPlayerData = receivedData;
+
+        this.imagePreviewUrl =
+          'http://localhost:8080/api/players/avatar/' + receivedData.playerId;
       },
       error: (err) => {
         // console.log(err);
@@ -99,18 +110,49 @@ export class IndexComponent implements OnInit {
   };
 
   openConfirmationDialog() {
-    this._confirmationDialogService.confirm('Upload Avatar', 'Do you want to upload the current image?')
-    .then((confirmed) => console.log('User confirmed:', confirmed))
-    .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+    this._confirmationDialogService
+      .confirm('Upload Avatar', 'Do you want to upload the current image?')
+      .then((confirmed) => {
+        console.log('User confirmed:', confirmed);
+        if (confirmed) {
+          this.submitAvatar();
+        } else {
+          this.imagePreviewUrl = this.imageBackup;
+        }
+      })
+      .catch(() =>
+        console.log(
+          'User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'
+        )
+      );
   }
 
-  avatarUpload(event: Event) {
+  submitAvatar() {
+    let formData: any = new FormData();
+
+    formData.append('playerAvatar', this.formAvatar.get('playerAvatar')?.value);
+    this._player.uploadAvatar(formData).subscribe({
+      next: (response) => console.log(response),
+      error: (error) => console.log(error),
+    });
+  }
+
+  selectAvatar(event: Event) {
     let inputFile = event.target as HTMLInputElement;
     if (inputFile.files && inputFile.files[0]) {
-      let reader = new FileReader();
-      reader.readAsDataURL(inputFile.files[0]);
+      this.formAvatar.patchValue({
+        playerAvatar: inputFile.files[0],
+      });
+      console.log(inputFile.files[0]);
+      console.log(this.formAvatar);
 
+      this.formAvatar.get('playerAvatar')?.updateValueAndValidity();
+
+      let reader = new FileReader();
+
+      reader.readAsDataURL(inputFile.files[0]);
       reader.onload = (event) => {
+        this.imageBackup = this.imagePreviewUrl;
         this.imagePreviewUrl = event.target?.result;
         this.openConfirmationDialog();
       };
