@@ -4,12 +4,13 @@ import { CategorySelectorComponent } from './components/category-selector/catego
 import { GameComponent } from './components/game/game.component';
 import { IndexComponent } from './components/index/index.component';
 import { LoginComponent } from './components/login/login.component';
+import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: IndexComponent
+    component: IndexComponent,
   },
   {
     path: 'login',
@@ -17,19 +18,20 @@ const routes: Routes = [
   },
   {
     path: 'sign-up',
-    component:  SignUpComponent
+    component: SignUpComponent,
   },
 
-  {path:'SableyeTest',
-  component: CategorySelectorComponent},
-  {path:'GemlinTest',
-  component:GameComponent}
-
+  { path: 'SableyeTest', component: CategorySelectorComponent },
+  { path: 'GemlinTest', component: GameComponent },
+  {
+    path: 'scoreboard',
+    component: ScoreboardComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [CategorySelectorComponent]
+  providers: [CategorySelectorComponent],
 })
 export class AppRoutingModule {}
