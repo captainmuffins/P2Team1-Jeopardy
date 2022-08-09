@@ -91,7 +91,7 @@
                     <div class="col">
                       <button id="submitBtn" (click)="signUpPlayer()"
                         [attr.disabled]="registerData.disableSubmit ? 'disabled' : null"
-                        class="w-100 btn btn3d btn-success fw-bold" type="button">
+                        class="w-100 btn btn3d btn-success fw-semibold" type="button">
                         <div id="proceedText" class="proceedText"
                           [ngClass]="registerData.hideSubmitText ? 'hideElem' : ''">Submit</div>
                         <div id="proceedLoading" class="proceedLoading text-center"
@@ -106,7 +106,7 @@
                   <!-- GO Back button -->
                   <div class="row">
                     <div class="col">
-                      <button id="goBack" href="#" class="w-100 btn btn3d btn-primary fw-bold" type="button"
+                      <button id="goBack" href="#" class="w-100 btn btn3d btn-primary fw-semibold" type="button"
                         routerLink="/login">
                         <div id="proceedText" class="proceedText">Go to Login</div>
                         <div id="proceedLoading" class="proceedLoading text-center hideElem">

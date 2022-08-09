@@ -58,6 +58,16 @@ public class Players {
 		this.playerAvatar = playerAvatar;
 	}
 
+	public Players(int playerId, String playerUsername, String playerEmail, String playerFirstname,
+			String playerLastname) {
+		super();
+		this.playerId = playerId;
+		this.playerUsername = playerUsername;
+		this.playerEmail = playerEmail;
+		this.playerFirstname = playerFirstname;
+		this.playerLastname = playerLastname;
+	}
+
 	public int getPlayerId() {
 		return playerId;
 	}

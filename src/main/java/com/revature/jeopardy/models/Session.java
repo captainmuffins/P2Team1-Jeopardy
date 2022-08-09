@@ -21,18 +21,18 @@ public class Session {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int sessionId;
 
-	@Column(columnDefinition = "numeric(10,2)", nullable = false)
+	@Column(columnDefinition = "numeric(10,2)")
 	private double sessionWinnings = 0.00;
 
 	@Column(nullable = false)
 	private boolean sessionWinner = false;
 
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "playerId")
+	@JoinColumn(name = "playerId", nullable = false)
 	private Players sessionPlayerfk;
 
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "gameId")
+	@JoinColumn(name = "gameId", nullable = false)
 	private Games sessionGamefk;
 
 	public Session() {

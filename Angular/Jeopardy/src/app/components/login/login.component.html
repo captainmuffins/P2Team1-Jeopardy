@@ -49,7 +49,7 @@
                   <div class="row mb-2">
                     <div class="col">
                       <button id="submitBtn" (click)="loginPlayer()" href="#"
-                        class="w-100 btn btn3d btn-success fw-bold" type="button"
+                        class="w-100 btn btn3d btn-success fw-semibold" type="button"
                         [attr.disabled]="loginData.disableSubmit ? 'disabled' : null">
                         <div id="proceedText" class="proceedText"
                           [ngClass]="loginData.hideSubmitText ? 'hideElem' : ''">Login</div>
@@ -64,7 +64,7 @@
                     <!-- Sign-up button -->
 
                     <div class="col">
-                      <a id="guestBtn" routerLink="/" class="w-100 btn btn3d btn-warning text-white fw-bold"
+                      <a id="guestBtn" routerLink="/" class="w-100 btn btn3d text-white btn-info fw-semibold"
                         type="button">
                         Continue as Guest
                       </a>
@@ -73,7 +73,7 @@
 
                   <div class="row">
                     <div class="col">
-                      <a id="registerBtn" routerLink="/sign-up" class="w-100 btn btn3d btn-primary fw-bold"
+                      <a id="registerBtn" routerLink="/sign-up" class="w-100 btn btn3d btn-primary fw-semibold"
                         type="button">
                         Sign-up
                       </a>

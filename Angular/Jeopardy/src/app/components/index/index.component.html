@@ -16,11 +16,13 @@
         </ul>
         <div class="d-flex">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-white">
-            <li class="nav-item withShadow" [hidden]="!indexData.isGuest">
-              <a class="nav-link text-white" routerLink="/login" role="button"><i
-                  class="bi bi-box-arrow-in-right me-2"></i><span>Login</span></a>
-            </li>
-            <li class="nav-item dropdown" [hidden]="indexData.isGuest">
+            <ng-template #loginLink>
+              <li class="nav-item withShadow">
+                <a class="nav-link text-white" routerLink="/login" role="button"><i
+                    class="bi bi-box-arrow-in-right me-2"></i><span>Login</span></a>
+              </li>
+            </ng-template>
+            <li class="nav-item dropdown" *ngIf="!indexData.isGuest; else loginLink">
               <a class="nav-link dropdown-toggle text-white withShadow" href="#" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 <i class="bi bi-person-circle me-2"></i><span>Welcome, </span><span
@@ -57,11 +59,11 @@
             <div class="card-text" style="height: 64px">
               Challenge Jeopardy on your own
             </div>
-            <a href="#" class="btn btn3d btn-magick">Play Now</a>
+            <a href="#" class="btn btn3d btn-magick fw-semibold">Play Now</a>
           </div>
         </div>
       </div>
-      <div class="col d-flex justify-content-center my-3" [hidden]="indexData.isGuest">
+      <div class="col d-flex justify-content-center my-3" *ngIf="!indexData.isGuest">
         <div class="card text-center j-menu-item" style="width: 18em">
           <div class="menu-item-image card-img-top d-flex align-items-center justify-content-center">
             <img src="/assets/img/sableyeregandshiny.png">
@@ -71,11 +73,11 @@
             <div class="card-text" style="height: 64px">
               Join session and play with friends
             </div>
-            <a href="#" class="btn btn3d btn-magick">Join Session</a>
+            <a href="#" class="btn btn3d btn-magick fw-semibold">Join Session</a>
           </div>
         </div>
       </div>
-      <div class="col d-flex justify-content-center my-3" [hidden]="indexData.isGuest">
+      <div class="col d-flex justify-content-center my-3" *ngIf="!indexData.isGuest">
         <div class="card text-center j-menu-item" style="width: 18em">
           <div class="menu-item-image card-img-top d-flex align-items-center justify-content-center">
             <img src="/assets/img/trophy.png">
@@ -85,7 +87,7 @@
             <div class="card-text" style="height:64px">
               View your scores and highest multiplayer scores
             </div>
-            <a href="#" class="btn btn3d btn-magick">View Scores</a>
+            <a href="#" class="btn btn3d btn-magick fw-semibold">View Scores</a>
           </div>
         </div>
       </div>
@@ -99,7 +101,7 @@
     </div>
   </div>
   <div class="offcanvas offcanvas-bottom h-100" tabindex="-1" id="offcanvasProfile"
-    aria-labelledby="offcanvasProfileLabel">
+    aria-labelledby="offcanvasProfileLabel" data-bs-keyboard="false">
     <div class="offcanvas-header">
       <h5 class="offcanvas-title text-white" id="offcanvasProfileLabel">My Profile</h5>
       <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -111,9 +113,9 @@
             <div class="col">
               <form enctype="multipart/form-data" action="#" method="POST" class="avatar-upload">
                 <div class="avatar-edit">
-                  <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" name="avatar"
+                  <input type='file' id="playerAvatar" accept=".png, .jpg, .jpeg" name="playerAvatar"
                     (change)="avatarUpload($event)" />
-                  <label for="imageUpload"><i class="bi bi-pencil"></i></label>
+                  <label for="playerAvatar"><i class="bi bi-pencil"></i></label>
                 </div>
                 <div class="avatar-preview container2">
                   <img id="imagePreview" [src]="imagePreviewUrl">
@@ -166,7 +168,7 @@
             <div class="row">
               <div class="col">
                 <div class="d-grid gap-2 mb-3">
-                  <button id="updateProfileButton" href="#" class="btn btn3d btn-primary" type="submit"
+                  <button id="updateProfileButton" href="#" class="btn btn3d btn-success" type="submit"
                     (click)="updateProfile()" [attr.disabled]="indexData.disableSubmit ? 'disabled' : null">
                     <div id="updateText" class="proceedText"
                       [ngClass]="indexData.hideProfileSubmitText ? 'hideElem' : ''">Update</div>
@@ -223,7 +225,7 @@
             <div class="row">
               <div class="col">
                 <div class="d-grid gap-2 mb-3">
-                  <button id="updatePasswordButton" href="#" class="btn btn3d btn-primary" type="submit"
+                  <button id="updatePasswordButton" href="#" class="btn btn3d btn-success" type="submit"
                     (click)="changePassword()" [attr.disabled]="indexData.disableSubmit ? 'disabled' : null">
                     <div id="updatePasswordText" class="proceedText"
                       [ngClass]="indexData.hidePasswordSubmitText ? 'hideElem' : ''">Change</div>

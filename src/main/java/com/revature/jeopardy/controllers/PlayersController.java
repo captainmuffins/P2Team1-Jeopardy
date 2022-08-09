@@ -1,7 +1,5 @@
 package com.revature.jeopardy.controllers;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,15 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
 
-import com.google.common.io.ByteStreams;
 import com.revature.jeopardy.daos.PlayersDAO;
 import com.revature.jeopardy.dtos.Response;
 import com.revature.jeopardy.models.Players;
@@ -26,7 +25,7 @@ import com.revature.jeopardy.utils.AuthUtil;
 
 import io.micrometer.core.instrument.util.StringUtils;
 
-@RestController
+@Controller
 @RequestMapping(value = "/players")
 @Scope("session")
 public class PlayersController {
@@ -68,6 +67,8 @@ public class PlayersController {
 			checkUser = playersDAO.findByPlayerUsernameIgnoreCase(newPlayer.getPlayerUsername());
 			boolean checkPass = AuthUtil.comparePasswords(newPlayer.getPlayerPassword(), checkUser.getPlayerPassword());
 			if (checkPass) {
+				checkUser.setPlayerAvatar(null);
+				checkUser.setPlayerPassword(null);
 				request.getSession().setAttribute("currentplayer", checkUser);
 				response = new Response(200, "Login successful", true, checkUser);
 				return ResponseEntity.status(response.getStatusCode()).body(response);
@@ -89,6 +90,8 @@ public class PlayersController {
 			session = (Players) request.getSession().getAttribute("currentplayer");
 			if (session != null) {
 				curPlayer = playersDAO.findById(session.getPlayerId()).get();
+				curPlayer.setPlayerPassword(null);
+				curPlayer.setPlayerAvatar(null);
 
 				response = new Response(200, "Session found", true, curPlayer);
 				return ResponseEntity.status(response.getStatusCode()).body(response);
@@ -150,7 +153,6 @@ public class PlayersController {
 	@RequestMapping(method = RequestMethod.PUT, value = "/profile", consumes = "application/json")
 	public ResponseEntity<Response> updateProfile(@RequestBody Players newData, HttpServletRequest request) {
 		Optional<Players> getPlayer = null;
-		Players updatedPlayer = null;
 		Players session = null;
 		Response response = null;
 		try {
@@ -172,9 +174,11 @@ public class PlayersController {
 							StringUtils.isNotEmpty(newData.getPlayerLastname()) ? newData.getPlayerLastname()
 									: p.getPlayerLastname());
 
-					updatedPlayer = playersDAO.save(p);
+					p = playersDAO.save(p);
+					p.setPlayerAvatar(null);
+					p.setPlayerPassword(null);
 
-					response = new Response(200, "Updated profile", true, updatedPlayer);
+					response = new Response(200, "Updated profile", true, p);
 					return ResponseEntity.status(response.getStatusCode()).body(response);
 				}
 			}
@@ -182,7 +186,7 @@ public class PlayersController {
 			ex.printStackTrace();
 		}
 
-		response = new Response(400, "Failed to update profile", false, updatedPlayer);
+		response = new Response(400, "Failed to update profile", false, null);
 		return ResponseEntity.status(response.getStatusCode()).body(response);
 	}
 
@@ -190,7 +194,6 @@ public class PlayersController {
 	public ResponseEntity<Response> changePassword(@RequestBody Players newPassword, HttpServletRequest request) {
 
 		Optional<Players> getPlayer = null;
-		Players updatedPlayer = null;
 		Players session = null;
 		Response response = null;
 		try {
@@ -204,9 +207,11 @@ public class PlayersController {
 							? AuthUtil.doEncrypt(newPassword.getPlayerPassword())
 							: p.getPlayerPassword());
 
-					updatedPlayer = playersDAO.save(p);
+					p = playersDAO.save(p);
+					p.setPlayerAvatar(null);
+					p.setPlayerPassword(null);
 
-					response = new Response(200, "Password changed", true, updatedPlayer);
+					response = new Response(200, "Password changed", true, p);
 					return ResponseEntity.status(response.getStatusCode()).body(response);
 				}
 			}
@@ -214,36 +219,37 @@ public class PlayersController {
 			ex.printStackTrace();
 		}
 
-		response = new Response(400, "Failed to change password", false, updatedPlayer);
+		response = new Response(400, "Failed to change password", false, null);
 		return ResponseEntity.status(response.getStatusCode()).body(response);
 	}
 
-	@RequestMapping(method = RequestMethod.PUT, value = "/avatar/{id}", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-	public ResponseEntity<Response> updateAvatar(@PathVariable int id, @RequestBody InputStream dataStream) {
-		// TODO - Fix this
-		Optional<Players> playersOptional = playersDAO.findById(id);
-		Players updatedPlayer = null;
+	@RequestMapping(method = RequestMethod.PUT, value = "/avatar", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public ResponseEntity<Response> updateAvatar(@RequestPart("playerAvatar") MultipartFile document, HttpServletRequest request) {
+		Optional<Players> getPlayer = null;
+		Players session = null;
 		Response response = null;
+		try {
+			// Security measure. User must be logged in to use this endpoint.
+			session = (Players) request.getSession().getAttribute("currentplayer");
+			
+			if (session != null) {
+				getPlayer = playersDAO.findById(session.getPlayerId());
+				if (!getPlayer.isEmpty()) {
+					Players p = getPlayer.get();
+					p.setPlayerAvatar(document.getBytes());
+					p = playersDAO.save(p);
+					p.setPlayerAvatar(null);
+					p.setPlayerPassword(null);
 
-		if (playersOptional.isPresent()) {
-
-			byte[] avatar = null;
-			try {
-				avatar = ByteStreams.toByteArray(dataStream);
-				Players p = playersOptional.get();
-				p.setPlayerAvatar(avatar);
-				updatedPlayer = playersDAO.save(p);
-
-				response = new Response(200, "Updated avatar", true, updatedPlayer);
-				return ResponseEntity.status(response.getStatusCode()).body(response);
-			} catch (IOException ex) {
-				// TODO Auto-generated catch block
-				ex.printStackTrace();
+					response = new Response(200, "Updated avatar", true, p);
+					return ResponseEntity.status(response.getStatusCode()).body(response);
+				}
 			}
-
+		} catch (Exception ex) {
+			ex.printStackTrace();
 		}
 
-		response = new Response(400, "Failed to update avatar", false, updatedPlayer);
+		response = new Response(400, "Failed to update avatar", false, null);
 		return ResponseEntity.status(response.getStatusCode()).body(response);
 
 	}

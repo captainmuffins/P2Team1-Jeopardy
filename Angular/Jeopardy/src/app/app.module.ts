@@ -15,6 +15,8 @@ import { GameComponent } from './components/game/game.component';
 import { AuthService } from './services/auth/auth.service';
 import { PlayersService } from './services/players/players.service';
 import { CookieModule } from 'ngx-cookie';
+import { ConfirmationDialogComponent } from './services/confirmation-dialog/confirmation-dialog.component';
+import { ConfirmationDialogService } from './services/confirmation-dialog/confirmation-dialog.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +25,7 @@ import { CookieModule } from 'ngx-cookie';
     IndexComponent,
     CategorySelectorComponent,
     GameComponent,
+    ConfirmationDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import { CookieModule } from 'ngx-cookie';
   ],
   providers: [
     AuthService,
-    PlayersService
+    PlayersService,
+    ConfirmationDialogService
   ],
   bootstrap: [AppComponent]
 })

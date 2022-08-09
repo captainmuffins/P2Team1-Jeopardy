@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PlayersService } from 'src/app/services/players/players.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie';
+import { ConfirmationDialogService } from 'src/app/services/confirmation-dialog/confirmation-dialog.service';
 
 @Component({
   selector: 'app-index',
@@ -42,17 +43,23 @@ export class IndexComponent implements OnInit {
   constructor(
     private _player: PlayersService,
     private _router: Router,
-    private _cookieService: CookieService
+    private _cookieService: CookieService,
+    private _confirmationDialogService: ConfirmationDialogService
   ) {}
 
   ngOnInit(): void {
-    this.initPlayer();
+    if(this._cookieService.get('JSESSIONID') != undefined) {
+      console.log("%c[User is logged in]", "color: blue")
+      this.initPlayer();
+    } else {
+      console.log("%c[User is a guest]", "color: orange")
+    }
+
   }
 
   initPlayer() {
     this._player.getCurrentSession().subscribe({
       next: (data) => {
-        console.log('--- success ---');
         let receivedData = data.statusObject;
 
         receivedData.playerFirstname = this.toTitleCase(
@@ -69,8 +76,7 @@ export class IndexComponent implements OnInit {
         this.newPlayerData = receivedData;
       },
       error: (err) => {
-        console.log('--- error ---');
-        console.log(err);
+        // console.log(err);
       },
     });
   }
@@ -92,6 +98,12 @@ export class IndexComponent implements OnInit {
       .join(' ');
   };
 
+  openConfirmationDialog() {
+    this._confirmationDialogService.confirm('Upload Avatar', 'Do you want to upload the current image?')
+    .then((confirmed) => console.log('User confirmed:', confirmed))
+    .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+  }
+
   avatarUpload(event: Event) {
     let inputFile = event.target as HTMLInputElement;
     if (inputFile.files && inputFile.files[0]) {
@@ -100,6 +112,7 @@ export class IndexComponent implements OnInit {
 
       reader.onload = (event) => {
         this.imagePreviewUrl = event.target?.result;
+        this.openConfirmationDialog();
       };
     }
   }

@@ -80,7 +80,6 @@ a {
 }
 
 .j-menu-item .btn3d {
-  font-weight: bold;
   font-size: 14px;
 }
 
@@ -154,7 +153,7 @@ a {
 .avatar-upload {
   position: relative;
   max-width: 192px;
-  margin: 50px auto;
+  margin: 10px auto;
 }
 
 .avatar-upload .avatar-edit {
