@@ -26,8 +26,12 @@ import { ScoreboardComponent } from './components/scoreboard/scoreboard.componen
     IndexComponent,
     CategorySelectorComponent,
     GameComponent,
+<<<<<<< HEAD
+    ConfirmationDialogComponent
+=======
     ConfirmationDialogComponent,
     ScoreboardComponent,
+>>>>>>> c5b374246638c8abb6538ff65885fa54335c21c9
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,10 @@ import { ScoreboardComponent } from './components/scoreboard/scoreboard.componen
     FormsModule,
     HttpClientModule,
     CookieModule.withOptions(),
+<<<<<<< HEAD
     ReactiveFormsModule
+=======
+>>>>>>> c5b374246638c8abb6538ff65885fa54335c21c9
   ],
   providers: [AuthService, PlayersService, ConfirmationDialogService],
   bootstrap: [AppComponent],
