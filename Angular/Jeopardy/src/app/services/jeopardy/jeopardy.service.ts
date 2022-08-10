@@ -9,8 +9,6 @@ export class JeopardyService {
 
   constructor(private http: HttpClient) {}
   getCategories(count: number, offset: number) {
-    return this.http.get<any>(this._getCategories + '?count=' + count + '&offset=' + offset, {
-      withCredentials: true,
-    });
+    return this.http.get<any>(this._getCategories + '?count=' + count + '&offset=' + offset);
   }
 }
