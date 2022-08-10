@@ -154,9 +154,17 @@ public class PlayersController {
 	}
 
 	@DeleteMapping(value = "/byId/{playerId}")
-	public void deletePlayers(@PathVariable("playerId") int playerId) {
-		// TODO - Must return JSON response
-		playersDAO.deleteById(playerId);
+	public ResponseEntity deletePlayers(@PathVariable("playerId") int playerId) {
+		try{
+			playersDAO.deleteById(playerId);
+
+			return ResponseEntity.accepted().build();
+
+		} catch(Exception e){
+			e.printStackTrace();
+		}
+
+		return ResponseEntity.badRequest().build();
 
 	}
 

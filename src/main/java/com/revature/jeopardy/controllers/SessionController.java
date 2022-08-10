@@ -98,10 +98,17 @@ public class SessionController {
     @DeleteMapping("/byId/{id}")
     public ResponseEntity deleteSession(@PathVariable int id){
 
+        try{
 
-        sessionDAO.deleteById(id);
+            sessionDAO.deleteById(id);
 
-        return null;
+            return ResponseEntity.accepted().build();
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return ResponseEntity.badRequest().build();
 
     }
 
