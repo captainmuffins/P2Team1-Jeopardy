@@ -30,13 +30,26 @@
                 >
               </li>
             </ng-template>
-            <li class="nav-item dropdown" *ngIf="!indexData.isGuest; else loginLink">
-              <a class="nav-link dropdown-toggle text-white withShadow" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                <img class="showAvatar m-2" [src]="imagePreviewUrl"><span>Welcome, </span><span
-                  class="me-1 titleCase">{{currentPlayerData.playerFirstname !== undefined ?
-                  (currentPlayerData.playerFirstname + ' ' +
-                  currentPlayerData.playerLastname) : 'Guest'}}</span>
+            <li
+              class="nav-item dropdown"
+              *ngIf="!indexData.isGuest; else loginLink"
+            >
+              <a
+                class="nav-link dropdown-toggle text-white withShadow"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img class="showAvatar m-2" [src]="imagePreviewUrl" /><span
+                  >Welcome, </span
+                ><span class="me-1 titleCase">{{
+                  currentPlayerData.playerFirstname !== undefined
+                    ? currentPlayerData.playerFirstname +
+                      " " +
+                      currentPlayerData.playerLastname
+                    : "Guest"
+                }}</span>
               </a>
               <ul class="dropdown-menu">
                 <li>
@@ -118,7 +131,7 @@
             <div class="card-text" style="height: 64px">
               View your scores and highest multiplayer scores
             </div>
-            <a href="scoreboard" class="btn btn3d btn-magick fw-semibold"
+            <a routerLink="/scoreboard" class="btn btn3d btn-magick fw-semibold"
               >View Scores</a
             >
           </div>
@@ -159,10 +172,20 @@
         <div class="container">
           <div class="row">
             <div class="col">
-              <form id="avatar-upload" class="avatar-upload" [formGroup]="formAvatar">
+              <form
+                id="avatar-upload"
+                class="avatar-upload"
+                [formGroup]="formAvatar"
+              >
                 <div class="avatar-edit form-group">
-                  <input type='file' id="playerAvatar" accept=".png, .jpg, .jpeg" name="playerAvatar"
-                    (change)="selectAvatar($event)" class="form-control" />
+                  <input
+                    type="file"
+                    id="playerAvatar"
+                    accept=".png, .jpg, .jpeg"
+                    name="playerAvatar"
+                    (change)="selectAvatar($event)"
+                    class="form-control"
+                  />
                   <label for="playerAvatar"><i class="bi bi-pencil"></i></label>
                 </div>
                 <div class="avatar-preview container2">
