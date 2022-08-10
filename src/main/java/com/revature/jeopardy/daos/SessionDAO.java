@@ -13,6 +13,6 @@ public interface SessionDAO extends JpaRepository<Session, Integer> {
 
     List<Session> findAllOrderBySessionWinningsDesc();
 
-    List<Session> findByIdOrderBySessionWinningsDesc(int sessionId);
+    List<Session> findAllByIdOrderBySessionWinningsDesc(int sessionId);
 
 }
