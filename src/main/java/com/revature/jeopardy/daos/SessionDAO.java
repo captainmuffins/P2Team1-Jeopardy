@@ -15,4 +15,5 @@ public interface SessionDAO extends JpaRepository<Session, Integer> {
 
     List<Session> findBySessionIdOrderBySessionWinningsDesc(int sessionId);
 
+
 }

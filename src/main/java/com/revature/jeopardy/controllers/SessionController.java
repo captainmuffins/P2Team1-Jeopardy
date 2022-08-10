@@ -80,6 +80,7 @@ public class SessionController {
 
         try {
             sessions = sessionDAO.findBySessionIdOrderBySessionWinningsDesc(playerID);
+
             response = new Response(200, "Found sessions with player ID " + playerID, true, sessions);
 
             return ResponseEntity.status(response.getStatusCode()).body(response);
