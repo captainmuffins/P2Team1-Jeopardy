@@ -662,7 +662,7 @@ for(this.value;this.value<=5;this.value=this.value+1){
     if(this.Sab>=3){this.Js.getCategoryFromApi(this.C3C1.category_id).subscribe((data:any)=>{this.Cat3=data.body},()=>{console.log("somethingwentwrong")});}
     if(this.Sab==5){this.Js.getCategoryFromApi(this.C5C1.category_id).subscribe((data:any)=>{this.Cat5=data.body},()=>{console.log("somethingwentwrong")});}
     if(this.Sab>=4){this.Js.getCategoryFromApi(this.C4C1.category_id).subscribe((data:any)=>{this.Cat4=data.body},()=>{console.log("somethingwentwrong")});}
-  }
+    /*if we wanted a Go back button here Should go the Boolean for it to appear.*/}
   SortC1(){
     this.D1=this.C1C1;
     this.D2=this.C1C2;
@@ -991,7 +991,6 @@ for(this.value;this.value<=5;this.value=this.value+1){
   public A53: Boolean=false;
   public A54: Boolean=false;
   public A55: Boolean=false;
-
   Buttoon(value:number,Cat:number){
     if(value==1&&Cat==1){
       this.Q11=false;
@@ -1095,6 +1094,134 @@ for(this.value;this.value<=5;this.value=this.value+1){
     }
   }
   
+  public H11: Boolean=false;
+  public H12: Boolean=false;
+  public H13: Boolean=false;
+  public H14: Boolean=false;
+  public H15: Boolean=false;
+  public H21: Boolean=false;
+  public H22: Boolean=false;
+  public H23: Boolean=false;
+  public H24: Boolean=false;
+  public H25: Boolean=false;
+  public H31: Boolean=false;
+  public H32: Boolean=false;
+  public H33: Boolean=false;
+  public H34: Boolean=false;
+  public H35: Boolean=false;
+  public H41: Boolean=false;
+  public H42: Boolean=false;
+  public H43: Boolean=false;
+  public H44: Boolean=false;
+  public H45: Boolean=false;
+  public H51: Boolean=false;
+  public H52: Boolean=false;
+  public H53: Boolean=false;
+  public H54: Boolean=false;
+  public H55: Boolean=false;
+
+  AnswerCleanUp(value:number,Cat:number){
+    if(value==1&&Cat==1){
+      this.Q11=false;
+      this.A11=false;
+    }
+    if(value==2&&Cat==1){
+      this.Q12=false;
+      this.A12=false;
+    }
+    if(value==3&&Cat==1){
+      this.Q13=false;
+      this.A13=false;
+    }
+    if(value==4&&Cat==1){
+      this.Q14=false;
+      this.A14=false;
+    }
+    if(value==5&&Cat==1){
+      this.Q15=false;
+      this.A15=false;
+    }
+    if(value==1&&Cat==2){
+      this.Q21=false;
+      this.A21=false;
+    }
+    if(value==2&&Cat==2){
+      this.Q22=false;
+      this.A22=false;
+    }
+    if(value==3&&Cat==2){
+      this.Q23=false;
+      this.A23=false;
+    }
+    if(value==4&&Cat==2){
+      this.Q24=false;
+      this.A24=false;
+    }
+    if(value==5&&Cat==2){
+      this.Q25=false;
+      this.A25=false;
+    }
+    if(value==1&&Cat==3){
+      this.Q31=false;
+      this.A31=false;
+    }
+    if(value==2&&Cat==3){
+      this.Q32=false;
+      this.A32=false;
+    }
+    if(value==3&&Cat==3){
+      this.Q33=false;
+      this.A33=false;
+    }
+    if(value==4&&Cat==3){
+      this.Q34=false;
+      this.A34=false;
+    }
+    if(value==5&&Cat==3){
+      this.Q35=false;
+      this.A35=false;
+    }
+    if(value==1&&Cat==4){
+      this.Q41=false;
+      this.A41=false;
+    }
+    if(value==2&&Cat==4){
+      this.Q42=false;
+      this.A42=false;
+    }
+    if(value==3&&Cat==4){
+      this.Q43=false;
+      this.A43=false;
+    }
+    if(value==4&&Cat==4){
+      this.Q44=false;
+      this.A44=false;
+    }
+    if(value==5&&Cat==4){
+      this.Q45=false;
+      this.A45=false;
+    }
+    if(value==1&&Cat==5){
+      this.Q51=false;
+      this.A51=false;
+    }
+    if(value==2&&Cat==5){
+      this.Q52=false;
+      this.A52=false;
+    }
+    if(value==3&&Cat==5){
+      this.Q53=false;
+      this.A53=false;
+    }
+    if(value==4&&Cat==5){
+      this.Q54=false;
+      this.A54=false;
+    }
+    if(value==5&&Cat==5){
+      this.Q55=false;
+      this.A55=false;
+    }
+  }
   ngOnInit(): void {
     //this.StartGame();
     this.Test2();
