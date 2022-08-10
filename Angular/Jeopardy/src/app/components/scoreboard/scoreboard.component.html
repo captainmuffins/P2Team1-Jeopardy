@@ -1,6 +1,83 @@
-<p>scoreboard works!</p>
-<p>
-  Note to self kevin: MATCH THE LAYOUT WITH THE INDEX PAGE FIRST. Make table,
-  query database for session_winnings in descending order, populate table with
-  results (top 10 only?), style table.
-</p>
+<div class="bg"></div>
+<main class="m-auto" style="display: flex; flex-flow: column; height: 100%">
+  <nav class="navbar navbar-dark navbar-expand-lg bg-transparent">
+    <div class="container">
+      <a class="navbar-brand text-white" href="/">JEOPARDY!</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item withShadow">
+            <a class="nav-link text-white" href="/">Home</a>
+          </li>
+        </ul>
+        <div class="d-flex">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-white">
+            <ng-template #loginLink>
+              <li class="nav-item withShadow">
+                <a class="nav-link text-white" routerLink="/login" role="button"
+                  ><i class="bi bi-box-arrow-in-right me-2"></i
+                  ><span>Login</span></a
+                >
+              </li>
+            </ng-template>
+            <li
+              class="nav-item dropdown"
+              *ngIf="!indexData.isGuest; else loginLink"
+            >
+              <a
+                class="nav-link dropdown-toggle text-white withShadow"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img class="showAvatar m-2" [src]="imagePreviewUrl" /><span
+                  >Welcome, </span
+                ><span class="me-1 titleCase">{{
+                  currentPlayerData.playerFirstname !== undefined
+                    ? currentPlayerData.playerFirstname +
+                      " " +
+                      currentPlayerData.playerLastname
+                    : "Guest"
+                }}</span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasProfile"
+                    aria-controls="offcanvasProfile"
+                    >My Profile</a
+                  >
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <a class="dropdown-item" (click)="doLogout()">Logout</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <p>scoreboard works!</p>
+  <p>
+    Note to self kevin: MATCH THE LAYOUT WITH THE INDEX PAGE FIRST. Make table,
+    query database for session_winnings in descending order, populate table with
+    results (top 10 only?), style table.
+  </p>
+</main>
