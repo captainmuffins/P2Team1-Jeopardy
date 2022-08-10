@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -72,7 +73,7 @@ public class SessionController {
         
     }
 
-    @GetMapping("/byPlayer/{id}")
+    @GetMapping("/byPlayer/{playerID}")
     public ResponseEntity<Response> findByPlayer(@PathVariable int playerID){
 
         Response response = null;
@@ -91,6 +92,17 @@ public class SessionController {
         return ResponseEntity.status(response.getStatusCode()).body(response);
 
         
+    }
+
+
+    @DeleteMapping("/byId/{id}")
+    public ResponseEntity deleteSession(@PathVariable int id){
+
+
+        sessionDAO.deleteById(id);
+
+        return null;
+
     }
 
 }
