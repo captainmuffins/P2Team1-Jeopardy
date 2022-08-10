@@ -21,7 +21,6 @@ const routes: Routes = [
     path: 'sign-up',
     component: SignUpComponent,
   },
-
   {
     path: 'SableyeTest',
     component: CategorySelectorComponent,
@@ -36,8 +35,8 @@ const routes: Routes = [
   },
   {
     path: 'single-player',
-    component: SinglePlayerGameComponent
-  }
+    component: SinglePlayerGameComponent,
+  },
 ];
 
 @NgModule({
