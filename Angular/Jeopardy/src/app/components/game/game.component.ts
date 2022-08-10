@@ -26,13 +26,13 @@ export class GameComponent implements OnInit {
       this.b = params['b'];
       this.c = params['c'];
       this.d = params['d'];
-      this.e = params['e'];}
+      this.e = params['e'];
+      this.Sab = params['Sab'];}
       )
     this.Bob=[this.a,this.b,this.c,this.d,this.e]
     console.log(this.Bob);
    }
   public A: Array<number>= this.CS.Bob;
-
   public i:number = 0; 
   public value:number = 1;
   public MAN:Clue={
@@ -219,35 +219,41 @@ export class GameComponent implements OnInit {
   };
   // shall I make 25 different variables so I can have one for each shell yes I shall,
   CheckCheck(){
+    if (this.Sab>=1){
     console.log(this.C1C1.answer)
     console.log(this.C1C2.answer)
     console.log(this.C1C3.answer)
     console.log(this.C1C4.answer)
     console.log(this.C1C5.answer)
-
+    }
+    if(this.Sab==5){
     console.log(this.C5C1.answer)
     console.log(this.C5C2.answer)
     console.log(this.C5C3.answer)
     console.log(this.C5C4.answer)
     console.log(this.C5C5.answer)
-
+    }
+    if (this.Sab>=2){
     console.log(this.C2C1.answer)
     console.log(this.C2C2.answer)
     console.log(this.C2C3.answer)
     console.log(this.C2C4.answer)
     console.log(this.C2C5.answer)
-
+    }
+    if (this.Sab>=3){
     console.log(this.C3C1.answer)
     console.log(this.C3C2.answer)
     console.log(this.C3C3.answer)
     console.log(this.C3C4.answer)
     console.log(this.C3C5.answer)
-    
+    }
+    if (this.Sab>=4){
     console.log(this.C4C1.answer)
     console.log(this.C4C2.answer)
     console.log(this.C4C3.answer)
     console.log(this.C4C4.answer)
     console.log(this.C4C5.answer)
+  }
   }
   //check check
   async StartGame(){

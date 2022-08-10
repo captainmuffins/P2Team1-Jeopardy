@@ -50,7 +50,29 @@ export class CategorySelectorComponent implements OnInit {
   public d:number=0;
   public e:number=0;
   public Bob=[this.a,this.b,this.c,this.d,this.e];
-  
+  public Sab:number=0;
+
+  SubmitButton(){
+    if(this.a!=0){
+      if(this.b!=0){
+        if(this.c!=0){
+          if(this.d!=0){
+            this.Bob=[this.a,this.b,this.c,this.d,this.e]
+            console.log(this.Bob);
+            this._router.navigate(['/GemlinTest'], { queryParams: { a: this.a, b:this.b, c: this.c, d:this.d,e:648,Sab:4} });
+          }else{
+            this.Bob=[this.a,this.b,this.c,this.d,this.e]
+            console.log(this.Bob);
+            this._router.navigate(['/GemlinTest'], { queryParams: { a: this.a, b:this.b, c: this.c, d:975,e:648,Sab:3} });
+          }
+        }else{this.Bob=[this.a,this.b,this.c,this.d,this.e]
+        console.log(this.Bob);
+        this._router.navigate(['/GemlinTest'], { queryParams: { a: this.a, b:this.b, c: 810, d:975,e:648,Sab:2} });}
+      }else{this.Bob=[this.a,this.b,this.c,this.d,this.e]
+        console.log(this.Bob);
+        this._router.navigate(['/GemlinTest'], { queryParams: { a: this.a, b:1028, c: 810, d:975,e:648,Sab:1} });}
+    }
+  }
   SelCat(Gem: number){
     // the previous logic allowed for duplicate categories,
     // now it shall be fixxed!!
