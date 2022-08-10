@@ -21,8 +21,8 @@ public class Session {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int sessionId;
 
-	@Column(columnDefinition = "numeric(10,2)")
-	private double sessionWinnings = 0.00;
+	@Column
+	private int sessionWinnings = 0;
 
 	@Column(nullable = false)
 	private boolean sessionWinner = false;
@@ -39,7 +39,7 @@ public class Session {
 		super();
 	}
 
-	public Session(double sessionWinnings, boolean sessionWinner, Players sessionPlayerfk, Games sessionGamefk) {
+	public Session(int sessionWinnings, boolean sessionWinner, Players sessionPlayerfk, Games sessionGamefk) {
 		super();
 		this.sessionWinnings = sessionWinnings;
 		this.sessionWinner = sessionWinner;
@@ -47,7 +47,7 @@ public class Session {
 		this.sessionGamefk = sessionGamefk;
 	}
 
-	public Session(int sessionId, double sessionWinnings, boolean sessionWinner, Players sessionPlayerfk,
+	public Session(int sessionId, int sessionWinnings, boolean sessionWinner, Players sessionPlayerfk,
 			Games sessionGamefk) {
 		super();
 		this.sessionId = sessionId;
@@ -69,7 +69,7 @@ public class Session {
 		return sessionWinnings;
 	}
 
-	public void setSessionWinnings(double sessionWinnings) {
+	public void setSessionWinnings(int sessionWinnings) {
 		this.sessionWinnings = sessionWinnings;
 	}
 
