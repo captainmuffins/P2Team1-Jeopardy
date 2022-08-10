@@ -6,6 +6,7 @@ import { IndexComponent } from './components/index/index.component';
 import { LoginComponent } from './components/login/login.component';
 import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { SinglePlayerGameComponent } from './components/single-player-game/single-player-game.component';
 
 const routes: Routes = [
   {
@@ -21,12 +22,22 @@ const routes: Routes = [
     component: SignUpComponent,
   },
 
-  { path: 'SableyeTest', component: CategorySelectorComponent },
-  { path: 'GemlinTest', component: GameComponent },
+  {
+    path: 'SableyeTest',
+    component: CategorySelectorComponent,
+  },
+  {
+    path: 'GemlinTest',
+    component: GameComponent,
+  },
   {
     path: 'scoreboard',
     component: ScoreboardComponent,
   },
+  {
+    path: 'single-player',
+    component: SinglePlayerGameComponent
+  }
 ];
 
 @NgModule({
