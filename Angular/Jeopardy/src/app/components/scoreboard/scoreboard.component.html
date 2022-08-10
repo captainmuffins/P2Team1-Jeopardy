@@ -74,10 +74,58 @@
       </div>
     </div>
   </nav>
-  <p>scoreboard works!</p>
-  <p>
-    Note to self kevin: MATCH THE LAYOUT WITH THE INDEX PAGE FIRST. Make table,
-    query database for session_winnings in descending order, populate table with
-    results (top 10 only?), style table.
-  </p>
+
+  <div class="container">
+    <p>scoreboard works!</p>
+    <p>
+      Note to self kevin: MATCH THE LAYOUT WITH THE INDEX PAGE FIRST. Make
+      table, query database for session_winnings in descending order, populate
+      table with results (top 10 only?), style table.
+    </p>
+
+    <h1>
+      TOP 10 SCORES GLOBAL (use ngFor here with top 10 scores found in sessions
+      table)
+    </h1>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>100</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br />
+
+    <h1>YOUR TOP 3 SCORES (use ngFor here with top 3 user's scores)</h1>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>100</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </main>
