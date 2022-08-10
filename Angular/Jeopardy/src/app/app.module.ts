@@ -21,6 +21,7 @@ import { ScoreboardComponent } from './components/scoreboard/scoreboard.componen
 import { SinglePlayerGameComponent } from './components/single-player-game/single-player-game.component';
 import { JeopardyService } from './services/jeopardy/jeopardy.service';
 import { CommonsComponent } from './components/commons/commons.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +34,7 @@ import { CommonsComponent } from './components/commons/commons.component';
     ScoreboardComponent,
     SinglePlayerGameComponent,
     CommonsComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

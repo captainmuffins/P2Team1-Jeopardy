@@ -4,6 +4,7 @@ import { CategorySelectorComponent } from './components/category-selector/catego
 import { GameComponent } from './components/game/game.component';
 import { IndexComponent } from './components/index/index.component';
 import { LoginComponent } from './components/login/login.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SinglePlayerGameComponent } from './components/single-player-game/single-player-game.component';
@@ -36,6 +37,12 @@ const routes: Routes = [
   {
     path: 'single-player',
     component: SinglePlayerGameComponent,
+  },
+  //Wild Card Route for 404 request
+  {
+    path: '**',
+    pathMatch: 'full',
+    component: PageNotFoundComponent,
   },
 ];
 
