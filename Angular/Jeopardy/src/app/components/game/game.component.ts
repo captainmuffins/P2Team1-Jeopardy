@@ -1,8 +1,10 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { waitForAsync } from '@angular/core/testing';
 import { Router,ActivatedRoute,ParamMap } from '@angular/router';
 import { ObjectUnsubscribedError } from 'rxjs';
 import { jeopardyservice } from 'src/app/jeopardyservice';
+import { Category } from 'src/app/models/category/category';
 import { Clue } from 'src/app/models/clue/clue';
 import { CategorySelectorComponent } from '../category-selector/category-selector.component';
 
@@ -254,7 +256,7 @@ export class GameComponent implements OnInit {
     console.log(this.C4C4.answer)
     console.log(this.C4C5.answer)
   }
-  }
+  } 
   //check check
   async StartGame(){
       for(this.value;this.value<=5;this.value=this.value+1){
@@ -624,8 +626,41 @@ for(this.value;this.value<=5;this.value=this.value+1){
     value:0,
     category_id:0
   };
+  public Cat1:Category={
+    id:0,
+    title:"",
+    clues_count:0
+  }
+  public Cat2:Category={
+    id:0,
+    title:"",
+    clues_count:0
+  }
+  public Cat3:Category={
+    id:0,
+    title:"",
+    clues_count:0
+  }
+  public Cat5:Category={
+    id:0,
+    title:"",
+    clues_count:0
+  }
+  public Cat4:Category={
+    id:0,
+    title:"",
+    clues_count:0
+  }
+
   public j:number=0;
-  
+  NameTheCats(){
+    
+    if(this.Sab>=1){this.Js.getCategoryFromApi(this.C1C1.category_id).subscribe((data:any)=>{this.Cat1=data.body},()=>{console.log("somethingwentwrong")});}
+    if(this.Sab>=2){this.Js.getCategoryFromApi(this.C2C1.category_id).subscribe((data:any)=>{this.Cat2=data.body},()=>{console.log("somethingwentwrong")});}
+    if(this.Sab>=3){this.Js.getCategoryFromApi(this.C3C1.category_id).subscribe((data:any)=>{this.Cat3=data.body},()=>{console.log("somethingwentwrong")});}
+    if(this.Sab==5){this.Js.getCategoryFromApi(this.C5C1.category_id).subscribe((data:any)=>{this.Cat5=data.body},()=>{console.log("somethingwentwrong")});}
+    if(this.Sab>=4){this.Js.getCategoryFromApi(this.C4C1.category_id).subscribe((data:any)=>{this.Cat4=data.body},()=>{console.log("somethingwentwrong")});}
+  }
   SortC1(){
     this.D1=this.C1C1;
     this.D2=this.C1C2;
@@ -831,6 +866,7 @@ for(this.value;this.value<=5;this.value=this.value+1){
   ngOnInit(): void {
     //this.StartGame();
     this.Test2();
+    
   }
 
 }

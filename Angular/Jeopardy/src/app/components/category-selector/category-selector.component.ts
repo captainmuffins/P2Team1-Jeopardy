@@ -123,7 +123,7 @@ export class CategorySelectorComponent implements OnInit {
         //go to Game component with Bob.{
       this.Bob=[this.a,this.b,this.c,this.d,this.e]
     console.log(this.Bob);
-    this._router.navigate(['/GemlinTest'], { queryParams: { a: this.a, b:this.b, c: this.c, d:this.d,e:this.e} });
+    this._router.navigate(['/GemlinTest'], { queryParams: { a: this.a, b:this.b, c: this.c, d:this.d,e:this.e,Sab:5} });
     }
       
   }
