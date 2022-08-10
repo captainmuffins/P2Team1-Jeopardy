@@ -45,25 +45,6 @@
   }
 }
 
-.navbar-brand {
-  font-family: gyparodyhv;
-  font-size: 28px;
-  text-shadow: 1px 1px 1px #000;
-}
-
-.withShadow {
-  text-shadow: 1px 1px 1px #000;
-}
-
-.titleCase {
-  text-transform: capitalize;
-  font-weight: bold;
-}
-
-a {
-  cursor: pointer;
-}
-
 .j-menu-item {
   background-color: rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(30px);
@@ -99,12 +80,13 @@ a {
 }
 
 /* If browser is firefox */
-
+/*
 @-moz-document url-prefix() {
   main div#offcanvasProfile {
     background: rgba(0, 0, 0, 0.70) !important;
   }
 }
+*/
 
 
 .password-match,

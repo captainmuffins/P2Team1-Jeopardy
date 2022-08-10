@@ -35,7 +35,7 @@ main {
 }
 
 /* Background */
-
+/*
 .bg {
   width: 100%;
   min-height: 100vh;
@@ -75,7 +75,7 @@ main {
     background-position: 50% 50%;
   }
 }
-
+*/
 /* Animations */
 @-webkit-keyframes bg-scrolling-reverse {
   100% {

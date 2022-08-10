@@ -18,6 +18,8 @@ import { CookieModule } from 'ngx-cookie';
 import { ConfirmationDialogComponent } from './services/confirmation-dialog/confirmation-dialog.component';
 import { ConfirmationDialogService } from './services/confirmation-dialog/confirmation-dialog.service';
 import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
+import { SinglePlayerGameComponent } from './components/single-player-game/single-player-game.component';
+import { JeopardyService } from './services/jeopardy/jeopardy.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +30,7 @@ import { ScoreboardComponent } from './components/scoreboard/scoreboard.componen
     GameComponent,
     ConfirmationDialogComponent,
     ScoreboardComponent,
+    SinglePlayerGameComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,9 +40,14 @@ import { ScoreboardComponent } from './components/scoreboard/scoreboard.componen
     FormsModule,
     HttpClientModule,
     CookieModule.withOptions(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [AuthService, PlayersService, ConfirmationDialogService],
+  providers: [
+    AuthService,
+    PlayersService,
+    ConfirmationDialogService,
+    JeopardyService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
