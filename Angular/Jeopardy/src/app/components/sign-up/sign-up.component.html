@@ -1,5 +1,4 @@
-<main class="d-flex align-content-center">
-  <div class="bg"></div>
+<div class="m-auto d-flex flex-column h-100">
   <div class="animatedBackground"></div>
   <div class="loginContainer w-100 m-auto">
     <div class="container">
@@ -23,15 +22,17 @@
                   <div class="row">
                     <div class="col">
                       <div class="form-floating mb-3">
-                        <input (keyup.enter)="signUpPlayer()" type="text" [(ngModel)]="signUpPlayerData.playerFirstname" name="playerFirstname"
-                          class="form-control" id="playerFirstname" value="" placeholder="First name" required>
+                        <input (keyup.enter)="signUpPlayer()" type="text" [(ngModel)]="signUpPlayerData.playerFirstname"
+                          name="playerFirstname" class="form-control" id="playerFirstname" value=""
+                          placeholder="First name" required>
                         <label for="playerFirstname" class="form-label">First name</label>
                       </div>
                     </div>
                     <div class="col">
                       <div class="form-floating mb-3">
-                        <input (keyup.enter)="signUpPlayer()" type="text" [(ngModel)]="signUpPlayerData.playerLastname" name="playerLastname"
-                          class="form-control" id="playerLastname" value="" placeholder="Last name" required>
+                        <input (keyup.enter)="signUpPlayer()" type="text" [(ngModel)]="signUpPlayerData.playerLastname"
+                          name="playerLastname" class="form-control" id="playerLastname" value=""
+                          placeholder="Last name" required>
                         <label for="playerLastname" class="form-label">Last name</label>
                       </div>
                     </div>
@@ -40,8 +41,9 @@
                   <div class="row">
                     <div class="col">
                       <div class="form-floating mb-3">
-                        <input (keyup.enter)="signUpPlayer()" type="text" [(ngModel)]="signUpPlayerData.playerEmail" name="playerEmail"
-                          class="form-control" id="playerEmail" value="" placeholder="Email here please" required>
+                        <input (keyup.enter)="signUpPlayer()" type="text" [(ngModel)]="signUpPlayerData.playerEmail"
+                          name="playerEmail" class="form-control" id="playerEmail" value=""
+                          placeholder="Email here please" required>
                         <label for="playerEmail" class="form-label">Email</label>
                       </div>
                     </div>
@@ -50,8 +52,9 @@
                   <div class="row">
                     <div class="col">
                       <div class="form-floating mb-3">
-                        <input (keyup.enter)="signUpPlayer()" type="text" [(ngModel)]="signUpPlayerData.playerUsername" name="playerUsername"
-                          class="form-control" id="playerUsername" value="" placeholder="Username" required>
+                        <input (keyup.enter)="signUpPlayer()" type="text" [(ngModel)]="signUpPlayerData.playerUsername"
+                          name="playerUsername" class="form-control" id="playerUsername" value="" placeholder="Username"
+                          required>
                         <label for="playerUsername" class="form-label">Username</label>
                       </div>
                     </div>
@@ -60,9 +63,9 @@
                   <div class="row">
                     <div class="col">
                       <div class="form-floating mb-3">
-                        <input (keyup.enter)="signUpPlayer()" type="password" [(ngModel)]="signUpPlayerData.playerPassword" name="playerPassword"
-                          class="form-control" id="playerPassword" value="" placeholder="Password"
-                          (keyup)="checkPassword($event)" required>
+                        <input (keyup.enter)="signUpPlayer()" type="password"
+                          [(ngModel)]="signUpPlayerData.playerPassword" name="playerPassword" class="form-control"
+                          id="playerPassword" value="" placeholder="Password" (keyup)="checkPassword($event)" required>
                         <label for="playerPassword" class="form-label">New Password</label>
                         <div class="password-not-match text-danger">
                           Passwords must match
@@ -74,8 +77,8 @@
                     </div>
                     <div class="col">
                       <div class="form-floating mb-3">
-                        <input (keyup.enter)="signUpPlayer()" type="password" class="form-control" id="confirmPassword" value="" placeholder="Password"
-                          (keyup)="checkPassword($event)" required>
+                        <input (keyup.enter)="signUpPlayer()" type="password" class="form-control" id="confirmPassword"
+                          value="" placeholder="Password" (keyup)="checkPassword($event)" required>
                         <label for="inputPassword" class="form-label">Confirm Password</label>
                         <div class="password-not-match text-danger">
                           Passwords must match
@@ -139,5 +142,4 @@
       </div>
     </div>
   </div>
-  <script src="/assets/js/register.js"></script>
-</main>
+</div>

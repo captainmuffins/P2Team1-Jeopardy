@@ -1,7 +1,3 @@
-main {
-  height: 100%;
-}
-
 @keyframes statusEntrance {
   from {
     opacity: 0;
@@ -31,54 +27,6 @@ main {
 
 .loginContainer .card {
   background: rgba(0, 0, 0, 0.3);
-}
-
-/* Background */
-
-/*
-.bg {
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-size: 300% 300%;
-  background-image: linear-gradient(-45deg,
-      #3bade3 0%,
-      #4914bc 25%,
-      #9844b7 51%,
-      #9d030b 100%);
-  -webkit-animation: AnimateBG 20s ease infinite;
-  animation: AnimateBG 20s ease infinite;
-}
-
-@-webkit-keyframes AnimateBG {
-  0% {
-    background-position: 50% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 50% 50%;
-  }
-}
-*/
-
-@keyframes AnimateBG {
-  0% {
-    background-position: 50% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 50% 50%;
-  }
 }
 
 /* Animations */

@@ -20,6 +20,7 @@ import { ConfirmationDialogService } from './services/confirmation-dialog/confir
 import { ScoreboardComponent } from './components/scoreboard/scoreboard.component';
 import { SinglePlayerGameComponent } from './components/single-player-game/single-player-game.component';
 import { JeopardyService } from './services/jeopardy/jeopardy.service';
+import { CommonsComponent } from './components/commons/commons.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +32,7 @@ import { JeopardyService } from './services/jeopardy/jeopardy.service';
     ConfirmationDialogComponent,
     ScoreboardComponent,
     SinglePlayerGameComponent,
+    CommonsComponent,
   ],
   imports: [
     BrowserModule,
