@@ -1,48 +1,45 @@
-<p>game works!</p>
-<button (click)="SortC1()">Click me</button>
-<button (click)="CheckCheck()">Check me</button>
-<button (click)="CheckCheckValuesC1()">Check me Value</button>
-<!-- <button (click)="StartGame()">Start</button> -->
-<button (click)="CheckCheckValuesC2()">Check me ValueC2</button>
-<!-- <button (click)="Testing()">testing the double loop</button> -->
-<button (click)="NameTheCats()">Cat</button>
 
-<table *ngIf="Gremlin">
-    <tr>
-    <th style=" background-color: blueviolet;" *ngIf="Sab>=1"> {{this.Cat1.title | titlecase}}</th>
-    <th style=" background-color: blueviolet;" *ngIf="Sab>=2"> {{this.Cat2.title | titlecase}}</th>
-    <th style=" background-color: blueviolet;" *ngIf="Sab>=3"> {{this.Cat3.title | titlecase}}</th>
-    <th style=" background-color: blueviolet;" *ngIf="Sab>=4"> {{this.Cat4.title | titlecase}}</th>
-    <th style=" background-color: blueviolet;" *ngIf="Sab>=5"> {{this.Cat5.title | titlecase}} </th></tr>
-    <tr><td *ngIf="Sab>=1"><button class="btn btn-magick" style="width: 100%; background-color: blueviolet;" (click)="QuestionButton(1,1)">100</button></td>
-        <td *ngIf="Sab>=2"><button class="btn btn-magick" style="width: 100%; background-color: blueviolet;" (click)="QuestionButton(1,2)">100</button></td>
-        <td *ngIf="Sab>=3"><button class="btn btn-magick" style="width: 100%; background-color: blueviolet;" (click)="QuestionButton(1,3)">100</button></td>
-        <td *ngIf="Sab>=4"><button class="btn btn-magick" style="width: 100%; background-color: blueviolet;" (click)="QuestionButton(1,4)">100</button></td>
-        <td *ngIf="Sab>=5"><button class="btn btn-magick" style="width: 100%; background-color: blueviolet;" (click)="QuestionButton(1,5)">100</button></td>
+<button  *ngIf="!Bu2"(click)="SortC1()" class="btn btn-magick btn-success btn3d"style="margin-left:auto;margin-right:auto;" >Click me</button>
+<!-- <button (click)="StartGame()">Start</button> -->
+<!-- <button (click)="Testing()">testing the double loop</button> -->
+<button *ngIf="Bu2" (click)="NameTheCats()" class="btn btn-magick btn-success btn3d" style="margin-left:auto;margin-right:auto;">And me</button>
+
+<table *ngIf="Gremlin" style="margin-left:auto;margin-right:auto; ">
+    <tr><th style="color:white; background-color: black;" *ngIf="Sab>=1"> {{this.Cat1.title | titlecase}}</th>
+    <th style="color:white; background-color: black;" *ngIf="Sab>=2"> {{this.Cat2.title | titlecase}}</th>
+    <th style="color:white; background-color: black;" *ngIf="Sab>=3"> {{this.Cat3.title | titlecase}}</th>
+    <th style="color:white; background-color: black;" *ngIf="Sab>=4"> {{this.Cat4.title | titlecase}}</th>
+    <th style="color:white; background-color: black;" *ngIf="Sab>=5"> {{this.Cat5.title | titlecase}} </th>
     </tr>
-    <tr><td *ngIf="Sab>=1"><button class="btn btn-magick" style="width: 100%; background-color: blueviolet;" (click)="QuestionButton(2,1)">200</button></td>
-        <td *ngIf="Sab>=2"><button class="btn btn-magick" style="width: 100%; background-color: blueviolet;" (click)="QuestionButton(2,2)">200</button></td>
-        <td *ngIf="Sab>=3"><button class="btn btn-magick" style="width: 100%; background-color: blueviolet;" (click)="QuestionButton(2,3)">200</button></td>
-        <td *ngIf="Sab>=4"><button class="btn btn-magick" style="width: 100%; background-color: blueviolet;" (click)="QuestionButton(2,4)">200</button></td>
-        <td *ngIf="Sab>=5"><button class="btn btn-magick" style="width: 100%; background-color: blueviolet;" (click)="QuestionButton(2,5)">200</button></td>
+    <tr><td *ngIf="Sab>=1"><button class="btn btn-magick btn3d" style="width: 100%; background-color: orange;" (click)="QuestionButton(1,1)">100</button></td>
+        <td *ngIf="Sab>=2"><button class="btn btn-magick btn3d" style="width: 100%; background-color:  orange;" (click)="QuestionButton(1,2)">100</button></td>
+        <td *ngIf="Sab>=3"><button class="btn btn-magick btn3d" style="width: 100%; background-color: orange;" (click)="QuestionButton(1,3)">100</button></td>
+        <td *ngIf="Sab>=4"><button class="btn btn-magick btn3d" style="width: 100%; background-color: orange;" (click)="QuestionButton(1,4)">100</button></td>
+        <td *ngIf="Sab>=5"><button class="btn btn-magick btn3d" style="width: 100%; background-color:  orange;" (click)="QuestionButton(1,5)">100</button></td>
     </tr>
-    <tr><td *ngIf="Sab>=1"><button class="btn btn-magick" style="width: 100%; background-color: blueviolet;" (click)="QuestionButton(3,1)">300</button></td>
-        <td *ngIf="Sab>=2"><button class="btn btn-magick" style="width: 100%; background-color: blueviolet;" (click)="QuestionButton(3,2)">300</button></td>
-        <td *ngIf="Sab>=3"><button class="btn btn-magick" style="width: 100%; background-color: blueviolet;" (click)="QuestionButton(3,3)">300</button></td>
-        <td *ngIf="Sab>=4"><button class="btn btn-magick" style="width: 100%; background-color: blueviolet;" (click)="QuestionButton(3,4)">300</button></td>
-        <td *ngIf="Sab>=5"><button class="btn btn-magick" style="width: 100%; background-color: blueviolet;" (click)="QuestionButton(3,5)">300</button></td>
+    <tr><td *ngIf="Sab>=1"><button class="btn btn-magick btn3d" style="width: 100%; background-color:  orange;" (click)="QuestionButton(2,1)">200</button></td>
+        <td *ngIf="Sab>=2"><button class="btn btn-magick btn3d" style="width: 100%; background-color:  orange;" (click)="QuestionButton(2,2)">200</button></td>
+        <td *ngIf="Sab>=3"><button class="btn btn-magick btn3d" style="width: 100%; background-color:  orange;" (click)="QuestionButton(2,3)">200</button></td>
+        <td *ngIf="Sab>=4"><button class="btn btn-magick btn3d" style="width: 100%; background-color:  orange;" (click)="QuestionButton(2,4)">200</button></td>
+        <td *ngIf="Sab>=5"><button class="btn btn-magick btn3d" style="width: 100%; background-color:  orange;" (click)="QuestionButton(2,5)">200</button></td>
     </tr>
-    <tr><td *ngIf="Sab>=1"><button class="btn btn-magick" style="width: 100%; background-color: blueviolet;" (click)="QuestionButton(4,1)">400</button></td>
-        <td *ngIf="Sab>=2"><button class="btn btn-magick" style="width: 100%; background-color: blueviolet;" (click)="QuestionButton(4,2)">400</button></td>
-        <td *ngIf="Sab>=3"><button class="btn btn-magick" style="width: 100%; background-color: blueviolet;" (click)="QuestionButton(4,3)">400</button></td>
-        <td *ngIf="Sab>=4"><button class="btn btn-magick" style="width: 100%; background-color: blueviolet;" (click)="QuestionButton(4,4)">400</button></td>
-        <td *ngIf="Sab>=5"><button class="btn btn-magick" style="width: 100%; background-color: blueviolet;" (click)="QuestionButton(4,5)">400</button></td>
+    <tr><td *ngIf="Sab>=1"><button class="btn btn-magick btn3d" style="width: 100%; background-color:  orange;" (click)="QuestionButton(3,1)">300</button></td>
+        <td *ngIf="Sab>=2"><button class="btn btn-magick btn3d" style="width: 100%; background-color:  orange;" (click)="QuestionButton(3,2)">300</button></td>
+        <td *ngIf="Sab>=3"><button class="btn btn-magick btn3d" style="width: 100%; background-color: orange;" (click)="QuestionButton(3,3)">300</button></td>
+        <td *ngIf="Sab>=4"><button class="btn btn-magick btn3d" style="width: 100%; background-color:  orange;" (click)="QuestionButton(3,4)">300</button></td>
+        <td *ngIf="Sab>=5"><button class="btn btn-magick btn3d" style="width: 100%; background-color:  orange;" (click)="QuestionButton(3,5)">300</button></td>
     </tr>
-    <tr><td *ngIf="Sab>=1"><button class="btn btn-magick" style="width: 100%; background-color: blueviolet;" (click)="QuestionButton(5,1)">500</button></td>
-        <td *ngIf="Sab>=2"><button class="btn btn-magick" style="width: 100%; background-color: blueviolet;" (click)="QuestionButton(5,2)">500</button></td>
-        <td *ngIf="Sab>=3"><button class="btn btn-magick" style="width: 100%; background-color: blueviolet;" (click)="QuestionButton(5,3)">500</button></td>
-        <td *ngIf="Sab>=4"><button class="btn btn-magick" style="width: 100%; background-color: blueviolet;" (click)="QuestionButton(5,4)">500</button></td>
-        <td *ngIf="Sab>=5"><button class="btn btn-magick" style="width: 100%; background-color: blueviolet;" (click)="QuestionButton(5,5)">500</button></td>
+    <tr><td *ngIf="Sab>=1"><button class="btn btn-magick btn3d" style="width: 100%; background-color:  orange;" (click)="QuestionButton(4,1)">400</button></td>
+        <td *ngIf="Sab>=2"><button class="btn btn-magick btn3d" style="width: 100%; background-color:  orange;" (click)="QuestionButton(4,2)">400</button></td>
+        <td *ngIf="Sab>=3"><button class="btn btn-magick btn3d" style="width: 100%; background-color:  orange;" (click)="QuestionButton(4,3)">400</button></td>
+        <td *ngIf="Sab>=4"><button class="btn btn-magick btn3d" style="width: 100%; background-color:  orange;" (click)="QuestionButton(4,4)">400</button></td>
+        <td *ngIf="Sab>=5"><button class="btn btn-magick btn3d" style="width: 100%; background-color:  orange;" (click)="QuestionButton(4,5)">400</button></td>
+    </tr>
+    <tr><td *ngIf="Sab>=1"><button class="btn btn-magick btn3d" style="width: 100%; background-color: orange;" (click)="QuestionButton(5,1)">500</button></td>
+        <td *ngIf="Sab>=2"><button class="btn btn-magick btn3d" style="width: 100%; background-color:  orange;" (click)="QuestionButton(5,2)">500</button></td>
+        <td *ngIf="Sab>=3"><button class="btn btn-magick btn3d" style="width: 100%; background-color:  orange;" (click)="QuestionButton(5,3)">500</button></td>
+        <td *ngIf="Sab>=4"><button class="btn btn-magick btn3d" style="width: 100%; background-color:  orange;" (click)="QuestionButton(5,4)">500</button></td>
+        <td *ngIf="Sab>=5"><button class="btn btn-magick btn3d" style="width: 100%; background-color:  orange;" (click)="QuestionButton(5,5)">500</button></td>
     </tr>
 </table>
 
@@ -77,66 +74,126 @@
     {{C1C5.answer}}
 </button>
 
-<button *ngIf="Q21">
+<button *ngIf="Q21" (click)="Buttoon(1,2)" class="btn" >
     {{C2C1.question}}
 </button>
-<button *ngIf="Q22">
+<button *ngIf="A21" class="btn">
+    {{C2C1.answer}}
+</button>
+<button *ngIf="Q22" (click)="Buttoon(2,2)" class="btn">
     {{C2C2.question}}
 </button>
-<button *ngIf="Q23">
+<button *ngIf="A22" class="btn">
+    {{C2C2.answer}}
+</button>
+<button *ngIf="Q23" (click)="Buttoon(3,2)" class="btn">
     {{C2C3.question}}
 </button>
-<button *ngIf="Q24">
+<button *ngIf="A23" class="btn">
+    {{C2C3.answer}}
+</button>
+<button *ngIf="Q24" (click)="Buttoon(4,2)" class="btn">
     {{C2C4.question}}
 </button>
-<button *ngIf="Q25">
+<button *ngIf="A24" class="btn">
+    {{C2C4.answer}}
+</button>
+<button *ngIf="Q25" (click)="Buttoon(5,2)" class="btn">
     {{C2C5.question}}
 </button>
+<button *ngIf="A25" class="btn">
+    {{C2C5.answer}}
+</button>
 
-<button *ngIf="Q31">
+<button *ngIf="Q31" (click)="Buttoon(1,3)" class="btn">
     {{C3C1.question}}
 </button>
-<button *ngIf="Q32">
+<button *ngIf="A31" class="btn">
+    {{C3C1.answer}}
+</button>
+<button *ngIf="Q32" (click)="Buttoon(2,3)" class="btn">
     {{C3C2.question}}
 </button>
-<button *ngIf="Q33">
+<button *ngIf="A32" class="btn">
+    {{C3C2.answer}}
+</button>
+<button *ngIf="Q33" (click)="Buttoon(3,3)" class="btn">
     {{C3C3.question}}
 </button>
-<button *ngIf="Q34">
+<button *ngIf="A33" class="btn">
+    {{C3C3.answer}}
+</button>
+<button *ngIf="Q34" (click)="Buttoon(4,3)" class="btn">
     {{C3C4.question}}
 </button>
-<button *ngIf="Q35">
+<button *ngIf="A34" class="btn">
+    {{C3C4.answer}}
+</button>
+<button *ngIf="Q35" (click)="Buttoon(5,3)" class="btn">
     {{C3C5.question}}
 </button>
+<button *ngIf="A35" class="btn">
+    {{C3C5.answer}}
+</button>
 
-<button *ngIf="Q41">
+<button *ngIf="Q41" (click)="Buttoon(1,4)" class="btn">
     {{C4C1.question}}
 </button>
-<button *ngIf="Q42">
+<button *ngIf="A41" class="btn">
+    {{C4C1.answer}}
+</button>
+<button *ngIf="Q42" (click)="Buttoon(2,4)" class="btn">
     {{C4C2.question}}
 </button>
-<button *ngIf="Q43">
+<button *ngIf="A42" class="btn">
+    {{C4C2.answer}}
+</button>
+<button *ngIf="Q43" (click)="Buttoon(3,4)" class="btn">
     {{C4C3.question}}
 </button>
-<button *ngIf="Q44">
+<button *ngIf="A43" class="btn">
+    {{C4C3.answer}}
+</button>
+<button *ngIf="Q44" (click)="Buttoon(4,4)" class="btn">
     {{C4C4.question}}
 </button>
-<button *ngIf="Q45">
+<button *ngIf="A44" class="btn">
+    {{C4C4.answer}}
+</button>
+<button *ngIf="Q45" (click)="Buttoon(5,4)" class="btn">
     {{C4C5.question}}
 </button>
+<button *ngIf="A45" class="btn">
+    {{C4C5.answer}}
+</button>
 
-<button *ngIf="Q51">
+<button *ngIf="Q51" (click)="Buttoon(1,5)" class="btn">
     {{C5C1.question}}
 </button>
-<button *ngIf="Q52">
+<button *ngIf="A51" class="btn">
+    {{C5C1.answer}}
+</button>
+<button *ngIf="Q52" (click)="Buttoon(2,5)" class="btn">
     {{C5C2.question}}
 </button>
-<button *ngIf="Q53">
+<button *ngIf="A52" class="btn">
+    {{C5C2.answer}}
+</button>
+<button *ngIf="Q53" (click)="Buttoon(3,5)" class="btn">
     {{C5C3.question}}
 </button>
-<button *ngIf="Q54">
+<button *ngIf="A53" class="btn">
+    {{C5C3.answer}}
+</button>
+<button *ngIf="Q54" (click)="Buttoon(4,5)" class="btn">
     {{C5C4.question}}
 </button>
-<button *ngIf="Q55">
+<button *ngIf="A54" class="btn">
+    {{C5C4.answer}}
+</button>
+<button *ngIf="Q55" (click)="Buttoon(5,5)" class="btn">
     {{C5C5.question}}
+</button>
+<button *ngIf="A55" class="btn">
+    {{C5C5.answer}}
 </button>

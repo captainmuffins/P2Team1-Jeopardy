@@ -654,6 +654,7 @@ for(this.value;this.value<=5;this.value=this.value+1){
   }
 
   public j:number=0;
+  public Bu2:Boolean=false;
   NameTheCats(){
     this.Gremlin=true;
     if(this.Sab>=1){this.Js.getCategoryFromApi(this.C1C1.category_id).subscribe((data:any)=>{this.Cat1=data.body},()=>{console.log("somethingwentwrong")});}
@@ -823,6 +824,8 @@ for(this.value;this.value<=5;this.value=this.value+1){
     this.C5C3=this.D3;
     this.C5C4=this.D4;
     this.C5C5=this.D5;
+
+    this.Bu2=true;
   }
   CheckCheckValuesC1(){
     console.log(this.C1C1.value);
