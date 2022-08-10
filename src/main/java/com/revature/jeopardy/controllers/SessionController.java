@@ -59,7 +59,7 @@ public class SessionController {
         List<Session> sessions = null;
 
         try {
-            sessions = sessionDAO.findAllOrderBySessionWinningsDesc();
+            sessions = sessionDAO.findAllByOrderBySessionWinningsDesc();
             response = new Response(200, "Found All Sessions", true, sessions);
 
             return ResponseEntity.status(response.getStatusCode()).body(response);
@@ -79,7 +79,7 @@ public class SessionController {
         List<Session> sessions = null;
 
         try {
-            sessions = sessionDAO.findByIdOrderBySessionWinningsDesc(playerID);
+            sessions = sessionDAO.findBySessionIdOrderBySessionWinningsDesc(playerID);
             response = new Response(200, "Found sessions with player ID " + playerID, true, sessions);
 
             return ResponseEntity.status(response.getStatusCode()).body(response);

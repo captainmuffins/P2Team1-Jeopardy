@@ -11,8 +11,8 @@ import org.springframework.stereotype.Repository;
 public interface SessionDAO extends JpaRepository<Session, Integer> {
 
 
-    List<Session> findAllOrderBySessionWinningsDesc();
+    List<Session> findAllByOrderBySessionWinningsDesc();
 
-    List<Session> findByIdOrderBySessionWinningsDesc(int sessionId);
+    List<Session> findBySessionIdOrderBySessionWinningsDesc(int sessionId);
 
 }
