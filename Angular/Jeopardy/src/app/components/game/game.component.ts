@@ -22,6 +22,7 @@ export class GameComponent implements OnInit {
   public d:number = 4;
   public e:number = 5;
   public v:number = 1;
+  public Gremlin:Boolean=false;
   constructor(private Js:jeopardyservice, private CS:CategorySelectorComponent,private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {
       this.a = params['a'];
@@ -258,7 +259,7 @@ export class GameComponent implements OnInit {
   }
   } 
   //check check
-  async StartGame(){
+  /*async StartGame(){
       for(this.value;this.value<=5;this.value=this.value+1){
         this.Js.getQuestionFromApi(this.Bob[0], this.value*100).subscribe(
           (data:any)=>{this.MAN=data.body[0]
@@ -374,7 +375,7 @@ export class GameComponent implements OnInit {
           },()=>{console.log("it got away")}
           
           );
-          } }
+          } }*/
   /*async Testing(){
   for(this.i=0;this.i<=4;this.i++){
    for(this.value;this.value<=5;this.value=this.value+1){
@@ -654,7 +655,7 @@ for(this.value;this.value<=5;this.value=this.value+1){
 
   public j:number=0;
   NameTheCats(){
-    
+    this.Gremlin=true;
     if(this.Sab>=1){this.Js.getCategoryFromApi(this.C1C1.category_id).subscribe((data:any)=>{this.Cat1=data.body},()=>{console.log("somethingwentwrong")});}
     if(this.Sab>=2){this.Js.getCategoryFromApi(this.C2C1.category_id).subscribe((data:any)=>{this.Cat2=data.body},()=>{console.log("somethingwentwrong")});}
     if(this.Sab>=3){this.Js.getCategoryFromApi(this.C3C1.category_id).subscribe((data:any)=>{this.Cat3=data.body},()=>{console.log("somethingwentwrong")});}
@@ -823,8 +824,6 @@ for(this.value;this.value<=5;this.value=this.value+1){
     this.C5C4=this.D4;
     this.C5C5=this.D5;
   }
-  
-
   CheckCheckValuesC1(){
     console.log(this.C1C1.value);
     console.log(this.C1C2.value);
@@ -860,8 +859,238 @@ for(this.value;this.value<=5;this.value=this.value+1){
     console.log(this.C5C4.value);
     console.log(this.C5C5.value);
   }
-  
 
+  public Q11: Boolean=false;
+  public Q12: Boolean=false;
+  public Q13: Boolean=false;
+  public Q14: Boolean=false;
+  public Q15: Boolean=false;
+  public Q21: Boolean=false;
+  public Q22: Boolean=false;
+  public Q23: Boolean=false;
+  public Q24: Boolean=false;
+  public Q25: Boolean=false;
+  public Q31: Boolean=false;
+  public Q32: Boolean=false;
+  public Q33: Boolean=false;
+  public Q34: Boolean=false;
+  public Q35: Boolean=false;
+  public Q41: Boolean=false;
+  public Q42: Boolean=false;
+  public Q43: Boolean=false;
+  public Q44: Boolean=false;
+  public Q45: Boolean=false;
+  public Q51: Boolean=false;
+  public Q52: Boolean=false;
+  public Q53: Boolean=false;
+  public Q54: Boolean=false;
+  public Q55: Boolean=false;
+  QuestionButton(value:number,Cat:number){
+    if (value==1&&Cat==1){
+      this.Q11=true;
+    }
+    if (value==2&&Cat==1){
+      this.Q12=true;
+    }
+    if (value==3&&Cat==1){
+      this.Q13=true;
+    }
+    if (value==4&&Cat==1){
+      this.Q14=true;
+    }
+    if (value==5&&Cat==1){
+      this.Q15=true;
+    }
+    if (value==1&&Cat==2){
+      this.Q21=true;
+    }
+    if (value==2&&Cat==2){
+      this.Q22=true;
+    }
+    if (value==3&&Cat==2){
+      this.Q23=true;
+    }
+    if (value==4&&Cat==2){
+      this.Q24=true;
+    }
+    if (value==5&&Cat==2){
+      this.Q25=true;
+    }
+    if (value==1&&Cat==3){
+      this.Q31=true;
+    }
+    if (value==2&&Cat==3){
+      this.Q32=true;
+    }
+    if (value==3&&Cat==3){
+      this.Q33=true;
+    }
+    if (value==4&&Cat==3){
+      this.Q34=true;
+    }
+    if (value==5&&Cat==3){
+      this.Q35=true;
+    }
+    if (value==1&&Cat==4){
+      this.Q41=true;
+    }
+    if (value==2&&Cat==4){
+      this.Q42=true;
+    }
+    if (value==3&&Cat==4){
+      this.Q43=true;
+    }
+    if (value==4&&Cat==4){
+      this.Q44=true;
+    }
+    if (value==5&&Cat==4){
+      this.Q45=true;
+    }
+    if (value==1&&Cat==5){
+      this.Q51=true;
+    }
+    if (value==2&&Cat==5){
+      this.Q52=true;
+    }
+    if (value==3&&Cat==5){
+      this.Q53=true;
+    }
+    if (value==4&&Cat==5){
+      this.Q54=true;
+    }
+    if (value==5&&Cat==5){
+      this.Q55=true;
+    }
+  }
+
+  public A11: Boolean=false;
+  public A12: Boolean=false;
+  public A13: Boolean=false;
+  public A14: Boolean=false;
+  public A15: Boolean=false;
+  public A21: Boolean=false;
+  public A22: Boolean=false;
+  public A23: Boolean=false;
+  public A24: Boolean=false;
+  public A25: Boolean=false;
+  public A31: Boolean=false;
+  public A32: Boolean=false;
+  public A33: Boolean=false;
+  public A34: Boolean=false;
+  public A35: Boolean=false;
+  public A41: Boolean=false;
+  public A42: Boolean=false;
+  public A43: Boolean=false;
+  public A44: Boolean=false;
+  public A45: Boolean=false;
+  public A51: Boolean=false;
+  public A52: Boolean=false;
+  public A53: Boolean=false;
+  public A54: Boolean=false;
+  public A55: Boolean=false;
+
+  Buttoon(value:number,Cat:number){
+    if(value==1&&Cat==1){
+      this.Q11=false;
+      this.A11=true;
+    }
+    if(value==2&&Cat==1){
+      this.Q12=false;
+      this.A12=true;
+    }
+    if(value==3&&Cat==1){
+      this.Q13=false;
+      this.A13=true;
+    }
+    if(value==4&&Cat==1){
+      this.Q14=false;
+      this.A14=true;
+    }
+    if(value==5&&Cat==1){
+      this.Q15=false;
+      this.A15=true;
+    }
+    if(value==1&&Cat==2){
+      this.Q21=false;
+      this.A21=true;
+    }
+    if(value==2&&Cat==2){
+      this.Q22=false;
+      this.A22=true;
+    }
+    if(value==3&&Cat==2){
+      this.Q23=false;
+      this.A23=true;
+    }
+    if(value==4&&Cat==2){
+      this.Q24=false;
+      this.A24=true;
+    }
+    if(value==5&&Cat==2){
+      this.Q25=false;
+      this.A25=true;
+    }
+    if(value==1&&Cat==3){
+      this.Q31=false;
+      this.A31=true;
+    }
+    if(value==2&&Cat==3){
+      this.Q32=false;
+      this.A32=true;
+    }
+    if(value==3&&Cat==3){
+      this.Q33=false;
+      this.A33=true;
+    }
+    if(value==4&&Cat==3){
+      this.Q34=false;
+      this.A34=true;
+    }
+    if(value==5&&Cat==3){
+      this.Q35=false;
+      this.A35=true;
+    }
+    if(value==1&&Cat==4){
+      this.Q41=false;
+      this.A41=true;
+    }
+    if(value==2&&Cat==4){
+      this.Q42=false;
+      this.A42=true;
+    }
+    if(value==3&&Cat==4){
+      this.Q43=false;
+      this.A43=true;
+    }
+    if(value==4&&Cat==4){
+      this.Q44=false;
+      this.A44=true;
+    }
+    if(value==5&&Cat==4){
+      this.Q45=false;
+      this.A45=true;
+    }
+    if(value==1&&Cat==5){
+      this.Q51=false;
+      this.A51=true;
+    }
+    if(value==2&&Cat==5){
+      this.Q52=false;
+      this.A52=true;
+    }
+    if(value==3&&Cat==5){
+      this.Q53=false;
+      this.A53=true;
+    }
+    if(value==4&&Cat==5){
+      this.Q54=false;
+      this.A54=true;
+    }
+    if(value==5&&Cat==5){
+      this.Q55=false;
+      this.A55=true;
+    }
+  }
   
   ngOnInit(): void {
     //this.StartGame();
