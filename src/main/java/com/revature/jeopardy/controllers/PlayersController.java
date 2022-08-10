@@ -121,7 +121,7 @@ public class PlayersController {
 
 		Optional<Players> playersOptional = playersDAO.findById(playerId);
 
-		if (!playersOptional.isEmpty()) {
+		if (!playersOptional.isPresent()) {
 			findPlayer = playersOptional.get();
 
 			response = new Response(200, "Found player by ID", true, findPlayer);
@@ -170,7 +170,7 @@ public class PlayersController {
 			session = (Players) request.getSession().getAttribute("currentplayer");
 			if (session != null) {
 				getPlayer = playersDAO.findById(session.getPlayerId());
-				if (!getPlayer.isEmpty()) {
+				if (!getPlayer.isPresent()) {
 					Players p = getPlayer.get();
 					p.setPlayerUsername(
 							StringUtils.isNotEmpty(newData.getPlayerUsername()) ? newData.getPlayerUsername()
@@ -211,7 +211,7 @@ public class PlayersController {
 			session = (Players) request.getSession().getAttribute("currentplayer");
 			if (session != null) {
 				getPlayer = playersDAO.findById(session.getPlayerId());
-				if (!getPlayer.isEmpty()) {
+				if (!getPlayer.isPresent()) {
 					Players p = getPlayer.get();
 					p.setPlayerPassword(StringUtils.isNotEmpty(newPassword.getPlayerPassword())
 							? AuthUtil.doEncrypt(newPassword.getPlayerPassword())
@@ -245,7 +245,7 @@ public class PlayersController {
 
 			if (session != null) {
 				getPlayer = playersDAO.findById(session.getPlayerId());
-				if (!getPlayer.isEmpty()) {
+				if (!getPlayer.isPresent()) {
 					Players p = getPlayer.get();
 					p.setPlayerAvatar(document.getBytes());
 					p = playersDAO.save(p);
@@ -272,7 +272,7 @@ public class PlayersController {
 		try {
 
 			getPlayer = playersDAO.findById(playerId);
-			if (!getPlayer.isEmpty()) {
+			if (!getPlayer.isPresent()) {
 				Players p = getPlayer.get();
 				if(p.getPlayerAvatar() != null) {
 					TikaConfig tika = new TikaConfig();
