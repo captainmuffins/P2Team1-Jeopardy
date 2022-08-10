@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JeopardyService } from 'src/app/services/jeopardy/jeopardy.service';
 
 @Component({
   selector: 'app-single-player-game',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SinglePlayerGameComponent implements OnInit {
 
-  constructor() { }
+  constructor(_jeopardyService: JeopardyService) { }
 
   ngOnInit(): void {
+  }
+
+  getCategories() {
+
   }
 
 }
