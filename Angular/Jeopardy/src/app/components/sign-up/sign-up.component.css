@@ -1,0 +1,233 @@
+main {
+  height: 100%;
+  perspective: 1000px;
+}
+
+@keyframes statusEntrance {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.login-message .alert {
+  display: none;
+}
+
+.login-message div.alert.activeStatus {
+  animation: statusEntrance 1s ease 0s 1 normal forwards;
+  display: block;
+}
+
+.loginContainer .hideElem {
+  display: none;
+}
+
+.loginContainer>.container {
+  max-width: 512px;
+}
+
+.loginContainer .card {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Background */
+
+.bg {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: 300% 300%;
+  background-image: linear-gradient(-45deg, #3bade3 0%, #4914BC 25%, #9844b7 51%, #9D030B 100%);
+  -webkit-animation: AnimateBG 20s ease infinite;
+  animation: AnimateBG 20s ease infinite;
+}
+
+@-webkit-keyframes AnimateBG {
+  0% {
+    background-position: 50% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 50% 50%;
+  }
+}
+
+@keyframes AnimateBG {
+  0% {
+    background-position: 50% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 50% 50%;
+  }
+}
+
+/* Animations */
+@-webkit-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 0px 384px;
+  }
+}
+
+@-moz-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 0px 384px;
+  }
+}
+
+@-o-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 0px 384px;
+  }
+}
+
+@keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 0px 384px;
+  }
+}
+
+@-webkit-keyframes bg-scrolling {
+  0% {
+    background-position: 0px 384px;
+  }
+}
+
+@-moz-keyframes bg-scrolling {
+  0% {
+    background-position: 0px 384px;
+  }
+}
+
+@-o-keyframes bg-scrolling {
+  0% {
+    background-position: 0px 384px;
+  }
+}
+
+@keyframes bg-scrolling {
+  0% {
+    background-position: 0px 384px;
+  }
+}
+
+/* Main styles */
+.animatedBackground {
+  background: url("/assets/img/border-anim2.png") repeat 0 0;
+  -webkit-animation: bg-scrolling-reverse 10s infinite;
+  /* Safari 4+ */
+  -moz-animation: bg-scrolling-reverse 10s infinite;
+  /* Fx 5+ */
+  -o-animation: bg-scrolling-reverse 10s infinite;
+  /* Opera 12+ */
+  animation: bg-scrolling-reverse 10s infinite;
+  /* IE 10+ */
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -o-animation-timing-function: linear;
+  animation-timing-function: linear;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.75;
+}
+
+/* Logo Spinnder */
+#logoSpinner {
+  font-size: 82px;
+  text-align: center;
+  animation-name: spin, depth;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: 10s;
+  transform-style: preserve-3d;
+  position: relative;
+  font-family: gyparodyhv;
+  color: #fff;
+}
+
+@media screen and (max-width: 480px) {
+  #logoSpinner {
+    font-size: 48px;
+  }
+}
+
+#logoSpinner::before,
+#logoSpinner::after {
+  content: "JEOPARDY!";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  transform: rotateY(0.5deg);
+  transform-origin: 0 50%;
+}
+
+#logoSpinner::after {
+  transform: rotateY(-0.5deg);
+  transform-origin: 100% 50%;
+}
+
+@keyframes spin {
+  from {
+    transform: rotateY(0deg);
+  }
+
+  to {
+    transform: rotateY(-360deg);
+  }
+}
+
+@keyframes depth {
+  0% {
+    text-shadow: 0 0 black;
+  }
+
+  25% {
+    text-shadow: 1px 0 black, 2px 0 black, 3px 0 black, 4px 0 black, 5px 0 black, 6px 0 black;
+  }
+
+  50% {
+    text-shadow: 0 0 black;
+  }
+
+  75% {
+    text-shadow: -1px 0 black, -2px 0 black, -3px 0 black, -4px 0 black, -5px 0 black, -6px 0 black;
+  }
+
+  100% {
+    text-shadow: 0 0 black;
+  }
+}
+
+.password-match,
+.password-not-match {
+  display: none;
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: .875em;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px #000;
+  text-align: center;
+  padding: 0px 1px 2px 1px;
+}
+
+.valid-password .password-match,
+.invalid-password .password-not-match {
+  display: block;
+}

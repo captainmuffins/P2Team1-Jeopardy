@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: gyparodyhv;
+  src: url(/assets/css/fonts/gyparodyhv.ttf);
+}
+
+@font-face {
+  font-family: gyparodyrg;
+  src: url(/assets/css/fonts/gyparodyrg.ttf);
+}
+
+html, body {
+  height: 100%;
+}
+
+* {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+app-root, app-root > *:nth-child(2) {
+  display: block;
+  height: 100%;
+}
