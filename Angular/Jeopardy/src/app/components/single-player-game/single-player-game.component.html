@@ -4,72 +4,153 @@
     <div class="gameContainer h-100">
       <div class="row h-100">
         <div class="col text-center">
-          <div class="card j-game-card w-100 h-100">
-            <div class="card-body h-100">
-              <div class="container h-100">
-                <div class="row">
-                  <div class="col">
-                    <div class="container h-100">
-                      <div class="row gameCategoriesHeader">
-                        <div class="col"><span class="catHeaderItem fw-bold">CATEGORY 1</span></div>
-                        <div class="col"><span class="catHeaderItem fw-bold">CATEGORY 2</span></div>
-                        <div class="col"><span class="catHeaderItem fw-bold">CATEGORY 3</span></div>
-                        <div class="col"><span class="catHeaderItem fw-bold">CATEGORY 4</span></div>
-                        <div class="col"><span class="catHeaderItem fw-bold">CATEGORY 5</span></div>
+          <div class="j-game-card w-100 h-100 py-3">
+            <div class="container h-100">
+              <div class="row">
+                <div class="col h-100">
+                  <div class="container h-100">
+                    <div class="row gameCategoriesHeader">
+                      <div class="col">
+                        <div class="catHeaderItem fw-bold d-flex align-items-center justify-content-center">
+                          <div>
+                            <span>CATEGORY 1</span>
+                          </div>
+                        </div>
+                        <!-- Where the clues will go -->
+                        <div class="container gx-0 mt-3">
+                          <div class="row mb-3" *ngFor="let clue of sampleClues">
+                            <div class="col">
+                              <div class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
+                                <span>${{clue}}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <div class="row">
-                        <div class="col"></div>
+                      <div class="col">
+                        <div class="catHeaderItem fw-bold d-flex align-items-center justify-content-center">
+                          <div>
+                            <span>CATEGORY 2</span>
+                          </div>
+                        </div>
+                        <!-- Where the clues will go -->
+                        <div class="container gx-0 mt-3">
+                          <div class="row mb-3" *ngFor="let clue of sampleClues">
+                            <div class="col">
+                              <div class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
+                                <span>${{clue}}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
+                      <div class="col">
+                        <div class="catHeaderItem fw-bold d-flex align-items-center justify-content-center">
+                          <div>
+                            <span>CATEGORY 3</span>
+                          </div>
+                        </div>
+                        <!-- Where the clues will go -->
+                        <div class="container gx-0 mt-3">
+                          <div class="row mb-3" *ngFor="let clue of sampleClues">
+                            <div class="col">
+                              <div class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
+                                <span>${{clue}}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="catHeaderItem fw-bold d-flex align-items-center justify-content-center">
+                          <div>
+                            <span>CATEGORY 4</span>
+                          </div>
+                        </div>
+                        <!-- Where the clues will go -->
+                        <div class="container gx-0 mt-3">
+                          <div class="row mb-3" *ngFor="let clue of sampleClues">
+                            <div class="col">
+                              <div class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
+                                <span>${{clue}}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="catHeaderItem fw-bold d-flex align-items-center justify-content-center">
+                          <div>
+                            <span>CATEGORY 5</span>
+                          </div>
+                        </div>
+                        <!-- Where the clues will go -->
+                        <div class="container gx-0 mt-3">
+                          <div class="row mb-3" *ngFor="let clue of sampleClues">
+                            <div class="col">
+                              <div class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
+                                <span>${{clue}}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col"></div>
                     </div>
                   </div>
                 </div>
-                <div class="row h-100">
-                  <div class="col h-100">
-                    <div class="playerContainer h-100">
-                      <div class="deskPlayerAvatarContainer">
-                        <img class="deskPlayerAvatar" [src]="imagePreviewUrl">
-                      </div>
-                      <div class="deskContainer d-flex justify-content-center">
-                        <div class="container deskBody">
-                          <div class="row">
-                            <div class="col">&nbsp;</div>
-                          </div>
-                          <div class="row">
-                            <div class="col-2">&nbsp;</div>
-                            <div class="col text-white nameDisplay">
-                              <div class="d-flex justify-content-center align-content-center flex-wrap h-100">
-                                <div>
-                                  <span class="fw-semibold align-middle m-0">
-                                    {{playerData.playerFirstname ? playerData.playerFirstname
-                                    + ' ' + playerData.playerLastname : 'Guest'}}
-                                  </span>
-                                </div>
+              </div>
+              <div class="row">
+                <div class="col h-100">
+                  <div class="playerContainer h-100">
+                    <div class="deskPlayerAvatarContainer">
+                      <img class="deskPlayerAvatar" [src]="imagePreviewUrl">
+                    </div>
+                    <div class="deskContainer d-flex justify-content-center">
+                      <div class="container deskBody">
+                        <div class="row">
+                          <div class="col">&nbsp;</div>
+                        </div>
+                        <div class="row">
+                          <div class="col-2">&nbsp;</div>
+                          <div class="col text-white nameDisplay">
+                            <div class="d-flex justify-content-center align-content-center flex-wrap h-100">
+                              <div>
+                                <span class="fw-semibold align-middle m-0">
+                                  {{playerData.playerFirstname ? playerData.playerFirstname
+                                  + ' ' + playerData.playerLastname : 'Guest'}}
+                                </span>
                               </div>
                             </div>
-                            <div class="col-2">&nbsp;</div>
                           </div>
-                          <div class="row" style="height: 12px">
-                            <div class="col">&nbsp;</div>
-                          </div>
-                          <div class="row">
-                            <div class="col-2">&nbsp;</div>
-                            <div class="col-8 text-white scoreDisplay">
-                              <div class="d-flex justify-content-center align-content-center flex-wrap h-100">
-                                <div>
-                                  <h2 class="fw-bold align-middle m-0">$100</h2>
-                                </div>
+                          <div class="col-2">&nbsp;</div>
+                        </div>
+                        <div class="row" style="height: 12px">
+                          <div class="col">&nbsp;</div>
+                        </div>
+                        <div class="row">
+                          <div class="col-2">&nbsp;</div>
+                          <div class="col-8 text-white scoreDisplay">
+                            <div class="d-flex justify-content-center align-content-center flex-wrap h-100">
+                              <div>
+                                <h2 class="fw-bold align-middle m-0">$10,000</h2>
                               </div>
                             </div>
-                            <div class="col-2">&nbsp;</div>
                           </div>
+                          <div class="col-2">&nbsp;</div>
+                        </div>
+                        <div class="row">
+                          <div class="col">&nbsp;</div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <!-- <a class="btn btn-sm btn3d btn-danger card-link fw-semibold">Retire</a> -->
             </div>
+            <!-- <a class="btn btn-sm btn3d btn-danger card-link fw-semibold">Retire</a> -->
           </div>
         </div>
       </div>
