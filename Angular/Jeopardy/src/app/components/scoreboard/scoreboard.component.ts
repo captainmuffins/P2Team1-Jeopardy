@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie';
 import { ConfirmationDialogService } from 'src/app/services/confirmation-dialog/confirmation-dialog.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { ScoreboardService } from 'src/app/services/scoreboard/scoreboard.service';
 
 @Component({
   selector: 'app-scoreboard',
@@ -11,6 +12,9 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./scoreboard.component.css'],
 })
 export class ScoreboardComponent implements OnInit {
+  top10Scores: any = [];
+  top3Scores: any = [];
+
   currentPlayerData: any = {};
 
   newPlayerData: any = {
@@ -45,6 +49,7 @@ export class ScoreboardComponent implements OnInit {
   formAvatar: FormGroup;
 
   constructor(
+    private _scoreboard: ScoreboardService,
     private _player: PlayersService,
     private _router: Router,
     private _cookieService: CookieService,
@@ -60,9 +65,46 @@ export class ScoreboardComponent implements OnInit {
     if (this._cookieService.get('JSESSIONID') != undefined) {
       console.log('%c[User is logged in]', 'color: blue');
       this.initPlayer();
+      this.initScoreboard();
     } else {
       console.log('%c[User is a guest]', 'color: orange');
     }
+  }
+
+  initScoreboard() {
+    this._scoreboard.getAllSessions().subscribe({
+      next: (data) => {
+        let receivedData = data.statusObject;
+        for (let i of receivedData) {
+          this.top10Scores.push(i);
+        }
+        this.top10Scores = this.top10Scores.slice(0, 10);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+    this._player.getCurrentSession().subscribe({
+      next: (data) => {
+        let receivedData = data.statusObject;
+        let playerId = receivedData.playerId;
+        this._scoreboard.getPlayerSessions(playerId).subscribe({
+          next: (data) => {
+            let receivedData = data.statusObject;
+            for (let i of receivedData) {
+              this.top3Scores.push(i);
+            }
+            this.top3Scores = this.top3Scores.slice(0, 3);
+          },
+          error: (err) => {
+            console.log(err);
+          },
+        });
+      },
+      error: (err) => {
+        // console.log(err);
+      },
+    });
   }
 
   initPlayer() {
