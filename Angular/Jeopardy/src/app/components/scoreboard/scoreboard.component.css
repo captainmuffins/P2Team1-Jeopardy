@@ -362,3 +362,7 @@ color:rgba(255, 221, 0, 1);
 .menu-item-image img {
   height: 50%
 }
+
+.card-text{
+  text-shadow: 1px 1px 1px #000;
+}
