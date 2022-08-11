@@ -10,78 +10,10 @@
                 <div class="col h-100">
                   <div class="container h-100">
                     <div class="row gameCategoriesHeader">
-                      <div class="col">
+                      <div class="col" *ngFor="let cate of sampleCategories">
                         <div class="catHeaderItem fw-bold d-flex align-items-center justify-content-center">
                           <div>
-                            <span>CATEGORY 1</span>
-                          </div>
-                        </div>
-                        <!-- Where the clues will go -->
-                        <div class="container gx-0 mt-3">
-                          <div class="row mb-3" *ngFor="let clue of sampleClues">
-                            <div class="col">
-                              <div class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
-                                <span>${{clue}}</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="catHeaderItem fw-bold d-flex align-items-center justify-content-center">
-                          <div>
-                            <span>CATEGORY 2</span>
-                          </div>
-                        </div>
-                        <!-- Where the clues will go -->
-                        <div class="container gx-0 mt-3">
-                          <div class="row mb-3" *ngFor="let clue of sampleClues">
-                            <div class="col">
-                              <div class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
-                                <span>${{clue}}</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="catHeaderItem fw-bold d-flex align-items-center justify-content-center">
-                          <div>
-                            <span>CATEGORY 3</span>
-                          </div>
-                        </div>
-                        <!-- Where the clues will go -->
-                        <div class="container gx-0 mt-3">
-                          <div class="row mb-3" *ngFor="let clue of sampleClues">
-                            <div class="col">
-                              <div class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
-                                <span>${{clue}}</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="catHeaderItem fw-bold d-flex align-items-center justify-content-center">
-                          <div>
-                            <span>CATEGORY 4</span>
-                          </div>
-                        </div>
-                        <!-- Where the clues will go -->
-                        <div class="container gx-0 mt-3">
-                          <div class="row mb-3" *ngFor="let clue of sampleClues">
-                            <div class="col">
-                              <div class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
-                                <span>${{clue}}</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col">
-                        <div class="catHeaderItem fw-bold d-flex align-items-center justify-content-center">
-                          <div>
-                            <span>CATEGORY 5</span>
+                            <span>CATEGORY {{cate}}</span>
                           </div>
                         </div>
                         <!-- Where the clues will go -->

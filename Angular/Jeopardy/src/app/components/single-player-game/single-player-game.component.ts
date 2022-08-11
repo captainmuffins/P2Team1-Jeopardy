@@ -24,6 +24,7 @@ export class SinglePlayerGameComponent implements OnInit {
   };
 
   // Testing only
+  sampleCategories = [1, 2, 3, 4, 5];
   sampleClues = [100, 200, 300, 400, 500];
 
   // Pass data from child (commons component) to parent (single-player-game component)
