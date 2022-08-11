@@ -15,6 +15,12 @@ export class SinglePlayerGameComponent implements OnInit {
 
   getCategories() {
 
+    let minC = 1;
+    let maxC = 100;
+    let countC = 5;
+
+
+
   }
 
 }

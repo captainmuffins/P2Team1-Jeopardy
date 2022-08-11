@@ -1,56 +1,3 @@
-/* Background */
-
-.bg {
-  background-size: 300% 300%;
-  background-image: linear-gradient(-45deg,
-      #3bade3 0%,
-      #4914bc 25%,
-      #9844b7 51%,
-      #9d030b 100%);
-  -webkit-animation: AnimateBG 20s ease infinite;
-  animation: AnimateBG 20s ease infinite;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
-}
-
-@-webkit-keyframes AnimateBG {
-  0% {
-    background-position: 50% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 50% 50%;
-  }
-}
-
-@keyframes AnimateBG {
-  0% {
-    background-position: 50% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 50% 50%;
-  }
-}
-
-.navbar-brand {
-  font-family: gyparodyhv;
-  font-size: 28px;
-  text-shadow: 1px 1px 1px #000;
-}
-
 .withShadow {
   text-shadow: 1px 1px 1px #000;
 }
@@ -58,4 +5,11 @@
 .titleCase {
   text-transform: capitalize;
   font-weight: bold;
+}
+
+.j-game-card {
+  background-color: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(30px);
+  color: #fff;
+  transition: .3s ease-in-out;
 }
