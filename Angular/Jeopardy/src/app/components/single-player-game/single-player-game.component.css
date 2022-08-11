@@ -13,3 +13,13 @@
   color: #fff;
   transition: .3s ease-in-out;
 }
+
+.j-game-card:hover {
+  transform: scale(1.05);
+}
+
+.j-game-card .card-text {
+  text-shadow: 1px 1px 1px #000;
+}
+
+
