@@ -1172,106 +1172,132 @@ for(this.value;this.value<=5;this.value=this.value+1){
   public H55: Boolean=false;
   public Succ:boolean=false;
   public Score:number=0;
+  public Counter:number=0;
   AnswerCleanUp(value:number,Cat:number){
     if(value==1&&Cat==1){
       this.Q11=false;
       this.A11=false;
+      this.Counter++;
     }
     if(value==2&&Cat==1){
       this.Q12=false;
       this.A12=false;
+      this.Counter++;
     }
     if(value==3&&Cat==1){
       this.Q13=false;
       this.A13=false;
+      this.Counter++;
     }
     if(value==4&&Cat==1){
       this.Q14=false;
       this.A14=false;
+      this.Counter++;
     }
     if(value==5&&Cat==1){
       this.Q15=false;
       this.A15=false;
+      this.Counter++;
     }
     if(value==1&&Cat==2){
       this.Q21=false;
       this.A21=false;
+      this.Counter++;
     }
     if(value==2&&Cat==2){
       this.Q22=false;
       this.A22=false;
+      this.Counter++;
     }
     if(value==3&&Cat==2){
       this.Q23=false;
       this.A23=false;
+      this.Counter++;
     }
     if(value==4&&Cat==2){
       this.Q24=false;
       this.A24=false;
+      this.Counter++;
     }
     if(value==5&&Cat==2){
       this.Q25=false;
       this.A25=false;
+      this.Counter++;
     }
     if(value==1&&Cat==3){
       this.Q31=false;
       this.A31=false;
+      this.Counter++;
     }
     if(value==2&&Cat==3){
       this.Q32=false;
       this.A32=false;
+      this.Counter++;
     }
     if(value==3&&Cat==3){
       this.Q33=false;
       this.A33=false;
+      this.Counter++;
     }
     if(value==4&&Cat==3){
       this.Q34=false;
       this.A34=false;
+      this.Counter++;
     }
     if(value==5&&Cat==3){
       this.Q35=false;
       this.A35=false;
+      this.Counter++;
     }
     if(value==1&&Cat==4){
       this.Q41=false;
       this.A41=false;
+      this.Counter++;
     }
     if(value==2&&Cat==4){
       this.Q42=false;
       this.A42=false;
+      this.Counter++;
     }
     if(value==3&&Cat==4){
       this.Q43=false;
       this.A43=false;
+      this.Counter++;
     }
     if(value==4&&Cat==4){
       this.Q44=false;
       this.A44=false;
+      this.Counter++;
     }
     if(value==5&&Cat==4){
       this.Q45=false;
       this.A45=false;
+      this.Counter++;
     }
     if(value==1&&Cat==5){
       this.Q51=false;
       this.A51=false;
+      this.Counter++;
     }
     if(value==2&&Cat==5){
       this.Q52=false;
       this.A52=false;
+      this.Counter++;
     }
     if(value==3&&Cat==5){
       this.Q53=false;
       this.A53=false;
+      this.Counter++;
     }
     if(value==4&&Cat==5){
       this.Q54=false;
       this.A54=false;
+      this.Counter++;
     }
     if(value==5&&Cat==5){
       this.Q55=false;
       this.A55=false;
+      this.Counter++;
     }
     if (this.Succ){
       this.Score = this.Score+value*100;
@@ -1279,9 +1305,32 @@ for(this.value;this.value<=5;this.value=this.value+1){
       this.Score=this.Score-value*100;
     }
 
-    console.log(this.Score)
-  
-  
+        if(this.Sab==1){
+        if(this.Counter==5){
+          console.log("Game Ended your score is " + this.Score);
+        }else{}
+        } else if (this.Sab==2){
+      
+        if(this.Counter==10){
+          console.log("Game Ended your score is "+ this.Score);
+          
+        }else{}}
+        else if (this.Sab==3){
+        
+        if(this.Counter==15){
+          console.log("Game Ended your score is " + this.Score);
+          
+        }else{}}else if (this.Sab==4){
+        
+        if(this.Counter==20){
+          console.log("Game Ended your score is " + this.Score);
+          
+        }else{}}else if(this.Sab==5){
+        
+        if(this.Counter==25){
+          console.log("Game Ended your score is " + this.Score);
+          
+        }else{}}
 
   }
   ChangeFaith(){
