@@ -101,11 +101,13 @@ public class SessionController {
         List<Session> sessions = null;
 
         try {
-            sessions = sessionDAO.findBySessionIdOrderBySessionWinningsDesc(playerID);
+            sessions = sessionDAO.findBySessionPlayerfkOrderBySessionWinningsDesc(playerID);
+            if(!sessions.isEmpty()){
+                response = new Response(200, "Found sessions with player ID " + playerID, true, sessions);
 
-            response = new Response(200, "Found sessions with player ID " + playerID, true, sessions);
-
-            return ResponseEntity.status(response.getStatusCode()).body(response);
+                return ResponseEntity.status(response.getStatusCode()).body(response);
+            }
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
