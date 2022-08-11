@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { PlayersService } from 'src/app/services/players/players.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie';
@@ -8,9 +8,11 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 @Component({
   selector: 'app-commons',
   templateUrl: './commons.component.html',
-  styleUrls: ['./commons.component.css']
+  styleUrls: ['./commons.component.css'],
 })
 export class CommonsComponent implements OnInit {
+  @Output() newItemEvent = new EventEmitter<any>();
+
   currentPlayerData: any = {};
 
   newPlayerData: any = {
@@ -43,6 +45,10 @@ export class CommonsComponent implements OnInit {
   imagePreviewUrl: any = '/assets/img/default_avatar_alt.png';
 
   formAvatar: FormGroup;
+
+  public get getPlayerData(): any {
+    return this.currentPlayerData;
+  }
 
   constructor(
     private _player: PlayersService,
@@ -85,6 +91,8 @@ export class CommonsComponent implements OnInit {
 
         this.imagePreviewUrl =
           'http://localhost:8080/api/players/avatar/' + receivedData.playerId;
+
+          this.newItemEvent.emit(receivedData);
       },
       error: (err) => {
         // console.log(err);
