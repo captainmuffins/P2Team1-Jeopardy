@@ -231,3 +231,69 @@ img.showAvatar {
   border: 1px solid #fff;
   background: rgba(255, 255, 255, 0.5);
 }
+
+
+/* Table styling */
+#top10 {
+  font-size: 40px;
+  font-weight: bolder;
+  text-align: center;
+  color: #f1f1f1;
+  text-shadow: 1px 1px 1px #000;
+}
+
+#myHighScores {
+  font-size: 20px;
+  font-weight: bolder;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.893);
+  text-shadow: 1px 1px 1px #000;
+ 
+}
+
+.table-hover {
+  width: 75%;
+  margin-right: auto;
+  margin-left: auto;
+  border-color: rgba(0, 0, 0, 0);
+  box-shadow:rgba(0, 0, 0, 3);
+  
+}
+
+#tablePlayers :hover {
+background-color: rgba(255, 221, 0, 0.355); 
+color:rgba(255, 221, 0, 1);
+
+
+}
+
+#tableTop3Labels {
+  
+  background-color: rgba(200, 150, 1, 0.839); 
+  color:rgba(255, 254, 249, 0.75); 
+  border-radius: 10px 0 0 0px;
+  text-shadow: 1px 1px 1px #000;
+  font-size: large;
+}
+
+#tableTop3Labels :first-child {
+  border-radius: 10px 0 0 0px;
+}
+
+#tableTop3Labels :last-child {
+  border-radius: 0 10px 0px 0px;
+}
+
+#tablePlayers {
+
+  background-color: rgba(46, 31, 57, 0.292); 
+  color:rgba(251, 249, 255, 0.75); 
+  text-shadow: 1px 1px 1px #000;
+  font-style: italic;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.12);
+}
+
+
+
+
+
