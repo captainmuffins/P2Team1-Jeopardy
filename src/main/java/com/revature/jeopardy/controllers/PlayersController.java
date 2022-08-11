@@ -11,6 +11,8 @@ import org.apache.tika.io.TikaInputStream;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.mime.MimeType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.Scope;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.InputStreamResource;
@@ -29,6 +31,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.revature.jeopardy.daos.PlayersDAO;
+import com.revature.jeopardy.daos.PlayersSummary;
 import com.revature.jeopardy.dtos.Response;
 import com.revature.jeopardy.models.Players;
 import com.revature.jeopardy.utils.AuthUtil;
@@ -68,6 +71,7 @@ public class PlayersController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST, consumes = "application/json")
+	@CacheEvict(value = "avatars", allEntries = true)
 	public ResponseEntity<Response> login(@RequestBody Players newPlayer, HttpServletRequest request) {
 
 		Players checkUser = null;
@@ -92,16 +96,14 @@ public class PlayersController {
 	}
 
 	@RequestMapping(value = "/mysession", method = RequestMethod.GET)
-	public ResponseEntity<Response> login(HttpServletRequest request) {
+	public ResponseEntity<Response> mySession(HttpServletRequest request) {
 		Response response = null;
 		Players session = null;
-		Players curPlayer = null;
+		PlayersSummary curPlayer = null;
 		try {
 			session = (Players) request.getSession().getAttribute("currentplayer");
 			if (session != null) {
-				curPlayer = playersDAO.findById(session.getPlayerId()).get();
-				curPlayer.setPlayerPassword(null);
-				curPlayer.setPlayerAvatar(null);
+				curPlayer = playersDAO.findByPlayerId(session.getPlayerId()).get(0);
 
 				response = new Response(200, "Session found", true, curPlayer);
 				return ResponseEntity.status(response.getStatusCode()).body(response);
@@ -154,21 +156,25 @@ public class PlayersController {
 	}
 
 	@DeleteMapping(value = "/byId/{playerId}")
-	public ResponseEntity deletePlayers(@PathVariable("playerId") int playerId) {
-		try{
+	public ResponseEntity<Response> deletePlayers(@PathVariable("playerId") int playerId) {
+		Response response = null;
+		try {
 			playersDAO.deleteById(playerId);
 
-			return ResponseEntity.accepted().build();
+			response = new Response(200, "Deleted Player", true, null);
+			return ResponseEntity.status(response.getStatusCode()).body(response);
 
-		} catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		return ResponseEntity.badRequest().build();
+		response = new Response(500, "Could not delete player", true, null);
+		return ResponseEntity.status(response.getStatusCode()).body(response);
 
 	}
 
 	@RequestMapping(method = RequestMethod.PUT, value = "/profile", consumes = "application/json")
+	@CacheEvict(value = "avatars", allEntries = true)
 	public ResponseEntity<Response> updateProfile(@RequestBody Players newData, HttpServletRequest request) {
 		Optional<Players> getPlayer = null;
 		Players session = null;
@@ -242,6 +248,7 @@ public class PlayersController {
 	}
 
 	@RequestMapping(method = RequestMethod.PUT, value = "/avatar", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	@CacheEvict(value = "avatars", allEntries = true)
 	public ResponseEntity<Response> updateAvatar(@RequestPart("playerAvatar") MultipartFile document,
 			HttpServletRequest request) {
 		Optional<Players> getPlayer = null;
@@ -274,6 +281,7 @@ public class PlayersController {
 	}
 
 	@GetMapping(value = "/avatar/{playerId}")
+	@Cacheable("avatars") // Enable caching on avatars for faster loading
 	public ResponseEntity<InputStreamResource> getAvatar(@PathVariable("playerId") int playerId) {
 
 		Optional<Players> getPlayer = null;
@@ -282,14 +290,15 @@ public class PlayersController {
 			getPlayer = playersDAO.findById(playerId);
 			if (getPlayer.isPresent()) {
 				Players p = getPlayer.get();
-				if(p.getPlayerAvatar() != null) {
+				if (p.getPlayerAvatar() != null) {
 					TikaConfig tika = new TikaConfig();
 					Metadata metaData = new Metadata();
 
 					InputStream is = new ByteArrayInputStream(p.getPlayerAvatar());
 					InputStreamResource isr = new InputStreamResource(is);
 
-					org.apache.tika.mime.MediaType mediaType = tika.getDetector().detect(TikaInputStream.get(is), metaData);
+					org.apache.tika.mime.MediaType mediaType = tika.getDetector().detect(TikaInputStream.get(is),
+							metaData);
 					MimeType mimeType = tika.getMimeRepository().forName(mediaType.toString());
 					HttpHeaders responseHeaders = new HttpHeaders();
 					responseHeaders.set("Content-Disposition",
@@ -302,12 +311,11 @@ public class PlayersController {
 					InputStream input = resource.getInputStream();
 					InputStreamResource isr = new InputStreamResource(input);
 					HttpHeaders responseHeaders = new HttpHeaders();
-					responseHeaders.set("Content-Disposition",
-							"inline; filename=\"default_avatar_alt.png\"");
+					responseHeaders.set("Content-Disposition", "inline; filename=\"default_avatar_alt.png\"");
 					responseHeaders.set("Content-Type", "image/png");
 					return ResponseEntity.ok().headers(responseHeaders).body(isr);
 				}
-				
+
 			}
 
 		} catch (Exception ex) {

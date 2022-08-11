@@ -16,16 +16,10 @@ export class SinglePlayerGameComponent implements OnInit {
 
   categoryData: any = {};
 
-  paramsCategory = {
-    minC: 1,
-    maxC: 100,
-    countC: 5,
-    index: 0,
-  };
-
   // Testing only
-  sampleCategories = [1, 2, 3, 4, 5];
-  sampleClues = [100, 200, 300, 400, 500];
+  sampleCategories: any = [1, 2, 3, 4, 5];
+  sampleClues: any = [100, 200, 300, 400, 500];
+  gameDataLoadingProgress: number = 0;
 
   // Pass data from child (commons component) to parent (single-player-game component)
   getPlayerData(value: any) {
@@ -33,5 +27,20 @@ export class SinglePlayerGameComponent implements OnInit {
     this.imagePreviewUrl =
       'http://localhost:8080/api/players/avatar/' + this.playerData?.playerId;
     console.log(this.playerData);
+  }
+
+  loadGameData() {
+
+    let paramsCategory = {
+      minCat: 1,
+      maxCat: 100,
+      countCat: 5,
+      countClues: 5,
+      catLoadIdx: 0,
+      clueLoadIdx: 0
+    };
+
+
+
   }
 }
