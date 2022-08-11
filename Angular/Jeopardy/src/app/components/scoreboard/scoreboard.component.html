@@ -380,7 +380,10 @@
     </div>
   </div>
   <!-- MY PROFILE STUFF ENDS HERE -->
-
+  <h1 
+  id="scoreboardPage">
+    Scoreboard
+  </h1>
   <div class="container">
     <h2 id="myHighScores">Personal Bests (Top 3)</h2>
     <table class="table table-hover">
@@ -410,7 +413,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let score of top10Scores">
+        <tr id="top10Scores" *ngFor="let score of top10Scores">
           <td>{{ score.sessionPlayerfk.playerFirstname }}</td>
           <td>{{ score.sessionPlayerfk.playerLastname }}</td>
           <td>{{ score.sessionWinnings }}</td>
