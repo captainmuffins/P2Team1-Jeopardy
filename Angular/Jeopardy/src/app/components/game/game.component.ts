@@ -1346,5 +1346,23 @@ for(this.value;this.value<=5;this.value=this.value+1){
     this.Test2();
     
   }
+  playerData: any = {};
+  imagePreviewUrl: string = '/assets/img/sableyeunknown.png';
 
+  paramsCategory = {
+    minC: 1,
+    maxC: 100,
+    countC: 5,
+    index: 0,
+  };
+
+  // Testing only
+  
+  // Pass data from child (commons component) to parent (single-player-game component)
+  getPlayerData(value: any) {
+    this.playerData = value;
+    this.imagePreviewUrl =
+      'http://localhost:8080/api/players/avatar/' + this.playerData?.playerId;
+    console.log(this.playerData);
+  }
 }

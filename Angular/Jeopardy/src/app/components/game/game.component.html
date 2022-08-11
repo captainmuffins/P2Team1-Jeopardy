@@ -1,10 +1,5 @@
 
-<button  *ngIf="!Bu2"(click)="SortC1()" class="btn btn-magick btn-success btn3d"style="margin-left:auto;margin-right:auto;" >Click me</button>
-<!-- <button (click)="StartGame()">Start</button> -->
-<!-- <button (click)="Testing()">testing the double loop</button> -->
-<button *ngIf="Bu2" (click)="NameTheCats()" class="btn btn-magick btn-success btn3d" style="margin-left:auto;margin-right:auto;">And me</button>
-
-<table *ngIf="Gremlin" style="margin-left:auto;margin-right:auto; ">
+<table *ngIf="false" style="margin-left:auto;margin-right:auto; ">
     <tr><th scope ="col" style="color:white; background-color: black;" *ngIf="Sab>=1"> {{this.Cat1.title | titlecase}}  </th>
     <th scope ="col" style="color:white; background-color: black;" *ngIf="Sab>=2"> {{this.Cat2.title | titlecase}}  </th>
     <th scope ="col" style="color:white; background-color: black;" *ngIf="Sab>=3"> {{this.Cat3.title | titlecase}}  </th>
@@ -42,7 +37,352 @@
         <td *ngIf="Sab>=5"><button *ngIf="!N55" class="btn btn-magick btn3d" style="width: 100%; background-color:  orange;" (click)="QuestionButton(5,5)">500</button></td>
     </tr>
 </table>
-
+<div class="m-auto d-flex flex-column h-100">
+    <app-commons (newItemEvent)="getPlayerData($event)"></app-commons>
+    <button  *ngIf="!Bu2"(click)="SortC1()" class="btn btn-magick btn-success btn3d"style="margin-left:auto;margin-right:auto;" >Click me</button>
+<!-- <button (click)="StartGame()">Start</button> -->
+<!-- <button (click)="Testing()">testing the double loop</button> -->
+<button *ngIf="Bu2" (click)="NameTheCats()" class="btn btn-magick btn-success btn3d" style="margin-left:auto;margin-right:auto;">And me</button>
+    <div class="container flex-grow-1 text-white pb-3">
+      <div class="card gameContainer h-100" *ngIf="Gremlin">
+        <div class="row h-100">
+          <div class="col text-center">
+            <div class="j-game-card w-100 h-100 py-3">
+              <div class="container h-100">
+                <div class="row">
+                  <div class="col h-100">
+                    <div class="container h-100">
+                      <div class="row gameCategoriesHeader">
+                        <div class="col" *ngIf="Sab>=1">
+                          <div class="catHeaderItem fw-bold d-flex align-items-center justify-content-center">
+                            <div>
+                              <span>{{this.Cat1.title | titlecase}}</span>
+                            </div>
+                          </div>
+                          <!-- Where the clues will go -->
+                          <div class="container gx-0 mt-3">
+                            <div class="row mb-3" >
+                              <div class="col">
+                                <div  class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
+                                  <span *ngIf="!N11" (click)="QuestionButton(1,1)">$100</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="container gx-0 mt-3">
+                            <div class="row mb-3" >
+                              <div class="col">
+                                <div  class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
+                                  <span *ngIf="!N12" (click)="QuestionButton(2,1)">$200</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="container gx-0 mt-3">
+                            <div class="row mb-3" >
+                              <div class="col">
+                                <div  class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
+                                  <span *ngIf="!N13"  (click)="QuestionButton(3,1)">$300</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="container gx-0 mt-3">
+                            <div class="row mb-3" >
+                              <div class="col">
+                                <div  class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
+                                  <span *ngIf="!N14" (click)="QuestionButton(4,1)">$400</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="container gx-0 mt-3">
+                            <div class="row mb-3" >
+                              <div class="col">
+                                <div  class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
+                                  <span *ngIf="!N15"  (click)="QuestionButton(5,1)">$500</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col" *ngIf="Sab>=2">
+                          <div class="catHeaderItem fw-bold d-flex align-items-center justify-content-center">
+                            <div>
+                              <span>{{this.Cat2.title | titlecase}}</span>
+                            </div>
+                          </div>
+                          <!-- Where the clues will go -->
+                          <div class="container gx-0 mt-3">
+                            <div class="row mb-3" >
+                              <div class="col">
+                                <div  class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
+                                  <span *ngIf="!N21" (click)="QuestionButton(1,2)">$100</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="container gx-0 mt-3">
+                            <div class="row mb-3" >
+                              <div class="col">
+                                <div  class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
+                                  <span *ngIf="!N22"  (click)="QuestionButton(2,2)">$200</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="container gx-0 mt-3">
+                            <div class="row mb-3" >
+                              <div class="col">
+                                <div  class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
+                                  <span *ngIf="!N23"  (click)="QuestionButton(3,2)">$300</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="container gx-0 mt-3">
+                            <div class="row mb-3" >
+                              <div class="col">
+                                <div  class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
+                                  <span *ngIf="!N24" (click)="QuestionButton(4,2)">$400</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="container gx-0 mt-3">
+                            <div class="row mb-3" >
+                              <div class="col">
+                                <div  class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
+                                  <span *ngIf="!N25"  (click)="QuestionButton(5,2)">$500</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col" *ngIf="Sab>=3">
+                          <div class="catHeaderItem fw-bold d-flex align-items-center justify-content-center">
+                            <div>
+                              <span>{{this.Cat3.title | titlecase}}</span>
+                            </div>
+                          </div>
+                          <!-- Where the clues will go -->
+                          <div class="container gx-0 mt-3">
+                            <div class="row mb-3" >
+                              <div class="col">
+                                <div  class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
+                                  <span *ngIf="!N31"(click)="QuestionButton(1,3)">$100</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="container gx-0 mt-3">
+                            <div class="row mb-3" >
+                              <div class="col">
+                                <div  class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
+                                  <span *ngIf="!N32"  (click)="QuestionButton(2,3)">$200</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="container gx-0 mt-3">
+                            <div class="row mb-3" >
+                              <div class="col">
+                                <div  class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
+                                  <span *ngIf="!N33" (click)="QuestionButton(3,3)">$300</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="container gx-0 mt-3">
+                            <div class="row mb-3" >
+                              <div class="col">
+                                <div  class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
+                                  <span *ngIf="!N34" (click)="QuestionButton(4,3)">$400</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="container gx-0 mt-3">
+                            <div class="row mb-3" >
+                              <div class="col">
+                                <div  class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
+                                  <span *ngIf="!N35" (click)="QuestionButton(5,3)">$500</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col" *ngIf="Sab>=4">
+                          <div class="catHeaderItem fw-bold d-flex align-items-center justify-content-center">
+                            <div>
+                              <span>{{this.Cat4.title | titlecase}}</span>
+                            </div>
+                          </div>
+                          <!-- Where the clues will go -->
+                          <div class="container gx-0 mt-3">
+                            <div class="row mb-3" >
+                              <div class="col">
+                                <div  class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
+                                  <span *ngIf="!N41" (click)="QuestionButton(1,4)">$100</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="container gx-0 mt-3">
+                            <div class="row mb-3" >
+                              <div class="col">
+                                <div  class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
+                                  <span *ngIf="!N42" (click)="QuestionButton(2,4)">$200</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="container gx-0 mt-3">
+                            <div class="row mb-3" >
+                              <div class="col">
+                                <div  class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
+                                  <span *ngIf="!N43" (click)="QuestionButton(3,4)">$300</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="container gx-0 mt-3">
+                            <div class="row mb-3" >
+                              <div class="col">
+                                <div  class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
+                                  <span *ngIf="!N44" (click)="QuestionButton(4,4)">$400</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="container gx-0 mt-3">
+                            <div class="row mb-3" >
+                              <div class="col">
+                                <div  class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
+                                  <span *ngIf="!N45" (click)="QuestionButton(5,4)">$500</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col" *ngIf="Sab>=5">
+                          <div class="catHeaderItem fw-bold d-flex align-items-center justify-content-center">
+                            <div>
+                              <span>{{this.Cat5.title | titlecase}}</span>
+                            </div>
+                          </div>
+                          <!-- Where the clues will go -->
+                          <div class="container gx-0 mt-3">
+                            <div class="row mb-3" >
+                              <div class="col">
+                                <div  class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
+                                  <span *ngIf="!N51" (click)="QuestionButton(1,5)">$100</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="container gx-0 mt-3">
+                            <div class="row mb-3" >
+                              <div class="col">
+                                <div  class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
+                                  <span *ngIf="!N52" (click)="QuestionButton(2,5)">$200</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="container gx-0 mt-3">
+                            <div class="row mb-3" >
+                              <div class="col">
+                                <div  class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
+                                  <span *ngIf="!N53" (click)="QuestionButton(3,5)">$300</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="container gx-0 mt-3">
+                            <div class="row mb-3" >
+                              <div class="col">
+                                <div  class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
+                                  <span *ngIf="!N54" (click)="QuestionButton(4,5)">$400</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="container gx-0 mt-3">
+                            <div class="row mb-3" >
+                              <div class="col">
+                                <div  class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
+                                  <span *ngIf="!N55" (click)="QuestionButton(5,5)">$500</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col h-100">
+                    <div class="playerContainer">
+                      <div class="deskPlayerAvatarContainer">
+                        <img class="deskPlayerAvatar" [src]="imagePreviewUrl">
+                      </div>
+                      <div class="deskContainer d-flex justify-content-center">
+                        <div class="container deskBody">
+                          <div class="row">
+                            <div class="col">&nbsp;</div>
+                          </div>
+                          <div class="row">
+                            <div class="col-2">&nbsp;</div>
+                            <div class="col text-white nameDisplay">
+                              <div class="d-flex justify-content-center align-content-center flex-wrap h-100">
+                                <div>
+                                  <span class="fw-semibold align-middle m-0">
+                                    {{playerData.playerFirstname ? playerData.playerFirstname
+                                    + ' ' + playerData.playerLastname : 'Guest'}}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-2">&nbsp;</div>
+                          </div>
+                          <div class="row" style="height: 12px">
+                            <div class="col">&nbsp;</div>
+                          </div>
+                          <div class="row">
+                            <div class="col-2">&nbsp;</div>
+                            <div class="col-8 text-white scoreDisplay">
+                              <div class="d-flex justify-content-center align-content-center flex-wrap h-100">
+                                <div>
+                                  <h2 class="fw-bold align-middle m-0">${{Score}}</h2>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-2">&nbsp;</div>
+                          </div>
+                          <div class="row">
+                            <div class="col">&nbsp;</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button *ngIf="Bu2" (click)="ChangeFaith()" class="btn btn-magick btn-danger"  style="margin-top:auto;">CHANGE YOUR DESTINY MORTAL</button>
+              <!-- <a class="btn btn-sm btn3d btn-danger card-link fw-semibold">Retire</a> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  <div>
 <button *ngIf="Q11" (click)="Buttoon(1,1)" class="btn" style="color:white; background-color: black;" >
     {{C1C1.question}}
 </button>
@@ -197,8 +537,4 @@
 <button *ngIf="A55" (click)="AnswerCleanUp(5,5)" class="btn" style="color:white; background-color: black;">
     {{C5C5.answer}}
 </button>
-<br>
-<br>
-<br>
-<button *ngIf="Bu2" (click)="ChangeFaith()" class="btn btn-magick btn-danger"  style="margin-top:auto;">CHANGE YOUR DESTINY MORTAL</button>
-<div>{{Score}}</div>
+</div>
