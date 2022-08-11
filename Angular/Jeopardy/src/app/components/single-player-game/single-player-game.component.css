@@ -92,3 +92,7 @@
 .catCluesItem:focus {
   transform: scale(0.9);
 }
+
+.playerContainer {
+  min-height: 369px;
+}
