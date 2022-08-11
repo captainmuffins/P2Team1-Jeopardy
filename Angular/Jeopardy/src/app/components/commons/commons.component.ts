@@ -42,7 +42,7 @@ export class CommonsComponent implements OnInit {
   confirmPassword = '';
 
   imageBackup: any = '';
-  imagePreviewUrl: any = '/assets/img/default_avatar_alt.png';
+  imagePreviewUrl: any = '/assets/img/sableyeunknown.png';
 
   formAvatar: FormGroup;
 

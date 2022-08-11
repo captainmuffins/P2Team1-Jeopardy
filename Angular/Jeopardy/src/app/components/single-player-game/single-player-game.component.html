@@ -1,67 +1,75 @@
 <div class="m-auto d-flex flex-column h-100">
   <app-commons (newItemEvent)="getPlayerData($event)"></app-commons>
-  <div class="gameContainer container flex-grow-1 text-white">
-    <div class="row">
-      <div class="col-lg-7 d-flex justify-content-center my-3">
-        <div class="card j-game-card w-100">
-          <div class="card-body">
-            <h5 class="card-title text-center">Game</h5>
-            <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
-            <p class="card-text">Interface for the game will be here</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-5 my-3 text-center">
-        <div class="card j-game-card w-100" style="height: 500px">
-          <div class="card-body">
-            <h5 class="card-title text-center">Status</h5>
-            <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
-            <div class="playerContainer my-3">
-              <div class="deskPlayerAvatarContainer"><img class="deskPlayerAvatar" [src]="imagePreviewUrl"></div>
-              <div class="deskContainer d-flex justify-content-center">
-                <div class="container deskBody">
-                  <div class="row">
-                    <div class="col">&nbsp;</div>
+  <div class="container flex-grow-1 text-white pb-3">
+    <div class="gameContainer h-100">
+      <div class="row h-100">
+        <div class="col text-center">
+          <div class="card j-game-card w-100 h-100">
+            <div class="card-body h-100">
+              <div class="container h-100">
+                <div class="row">
+                  <div class="col">
+                    <div class="container h-100">
+                      <div class="row gameCategoriesHeader">
+                        <div class="col"><span class="catHeaderItem fw-bold">CATEGORY 1</span></div>
+                        <div class="col"><span class="catHeaderItem fw-bold">CATEGORY 2</span></div>
+                        <div class="col"><span class="catHeaderItem fw-bold">CATEGORY 3</span></div>
+                        <div class="col"><span class="catHeaderItem fw-bold">CATEGORY 4</span></div>
+                        <div class="col"><span class="catHeaderItem fw-bold">CATEGORY 5</span></div>
+                      </div>
+                      <div class="row">
+                        <div class="col"></div>
+                      </div>
+                    </div>
                   </div>
-                  <div class="row">
-                    <div class="col-2"></div>
-                    <div class="col-8 text-white" style="background: rgb(0,29,61); height: 72px;">
-                      <div class="d-flex justify-content-center align-content-center flex-wrap h-100">
-                        <div>
-                          <h2 class="fw-bold align-middle">100</h2>
+                </div>
+                <div class="row h-100">
+                  <div class="col h-100">
+                    <div class="playerContainer h-100">
+                      <div class="deskPlayerAvatarContainer">
+                        <img class="deskPlayerAvatar" [src]="imagePreviewUrl">
+                      </div>
+                      <div class="deskContainer d-flex justify-content-center">
+                        <div class="container deskBody">
+                          <div class="row">
+                            <div class="col">&nbsp;</div>
+                          </div>
+                          <div class="row">
+                            <div class="col-2">&nbsp;</div>
+                            <div class="col text-white nameDisplay">
+                              <div class="d-flex justify-content-center align-content-center flex-wrap h-100">
+                                <div>
+                                  <span class="fw-semibold align-middle m-0">
+                                    {{playerData.playerFirstname ? playerData.playerFirstname
+                                    + ' ' + playerData.playerLastname : 'Guest'}}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-2">&nbsp;</div>
+                          </div>
+                          <div class="row" style="height: 12px">
+                            <div class="col">&nbsp;</div>
+                          </div>
+                          <div class="row">
+                            <div class="col-2">&nbsp;</div>
+                            <div class="col-8 text-white scoreDisplay">
+                              <div class="d-flex justify-content-center align-content-center flex-wrap h-100">
+                                <div>
+                                  <h2 class="fw-bold align-middle m-0">$100</h2>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-2">&nbsp;</div>
+                          </div>
                         </div>
                       </div>
                     </div>
-                    <div class="col-2"></div>
                   </div>
                 </div>
-                <!--
-                <div class="divTable">
-                  <div class="divTableBody">
-                    <div class="divTableRow deskRowColor">
-                      <div class="divTableCell">&nbsp;</div>
-                      <div class="divTableCell">&nbsp;</div>
-                      <div class="divTableCell">&nbsp;</div>
-                    </div>
-                    <div class="divTableRow deskRowBlur">
-                      <div class="divTableCell" style="width: 100%">&nbsp;</div>
-                    </div>
-                    <div class="divTableRow deskRowColor">
-                      <div class="divTableCell">&nbsp;</div>
-                      <div class="divTableCell">&nbsp;</div>
-                      <div class="divTableCell">&nbsp;</div>
-                    </div>
-                    <div class="divTableRow deskRowColor">
-                      <div class="divTableCell">&nbsp;</div>
-                      <div class="divTableCell">&nbsp;</div>
-                      <div class="divTableCell">&nbsp;</div>
-                    </div>
-                  </div>
-                </div>
-                -->
               </div>
+              <!-- <a class="btn btn-sm btn3d btn-danger card-link fw-semibold">Retire</a> -->
             </div>
-            <!-- <a class="btn btn-sm btn3d btn-danger card-link fw-semibold">Retire</a> -->
           </div>
         </div>
       </div>

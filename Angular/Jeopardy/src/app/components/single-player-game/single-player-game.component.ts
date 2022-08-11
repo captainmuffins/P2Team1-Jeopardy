@@ -10,7 +10,7 @@ export class SinglePlayerGameComponent implements OnInit {
   constructor(private _jeopardyService: JeopardyService) {}
 
   playerData: any = {};
-  imagePreviewUrl: string = '/assets/img/default_avatar_alt.png';
+  imagePreviewUrl: string = '/assets/img/sableyeunknown.png';
 
   ngOnInit(): void {}
 
