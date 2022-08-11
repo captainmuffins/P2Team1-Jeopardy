@@ -14,6 +14,7 @@
   transition: .3s ease-in-out;
 }
 
+<<<<<<< HEAD
 .deskPlayerAvatar {
   width: 128px;
   /*
@@ -98,3 +99,14 @@
 .divTableBody {
   display: table-row-group;
 }
+=======
+.j-game-card:hover {
+  transform: scale(1.05);
+}
+
+.j-game-card .card-text {
+  text-shadow: 1px 1px 1px #000;
+}
+
+
+>>>>>>> d86c608de2d74cd394d84105c60d87e3c2a4dd85
