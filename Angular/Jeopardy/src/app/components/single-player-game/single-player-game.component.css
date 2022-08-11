@@ -20,6 +20,7 @@
   background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(20px);
   border-radius: 6px;
+  min-width: 540px;
 }
 
 .deskPlayerAvatar {
