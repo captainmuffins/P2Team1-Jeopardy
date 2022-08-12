@@ -5,10 +5,10 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class JeopardyService {
-  private _getCategory = 'http://jservice.io/api/categories';
+  private _getCategory = 'https://jservice.io/api/category';
 
   constructor(private http: HttpClient) {}
   getCategory(catId: number) {
-    return this.http.get<any>(this._getCategory + '?count=' + catId);
+    return this.http.get<any>(this._getCategory + '?id=' + catId);
   }
 }
