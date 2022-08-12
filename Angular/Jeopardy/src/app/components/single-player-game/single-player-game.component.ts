@@ -19,7 +19,7 @@ export class SinglePlayerGameComponent implements OnInit {
 
   // Testing only
   // sampleCategories: any = [1, 2, 3, 4, 5];
-  //sampleClues: any = [100, 200, 300, 400, 500];
+  clueValuesSearch: Array<number> = [100, 200, 300, 400, 500];
   gameDataLoadingProgress: number = 0;
 
   // Store retrieved categories and clues
@@ -38,25 +38,57 @@ export class SinglePlayerGameComponent implements OnInit {
 
   gameIsHidden: boolean = true;
 
+  gameScore: number = 0;
+
   ngOnInit(): void {
     // test 5 categories
     this.retrieveGameData(5);
     // this.getFactors();
   }
 
-  attemptClues(catNum:number, clueNum:number) {
+  attemptClues(catNum: number, clueNum: number) {}
 
+  buildCluesArray(cluesArr: Array<any>): Array<any> {
+    let clueSetPush: Array<any> = [];
+
+    for (let i = 0; i < this.clueValuesSearch.length; i++) {
+      let ele = this.clueValuesSearch[i];
+      let filteredClue = cluesArr.filter(function (el) {
+        return el.value === ele;
+      });
+
+      let randIdx = Math.floor(Math.random() * (filteredClue.length - 1));
+      clueSetPush.push(filteredClue[randIdx]);
+    }
+
+    return clueSetPush;
   }
 
+  getCluesPerCategory() {
+    for (let i = 0; i < this.jCategories.length; i++) {
+      const curCat = this.jCategories[i];
+      const randClues = this.buildCluesArray(curCat.clues);
+      this.jClues.push(randClues);
+    }
+
+    console.log('%c[Array of categories]', 'color: magenta');
+    console.log(this.jCategories);
+    console.log('%c[Array of clues per category]', 'color: magenta');
+    console.log(this.jClues);
+  }
+
+  /* Old method to get clues per category. Not recommended.
   getCluesPerCategory() {
     // Get Clues
     for (let x = 0; x < this.jCluesOffset.length; x++) {
       let curOffset = this.jCluesOffset[x];
       let curCat = this.jCategories[x];
       let cluesPerCat: any = [];
+
       for (let y = curOffset; y < curOffset + 5; y++) {
         cluesPerCat.push(curCat.clues[y]);
       }
+
       this.jClues.push(cluesPerCat);
     }
     console.log('%c[Array of categories]', 'color: magenta');
@@ -66,6 +98,7 @@ export class SinglePlayerGameComponent implements OnInit {
     console.log('%c[Array of clues per category]', 'color: magenta');
     console.log(this.jClues);
   }
+  */
 
   getFactors() {
     let max = 2000;
@@ -118,14 +151,19 @@ export class SinglePlayerGameComponent implements OnInit {
     this._jeopardyService.getCategory(catId).subscribe({
       next: (data) => {
         // console.log(data);
-        if (data.clues_count >= 5) {
+        if (data.clues_count > 9) {
           console.log('%c[Pushed category data to array]', 'color: green');
           this.jCategories.push(data);
+
+          /* Old method to get clues per category. Not recommended.
           if (data.clues_count === 5) {
             this.jCluesOffset.push(0);
           } else {
             this.jCluesOffset.push(this.randomCluesOffset(data.clues_count));
           }
+          // this.jCluesOffset.push(this.randomCluesOffset(data.clues_count));
+          */
+
           this.paramsCategory.catLoadIdx++;
           if (this.paramsCategory.catLoadIdx < numCat) {
             this.retrieveGameData(numCat);
@@ -138,7 +176,7 @@ export class SinglePlayerGameComponent implements OnInit {
           }
         } else {
           console.log(
-            '%c[Category has less than 5 clues. Retrieving another random one.]',
+            '%c[Category has less than 10 clues. Retrieving another random one.]',
             'color: orange'
           );
           this.retrieveGameData(numCat);
