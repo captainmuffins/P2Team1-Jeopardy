@@ -11,6 +11,7 @@ export class SinglePlayerGameComponent implements OnInit {
     this.JSON = JSON;
   }
   JSON: any = {};
+  bootstrap: any = {};
   playerData: any = {};
   imagePreviewUrl: string = '/assets/img/sableyeunknown.png';
 
@@ -41,6 +42,10 @@ export class SinglePlayerGameComponent implements OnInit {
     // test 5 categories
     this.retrieveGameData(5);
     // this.getFactors();
+  }
+
+  attemptClues(catNum:number, clueNum:number) {
+
   }
 
   getCluesPerCategory() {

@@ -24,7 +24,18 @@
 }
 
 .deskPlayerAvatar {
-  width: 192px;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: -1;
+  border-radius: 50%;
+  top: 21px;
+  border: 2px solid #000;
+  background: rgba(0,0,0,0.5);
 }
 
 .deskBody {
@@ -42,7 +53,7 @@
   right: 0;
   margin-left: auto;
   margin-right: auto;
-  bottom: 148px
+  bottom: 100px
 }
 
 .deskContainer {
@@ -95,4 +106,28 @@
 
 .playerContainer {
   min-height: 369px;
+}
+
+#offcanvasClues .alert {
+  display: none;
+}
+
+#offcanvasClues div.alert.activeStatus {
+  animation: statusEntrance 1s ease 0s 1 normal forwards;
+  display: block;
+}
+
+#offcanvasClues .hideElem {
+  display: none;
+}
+
+#offcanvasClues .btn {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+#offcanvasClues {
+  border: none;
+  background: transparent;
+  backdrop-filter: blur(20px);
 }

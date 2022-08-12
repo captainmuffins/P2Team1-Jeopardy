@@ -18,9 +18,12 @@
                         </div>
                         <!-- Where the clues will go -->
                         <div class="container gx-0 mt-3">
-                          <div class="row mb-3" *ngFor="let myclue of jClues[j]">
+                          <div class="row mb-3" *ngFor="let myclue of jClues[j], let i = index">
                             <div class="col">
-                              <div class="catCluesItem fw-bold d-flex align-items-center justify-content-center">
+                              <div id="catClues-"
+                                class="catCluesItem fw-bold d-flex align-items-center justify-content-center"
+                                (click)="attemptClues(j,i)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasClues"
+                                aria-controls="offcanvasClues">
                                 <span>${{myclue["value"] ? myclue["value"] : '0'}}</span>
                               </div>
                             </div>
@@ -38,6 +41,7 @@
                 <div class="col h-100">
                   <div class="playerContainer">
                     <div class="deskPlayerAvatarContainer">
+                      <img src="/assets/img/robot.png" style="width: 240px;">
                       <img class="deskPlayerAvatar" [src]="imagePreviewUrl">
                     </div>
                     <div class="deskContainer d-flex justify-content-center">
@@ -83,6 +87,37 @@
               </div>
             </div>
             <!-- <a class="btn btn-sm btn3d btn-danger card-link fw-semibold">Retire</a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Offcanvas -->
+  <div class="offcanvas offcanvas-bottom h-100" tabindex="-1" id="offcanvasClues" aria-labelledby="offcanvasCluesLabel"
+    data-bs-keyboard="false">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title text-white" id="offcanvasCluesLabel">
+        Attempt Answer
+      </h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body-wrapper w-100 m-auto" style="max-width: 576px">
+      <div class="offcanvas-body">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <div id="cluesContainer text-white"></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div id="inputContainer text-white"></div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div id="submitInput text-white"><a class="btn btn3d btn-primary">Submit</a></div>
+            </div>
           </div>
         </div>
       </div>
