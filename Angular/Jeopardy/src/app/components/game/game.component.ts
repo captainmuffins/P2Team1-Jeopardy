@@ -7,6 +7,7 @@ import { jeopardyservice } from 'src/app/jeopardyservice';
 import { Category } from 'src/app/models/category/category';
 import { Clue } from 'src/app/models/clue/clue';
 import { CategorySelectorComponent } from '../category-selector/category-selector.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-game',
@@ -1042,107 +1043,261 @@ for(this.value;this.value<=5;this.value=this.value+1){
   public A53: Boolean=false;
   public A54: Boolean=false;
   public A55: Boolean=false;
+  public Answer: String="";
+  public CeCe: String ="";
   Buttoon(value:number,Cat:number){
     if(value==1&&Cat==1){
       this.Q11=false;
       this.A11=true;
+      if(this.Answer==this.C1C1.answer){
+        console.log("correct");
+        this.Score = this.Score+value*100;
+        }else{
+        this.Score = this.Score-value*100;
+        }
     }
     if(value==2&&Cat==1){
       this.Q12=false;
       this.A12=true;
+      if(this.Answer==this.C1C2.answer){
+        console.log("correct");
+        this.Score = this.Score+value*100;
+        }else{
+        this.Score = this.Score-value*100;
+        }
     }
     if(value==3&&Cat==1){
       this.Q13=false;
       this.A13=true;
+      if(this.Answer==this.C1C3.answer){
+        console.log("correct");
+        this.Score = this.Score+value*100;
+        }else{
+        this.Score = this.Score-value*100;
+        }
     }
     if(value==4&&Cat==1){
       this.Q14=false;
       this.A14=true;
+      if(this.Answer==this.C1C4.answer){
+        console.log("correct");
+        this.Score = this.Score+value*100;
+        }else{
+        this.Score = this.Score-value*100;
+        }
     }
     if(value==5&&Cat==1){
       this.Q15=false;
       this.A15=true;
+      if(this.Answer==this.C1C5.answer){
+        console.log("correct");
+        this.Score = this.Score+value*100;
+        }else{
+        this.Score = this.Score-value*100;
+        }
     }
     if(value==1&&Cat==2){
       this.Q21=false;
       this.A21=true;
+      if(this.Answer==this.C2C1.answer){
+        console.log("correct");
+        this.Score = this.Score+value*100;
+        }else{
+        this.Score = this.Score-value*100;
+        }
     }
     if(value==2&&Cat==2){
       this.Q22=false;
       this.A22=true;
+      if(this.Answer==this.C2C2.answer){
+        console.log("correct");
+        this.Score = this.Score+value*100;
+        }else{
+        this.Score = this.Score-value*100;
+        }
     }
     if(value==3&&Cat==2){
       this.Q23=false;
       this.A23=true;
+      if(this.Answer==this.C2C3.answer){
+        console.log("correct");
+        this.Score = this.Score+value*100;
+        }else{
+        this.Score = this.Score-value*100;
+        }
     }
     if(value==4&&Cat==2){
       this.Q24=false;
       this.A24=true;
+      if(this.Answer==this.C2C4.answer){
+        console.log("correct");
+        this.Score = this.Score+value*100;
+        }else{
+        this.Score = this.Score-value*100;
+        }
     }
     if(value==5&&Cat==2){
       this.Q25=false;
       this.A25=true;
+      if(this.Answer==this.C2C5.answer){
+        console.log("correct");
+        this.Score = this.Score+value*100;
+        }else{
+        this.Score = this.Score-value*100;
+        }
     }
     if(value==1&&Cat==3){
       this.Q31=false;
       this.A31=true;
+      if(this.Answer==this.C3C1.answer){
+        console.log("correct");
+        this.Score = this.Score+value*100;
+        }else{
+        this.Score = this.Score-value*100;
+        }
     }
     if(value==2&&Cat==3){
       this.Q32=false;
       this.A32=true;
+      if(this.Answer==this.C3C2.answer){
+        console.log("correct");
+        this.Score = this.Score+value*100;
+        }else{
+        this.Score = this.Score-value*100;
+        }
     }
     if(value==3&&Cat==3){
       this.Q33=false;
       this.A33=true;
+      if(this.Answer==this.C3C3.answer){
+        console.log("correct");
+        this.Score = this.Score+value*100;
+        }else{
+        this.Score = this.Score-value*100;
+        }
     }
     if(value==4&&Cat==3){
       this.Q34=false;
       this.A34=true;
+      if(this.Answer==this.C3C4.answer){
+        console.log("correct");
+        this.Score = this.Score+value*100;
+        }else{
+        this.Score = this.Score-value*100;
+        }
     }
     if(value==5&&Cat==3){
       this.Q35=false;
       this.A35=true;
+      if(this.Answer==this.C3C5.answer){
+        console.log("correct");
+        this.Score = this.Score+value*100;
+        }else{
+        this.Score = this.Score-value*100;
+        }
     }
     if(value==1&&Cat==4){
       this.Q41=false;
       this.A41=true;
+      if(this.Answer==this.C4C1.answer){
+        console.log("correct");
+        this.Score = this.Score+value*100;
+        }else{
+        this.Score = this.Score-value*100;
+        }
     }
     if(value==2&&Cat==4){
       this.Q42=false;
       this.A42=true;
+      if(this.Answer==this.C4C2.answer){
+        console.log("correct");
+        this.Score = this.Score+value*100;
+        }else{
+        this.Score = this.Score-value*100;
+        }
     }
     if(value==3&&Cat==4){
       this.Q43=false;
       this.A43=true;
+      if(this.Answer==this.C4C3.answer){
+        console.log("correct");
+        this.Score = this.Score+value*100;
+        }else{
+        this.Score = this.Score-value*100;
+        }
     }
     if(value==4&&Cat==4){
       this.Q44=false;
       this.A44=true;
+      if(this.Answer==this.C4C4.answer){
+        console.log("correct");
+        this.Score = this.Score+value*100;
+        }else{
+        this.Score = this.Score-value*100;
+        }
     }
     if(value==5&&Cat==4){
       this.Q45=false;
       this.A45=true;
+      if(this.Answer==this.C4C5.answer){
+        console.log("correct");
+        this.Score = this.Score+value*100;
+        }else{
+        this.Score = this.Score-value*100;
+        }
     }
     if(value==1&&Cat==5){
       this.Q51=false;
       this.A51=true;
+      if(this.Answer==this.C5C1.answer){
+        console.log("correct");
+        this.Score = this.Score+value*100;
+        }else{
+        this.Score = this.Score-value*100;
+        }
     }
     if(value==2&&Cat==5){
       this.Q52=false;
       this.A52=true;
+      if(this.Answer==this.C5C2.answer){
+        console.log("correct");
+        this.Score = this.Score+value*100;
+        }else{
+        this.Score = this.Score-value*100;
+        }
     }
     if(value==3&&Cat==5){
       this.Q53=false;
       this.A53=true;
+      if(this.Answer==this.C5C3.answer){
+        console.log("correct");
+        this.Score = this.Score+value*100;
+        }else{
+        this.Score = this.Score-value*100;
+        }
     }
     if(value==4&&Cat==5){
       this.Q54=false;
       this.A54=true;
+      if(this.Answer==this.C5C4.answer){
+        console.log("correct");
+        this.Score = this.Score+value*100;
+        }else{
+        this.Score = this.Score-value*100;
+        }
     }
     if(value==5&&Cat==5){
       this.Q55=false;
       this.A55=true;
+      if(this.Answer==this.C5C5.answer){
+        console.log("correct");
+        this.Score = this.Score+value*100;
+        }else{
+        this.Score = this.Score-value*100;
+        }
     }
+    
+    
   }
 
   public H11: Boolean=false;
@@ -1298,11 +1453,6 @@ for(this.value;this.value<=5;this.value=this.value+1){
       this.Q55=false;
       this.A55=false;
       this.Counter++;
-    }
-    if (this.Succ){
-      this.Score = this.Score+value*100;
-    }else{
-      this.Score=this.Score-value*100;
     }
 
         if(this.Sab==1){
