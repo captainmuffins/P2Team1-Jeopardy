@@ -35,6 +35,8 @@ export class SinglePlayerGameComponent implements OnInit {
     clueLoadIdx: 0,
   };
 
+  gameIsHidden: boolean = true;
+
   ngOnInit(): void {
     // test 5 categories
     this.retrieveGameData(5);

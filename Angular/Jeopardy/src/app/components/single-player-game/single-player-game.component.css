@@ -45,7 +45,7 @@
   bottom: 148px
 }
 
-.deskContainer.d-flex.justify-content-center {
+.deskContainer {
   position: absolute;
   z-index: 11;
   left: 0;
