@@ -37,8 +37,8 @@ public class SessionController {
     private GamesDAO gameDAO;
 
     @PostMapping
-    public ResponseEntity<Session> addSession(@RequestBody SessionDTO sessionDTO){
-
+    public ResponseEntity<Response> addSession(@RequestBody SessionDTO sessionDTO){
+        Response response;
         try {
             // Use DTO, find player, game by Id, set game and player
             // save session
@@ -55,18 +55,22 @@ public class SessionController {
             session.setSessionGamefk(game);
 
             Session newSession = sessionDAO.save(session);
+            
+
 
             if(newSession == null){
-                return ResponseEntity.badRequest().build();
+                response = new Response(400, "New Session is null", false, null);
+                return ResponseEntity.badRequest().body(response);
             }
-            
-            return ResponseEntity.accepted().build();
+            response = new Response(202, "Session added Successfully", true, newSession);
+            return ResponseEntity.accepted().body(response);
 
         } catch (Exception e){
             e.printStackTrace();
         }
 
-        return ResponseEntity.badRequest().build();
+        response = new Response(400, "Error adding session", false, null);
+        return ResponseEntity.badRequest().body(response);
 
     }
 
@@ -119,19 +123,22 @@ public class SessionController {
 
 
     @DeleteMapping("/byId/{id}")
-    public ResponseEntity deleteSession(@PathVariable int id){
+    public ResponseEntity<Response> deleteSession(@PathVariable int id){
 
+        Response response;
         try{
 
             sessionDAO.deleteById(id);
 
-            return ResponseEntity.accepted().build();
+            response = new Response(202, "Session deleted successfully", true, null);
+            return ResponseEntity.accepted().body(response);
 
         } catch (Exception e){
             e.printStackTrace();
         }
 
-        return ResponseEntity.badRequest().build();
+        response = new Response(400, "Error deleting session", false, null);
+        return ResponseEntity.badRequest().body(response);
 
     }
 

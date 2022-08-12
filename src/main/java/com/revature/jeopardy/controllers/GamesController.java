@@ -23,38 +23,44 @@ public class GamesController {
     private GamesDAO gamesDAO;
 
     @PostMapping
-    public ResponseEntity addGame(@RequestBody Games games){
+    public ResponseEntity<Response> addGame(@RequestBody Games games){
+
+        Response response;
 
         try{
 
             Games newGame = gamesDAO.save(games);
 
             if(newGame != null){
-                return ResponseEntity.accepted().build();
+                response = new Response(202, "Game added successfully", true, newGame);
+                return ResponseEntity.accepted().body(response);
             }
 
         } catch(Exception e){
             e.printStackTrace();
         }
 
-        return ResponseEntity.badRequest().build();
+        response = new Response(400, "Error adding game", false, null);
+        return ResponseEntity.badRequest().body(response);
 
     }
 
     @DeleteMapping("byId/{id}")
-    public ResponseEntity deleteGame(@PathVariable int id){
-
+    public ResponseEntity<Response> deleteGame(@PathVariable int id){
+        Response response;
         try{
 
             gamesDAO.deleteById(id);
+            response = new Response(202, "Game deleted successfully", true, null);
 
-            return ResponseEntity.accepted().build();
+            return ResponseEntity.accepted().body(response);
 
         } catch (Exception e){
             e.printStackTrace();
         }
 
-        return ResponseEntity.badRequest().build();
+        response = new Response(400, "Error deleting game", false, null);
+        return ResponseEntity.badRequest().body(response);
 
     }
     
