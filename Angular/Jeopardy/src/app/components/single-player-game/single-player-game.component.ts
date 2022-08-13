@@ -82,7 +82,8 @@ export class SinglePlayerGameComponent implements OnInit {
 
   submitAnswer() {
     const clueAns = this.attemptData.curClue?.answer as String;
-    const cleanClueAns = clueAns.replace(/[^\w\s\']/g, '');
+    const cleanClueAns = clueAns.replace(/[^\w\s\'\-]/g, '');
+    console.log(cleanClueAns);
     const answer = this.attemptData.userAnswer as String;
     const value = this.attemptData.curClue?.value as number;
     this.attemptData.disableSubmit = true;
@@ -98,6 +99,8 @@ export class SinglePlayerGameComponent implements OnInit {
     this.attemptData.numOfAttempts++;
     setTimeout(() => {
       document.getElementById('closeOffcanvasClues')?.click();
+
+      // Game stops when all clues have been attempted
       if (this.attemptData.maxClues == this.attemptData.numOfAttempts) {
         setTimeout(() => {
           this.hideGame = true;
@@ -105,6 +108,11 @@ export class SinglePlayerGameComponent implements OnInit {
         }, 1000);
       }
     }, 2000);
+  }
+
+  retireEarly() {
+    this.hideGame = true;
+    this.hideGameOver = false;
   }
 
   buildCluesArray(cluesArr: Array<any>): Array<any> {
@@ -128,7 +136,10 @@ export class SinglePlayerGameComponent implements OnInit {
   getCluesPerCategory() {
     for (let i = 0; i < this.jCategories.length; i++) {
       const curCat = this.jCategories[i];
-      const randClues = this.buildCluesArray(curCat.clues);
+      let randClues = this.buildCluesArray(curCat.clues);
+      while(randClues.length < 5) {
+        randClues = this.buildCluesArray(curCat.clues);
+      }
       this.jClues.push(randClues);
     }
 
