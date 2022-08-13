@@ -286,6 +286,8 @@ color:rgba(255, 221, 0, 1);
   text-shadow: 1px 1px 1px #000;
   font-size: large;
   text-align: center;
+  vertical-align: middle;
+  line-height: normal;
 }
 
 #tableTop3Labels :first-child {
@@ -315,6 +317,11 @@ color:rgba(255, 221, 0, 1);
   text-shadow: 1px 1px 1px #000;
   font-size: large;
   text-align: center;
+ 
+  vertical-align: middle;
+  line-height: normal;
+  
+
   }
   
   #tableGlobalLabels :first-child {
@@ -323,6 +330,9 @@ color:rgba(255, 221, 0, 1);
   
   #tableGlobalLabels :last-child {
     border-radius: 0 10px 0px 0px;
+    text-align: center;
+    
+    
   }
 
 
