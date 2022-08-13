@@ -3,12 +3,63 @@
   <div class="container flex-grow-1 text-white pb-3">
     <div class="card gameContainer h-100">
       <div class="row h-100">
-        <div class="col text-center">
-          <div class="j-game-card w-100 h-100 py-3">
-            <div class="container h-100">
+        <div class="col text-center h-100">
+          <!-- Game Options -->
+          <div class="jGameOptions h-100" [ngClass]="hideGameOptions ? 'hiddenLayer': ''">
+            <div class="d-flex align-items-center justify-content-center h-100">
+              <div class="jGameOptionsCon container">
+                <div class="row">
+                  <div class="col">
+                    <h5>Select How Many Categories To Play</h5>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col mt-3">
+                    <select class="form-select" aria-label="Default select example" [(ngModel)]="selectedCat">
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                      <option value="4">Four</option>
+                      <option value="5">Five</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col">
+                    <a class="btn btn-success btn3d fw-semibold" (click)="doLoad()">Start Game</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Game Loading -->
+          <div class="jGameLoading h-100" [ngClass]="hideGameLoading ? 'hiddenLayer': ''">
+            <div class="d-flex align-items-center justify-content-center h-100">
+              <div class="jGameLoadingCon container">
+                <div class="row">
+                  <div class="col">
+                    <h4>Game Loading. Please Wait.</h4>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col mt-3">
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-striped bg-info progress-bar-animated" role="progressbar"
+                        aria-label="Data retrieval prorgress" [ngStyle]="{'width': curProgress + '%'}"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Game Area -->
+          <div class="jGameArea pt-3 h-100" [ngClass]="hideGame ? 'hiddenLayer': ''">
+            <div class="container">
               <div class="row">
-                <div class="col h-100">
-                  <div class="container h-100 gameBoard">
+                <div class="col">
+                  <div class="container">
                     <div class="row">
                       <div class="col" *ngFor="let jCat of jCategories; let j = index">
                         <div class="catHeaderItem fw-bold d-flex align-items-center justify-content-center">
@@ -38,7 +89,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col h-100">
+                <div class="col">
                   <div class="playerContainer">
                     <div class="deskPlayerAvatarContainer">
                       <img src="/assets/img/robot.png" style="width: 240px;">
@@ -86,7 +137,6 @@
                 </div>
               </div>
             </div>
-            <!-- <a class="btn btn-sm btn3d btn-danger card-link fw-semibold">Retire</a> -->
           </div>
         </div>
       </div>

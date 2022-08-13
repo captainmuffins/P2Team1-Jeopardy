@@ -7,7 +7,8 @@
   font-weight: bold;
 }
 
-.j-game-card {
+/*
+.jGameArea {
   background: transparent;
   backdrop-filter: blur(30px);
   color: #fff;
@@ -15,12 +16,12 @@
   border: 0;
   border-radius: 6px;
 }
+*/
 
 .gameContainer {
   background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(20px);
   border-radius: 6px;
-  min-width: 540px;
 }
 
 .deskPlayerAvatar {
@@ -130,4 +131,20 @@
   border: none;
   background: transparent;
   backdrop-filter: blur(20px);
+}
+
+.gameContainer .hiddenLayer {
+  display: none;
+}
+
+.jGameOptionsCon {
+  max-width: 360px;
+}
+
+.jGameLoadingCon {
+  max-width: 360px;
+}
+
+.jGameOptionsCon, .jGameLoadingCon, .jGameArea {
+  transition: 0.5s ease-out;
 }
