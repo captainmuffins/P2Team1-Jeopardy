@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -74,8 +75,30 @@ public class SessionController {
 
     }
 
-    // put for updates
+    @PutMapping("/id/{id}")
+    public ResponseEntity<Response> updateSession(@RequestBody SessionDTO session, @PathVariable int id){
+        // Find session by id first, then update it and save it to database
+        Response response;
 
+        try{
+            Optional<Session> sessionOptional = sessionDAO.findById(id);
+            Session oldSession = sessionOptional.get();
+            oldSession.setSessionWinner(session.isSessionWinner());
+            oldSession.setSessionWinnings(session.getSessionWinnings());
+
+            Session newSession = sessionDAO.save(oldSession);
+
+            response = new Response(202, "Session updated Successfully", true, newSession);
+            return ResponseEntity.accepted().body(response);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        
+
+        response = new Response(400, "Error updating session", false, null);
+        return ResponseEntity.badRequest().body(response);
+    }
 
 
     @GetMapping

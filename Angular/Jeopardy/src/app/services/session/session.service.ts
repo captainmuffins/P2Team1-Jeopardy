@@ -19,4 +19,10 @@ export class SessionService {
       withCredentials: true,
     });
   }
+
+  updateSession(session: any) {
+    return this.http.put<any>(this._sessions, session, {
+      withCredentials: true,
+    });
+  }
 }
