@@ -59,9 +59,20 @@ export class SinglePlayerGameComponent implements OnInit {
     disableSubmit: false,
   };
 
+  audio = new Audio();
+
   ngOnInit(): void {
-    // test 5 categories
-    // this.retrieveGameData(5);
+    // Pre-load audio
+    this.audio.src = "../../../assets/audio/roundabout.mp3";
+  }
+
+  playAudio(){
+    this.audio.load();
+    this.audio.play();
+  }
+
+  stopAudio() {
+    this.audio.pause();
   }
 
   reloadCurrentPage() {
@@ -69,6 +80,7 @@ export class SinglePlayerGameComponent implements OnInit {
   }
 
   attemptClues(catNum: number, clueNum: number) {
+    this.playAudio();
     const elem = document.getElementById(
       'catClues-' + catNum + '-' + clueNum
     ) as HTMLElement;
@@ -81,6 +93,7 @@ export class SinglePlayerGameComponent implements OnInit {
   }
 
   submitAnswer() {
+    this.stopAudio();
     const clueAns = this.attemptData.curClue?.answer as String;
     const cleanClueAns = clueAns.replace(/[^\w\s\'\-]/g, '');
     console.log(cleanClueAns);

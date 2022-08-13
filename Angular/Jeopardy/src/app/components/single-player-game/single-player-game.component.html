@@ -61,7 +61,7 @@
                 <div class="col">
                   <div class="container">
                     <div class="row">
-                      <div class="col" *ngFor="let jCat of jCategories; let j = index">
+                      <div class="col" *ngFor="let jCat of (jCategories ? jCategories : []); let j = index">
                         <div class="catHeaderItem fw-bold d-flex align-items-center justify-content-center">
                           <div>
                             <span>{{jCat.title | uppercase}}</span>
@@ -69,7 +69,7 @@
                         </div>
                         <!-- Where the clues will go -->
                         <div class="container gx-0 mt-3">
-                          <div class="row mb-3" *ngFor="let myclue of jClues[j], let i = index">
+                          <div class="row mb-3" *ngFor="let myclue of (jClues[j] ? jClues[j] : []), let i = index">
                             <div class="col">
                               <div id="catClues-{{j}}-{{i}}"
                                 class="catCluesItem fw-bold d-flex align-items-center justify-content-center"
@@ -205,7 +205,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col mt-3">
+              <div class="col mt-2">
                 <div id="inputContainer">
                   <div class="form-floating text-start">
                     <input type="text" class="form-control" id="floatingInputValue" placeholder="love"
