@@ -1,5 +1,7 @@
 package com.revature.jeopardy.controllers;
 
+import java.sql.Timestamp;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.ResponseEntity;
@@ -23,14 +25,17 @@ public class GamesController {
     private GamesDAO gamesDAO;
 
     @PostMapping
-    public ResponseEntity<Response> addGame(@RequestBody Games games){
+    public ResponseEntity<Response> addGame(){
 
         Response response;
 
         try{
 
-            Games newGame = gamesDAO.save(games);
+            Games newGame = new Games();
+            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+            newGame.setGameCreated(timestamp);
 
+            newGame = gamesDAO.save(newGame);
             if(newGame != null){
                 response = new Response(202, "Game added successfully", true, newGame);
                 return ResponseEntity.accepted().body(response);
