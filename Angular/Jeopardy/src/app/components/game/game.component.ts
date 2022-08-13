@@ -16,6 +16,8 @@ import { SessionService } from 'src/app/services/session/session.service';
   styleUrls: ['./game.component.css'],
 })
 export class GameComponent implements OnInit {
+  public currentGameId = '';
+  public currentSessionId = '';
   public Bob: Array<number>;
   public Sab: number = 5;
   public a: number = 1;
@@ -1584,7 +1586,7 @@ export class GameComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-    //this.StartGame();
+    //this.gameStart();  UNCOMMENT THIS IF YOU WANT TO TEST THE DATABASE FUNCTIONALITY ON GAME START!!!!!!!!
     this.Test2();
   }
   playerData: any = {};
@@ -1600,6 +1602,25 @@ export class GameComponent implements OnInit {
   // Sending requests to database on gamestart and gameend
   gameStart() {
     // on game start make new game record THEN make new session record
+    this.ss.addGame().subscribe({
+      next: (data) => {
+        this.currentGameId = data.statusObject.gameId;
+        let sessionDTO = {
+          sessionWinnings: 0,
+          sessionWinner: false,
+          sessionPlayerfk: this.playerData.playerId,
+          sessionGamefk: this.currentGameId,
+        };
+        console.log('GAME CREATED, ID IS ' + this.currentGameId);
+        console.log(data);
+        this.ss.addSession(sessionDTO).subscribe({
+          next: (data2) => {
+            this.currentSessionId = data2.statusObject.sessionId;
+            console.log('SESSION CREATED, ID IS ' + this.currentSessionId);
+          },
+        });
+      },
+    });
   }
 
   gameEnd() {
