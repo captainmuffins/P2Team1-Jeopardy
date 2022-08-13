@@ -988,6 +988,7 @@ export class GameComponent implements OnInit {
   public Q54: Boolean = false;
   public Q55: Boolean = false;
   QuestionButton(value: number, Cat: number) {
+    this.playAudio();
     if (value == 1 && Cat == 1) {
       this.Q11 = true;
       this.N11 = true;
@@ -1144,6 +1145,7 @@ export class GameComponent implements OnInit {
   public Answer: String = '';
   public CeCe: String = '';
   Buttoon(value: number, Cat: number) {
+    this.stopAudio();
     if (value == 1 && Cat == 1) {
       this.Q11 = false;
       this.A11 = true;
@@ -1604,10 +1606,20 @@ export class GameComponent implements OnInit {
       this.Succ = true;
     }
   }
+  audio = new Audio();
+  playAudio(){
+    this.audio.load();
+    this.audio.play();
+  }
+
+  stopAudio() {
+    this.audio.pause();
+  }
   ngOnInit(): void {
     //UNCOMMENT THIS IF YOU WANT TO TEST THE DATABASE FUNCTIONALITY ON GAME START!!!!!!!!
     this.gameStart();
     this.Test2();
+    this.audio.src = "../../../assets/audio/roundabout.mp3";
   }
   playerData: any = {};
   imagePreviewUrl: string = '/assets/img/sableyeunknown.png';
