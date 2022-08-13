@@ -1,11 +1,5 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { CleanjstringPipe } from 'src/app/custompipes/cleanjstring.pipe';
 import { JeopardyService } from 'src/app/services/jeopardy/jeopardy.service';
 
 @Component({
@@ -15,7 +9,10 @@ import { JeopardyService } from 'src/app/services/jeopardy/jeopardy.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class SinglePlayerGameComponent implements OnInit {
-  constructor(private _jeopardyService: JeopardyService) {
+  constructor(
+    private _jeopardyService: JeopardyService,
+    private _cleanjsstring: CleanjstringPipe
+  ) {
     this.JSON = JSON;
   }
   JSON: any = {};
@@ -82,8 +79,9 @@ export class SinglePlayerGameComponent implements OnInit {
 
   submitAnswer() {
     const clueAns = this.attemptData.curClue?.answer as String;
-    const cleanClueAns = clueAns.replace(/[^\w\s\'\-]/g, '');
-    console.log(cleanClueAns);
+    // Use custom pipe to clean answers.
+    const cleanClueAns = this._cleanjsstring.transform(clueAns);
+    console.log('%c[Answer - ' + cleanClueAns + ']', 'color: purple');
     const answer = this.attemptData.userAnswer as String;
     const value = this.attemptData.curClue?.value as number;
     this.attemptData.disableSubmit = true;
@@ -137,7 +135,7 @@ export class SinglePlayerGameComponent implements OnInit {
     for (let i = 0; i < this.jCategories.length; i++) {
       const curCat = this.jCategories[i];
       let randClues = this.buildCluesArray(curCat.clues);
-      while(randClues.length < 5) {
+      while (randClues.length < 5) {
         randClues = this.buildCluesArray(curCat.clues);
       }
       this.jClues.push(randClues);
