@@ -78,7 +78,9 @@ public class PlayersController {
 		Response response = null;
 
 		try {
-			checkUser = playersDAO.findByPlayerUsernameIgnoreCase(newPlayer.getPlayerUsername());
+			PlayersSummary ps = playersDAO.findByPlayerUsernameIgnoreCase(newPlayer.getPlayerUsername()).get(0);
+			checkUser = new Players(ps.getPlayerId(), ps.getPlayerUsername(), ps.getPlayerPassword(),
+					ps.getPlayerEmail(), ps.getPlayerFirstname(), ps.getPlayerLastname(), null);
 			boolean checkPass = AuthUtil.comparePasswords(newPlayer.getPlayerPassword(), checkUser.getPlayerPassword());
 			if (checkPass) {
 				checkUser.setPlayerAvatar(null);
@@ -141,7 +143,9 @@ public class PlayersController {
 		Players findPlayer = null;
 		Response response = null;
 		try {
-			findPlayer = playersDAO.findByPlayerUsernameIgnoreCase(playerUsername);
+			PlayersSummary ps = playersDAO.findByPlayerUsernameIgnoreCase(playerUsername).get(0);
+			findPlayer = new Players(ps.getPlayerId(), ps.getPlayerUsername(), ps.getPlayerPassword(),
+					ps.getPlayerEmail(), ps.getPlayerFirstname(), ps.getPlayerLastname(), null);
 
 			response = new Response(200, "Found player by username", true, findPlayer);
 			return ResponseEntity.status(response.getStatusCode()).body(response);
