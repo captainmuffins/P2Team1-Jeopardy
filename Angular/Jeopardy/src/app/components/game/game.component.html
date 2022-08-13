@@ -1,5 +1,6 @@
-<table *ngIf="false" style="margin-left:auto;margin-right:auto; ">
-  <app-commons (newItemEvent)="getPlayerData($event)"></app-commons>
+<!-- <app-commons (newItemEvent)="getPlayerData($event)"></app-commons> -->
+
+<!-- <table *ngIf="false" style="margin-left:auto;margin-right:auto; ">  
   <tr>
     <th scope="col" style="color:white; background-color: black;" *ngIf="Sab>=1"> {{this.Cat1.title | titlecase}} </th>
     <th scope="col" style="color:white; background-color: black;" *ngIf="Sab>=2"> {{this.Cat2.title | titlecase}} </th>
@@ -67,19 +68,19 @@
     <td *ngIf="Sab>=5"><button *ngIf="!N55" class="btn btn-magick btn3d" style="width: 100%; background-color:  orange;"
         (click)="QuestionButton(5,5)">500</button></td>
   </tr>
-</table>
+</table> -->
 <div class="m-auto d-flex flex-column h-100">
   <app-commons (newItemEvent)="getPlayerData($event)"></app-commons>
   <button *ngIf="!Bu2" (click)="SortC1()" class="btn btn-magick btn-success btn3d"
     style="margin-left:auto;margin-right:auto;">Click me</button>
   <button *ngIf="Bu2" (click)="NameTheCats()" class="btn btn-magick btn-success btn3d"
     style="margin-left:auto;margin-right:auto;">And me</button>
-  <div class="offcanvas offcanvas-start j-game-card" tabindex="+3" id="offcanvas" aria-labelledby="offcanvasLabel">
+  <div class="offcanvas offcanvas-start j-game-card " tabindex="+3" id="offcanvas" aria-labelledby="offcanvasLabel">
     <div class="offcanvas-header">
       <h5 class="offcanvas-title" id="offcanvasLabel"></h5>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-    <div class="offcanvas-body">
+    <div class="offcanvas-body ">
       <div class="row">
         <input type="text" [(ngModel)]="Answer">
 
@@ -244,7 +245,32 @@
       </div>
     </div>
   </div>
-  <div class="container flex-grow-1 text-white pb-3">
+  <div class="jGameOver h-100" *ngIf="!hideGameOver" >
+    <div class="pyro">
+      <div class="before"></div>
+      <div class="after"></div>
+    </div>
+    <div class="d-flex align-items-center justify-content-center h-100">
+      <div class="jGameLoadingCon container">
+        <div class="row">
+          <div class="col">
+            <h1>Game Over</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <h3><span>Your Final Score is </span><span class="fw-bold">{{Score}}</span></h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <span>Click <a class="text-white" routerLink="/SableyeTest">here</a> to play again</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container flex-grow-1 text-white pb-3" *ngIf="!hideGame">
     <div class="card gameContainer h-100" *ngIf="Gremlin">
       <div class="row h-100">
         <div class="col text-center">

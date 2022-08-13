@@ -1424,6 +1424,8 @@ export class GameComponent implements OnInit {
   public Succ: boolean = false;
   public Score: number = 0;
   public Counter: number = 0;
+  public hideGame : boolean = false;
+  public hideGameOver : boolean = true;
   AnswerCleanUp(value: number, Cat: number) {
     if (value == 1 && Cat == 1) {
       this.Q11 = false;
@@ -1554,31 +1556,43 @@ export class GameComponent implements OnInit {
     if (this.Sab == 1) {
       if (this.Counter == 5) {
         console.log('Game Ended your score is ' + this.Score);
+        this.hideGame = true;
+        this.hideGameOver = false;
         this.gameEnd();
+        
       } else {
       }
     } else if (this.Sab == 2) {
       if (this.Counter == 10) {
         console.log('Game Ended your score is ' + this.Score);
         this.gameEnd();
+        this.hideGame = true;
+        this.hideGameOver = false;
       } else {
       }
     } else if (this.Sab == 3) {
       if (this.Counter == 15) {
         console.log('Game Ended your score is ' + this.Score);
         this.gameEnd();
+        this.hideGame = true;
+        this.hideGameOver = false;
       } else {
       }
     } else if (this.Sab == 4) {
       if (this.Counter == 20) {
         console.log('Game Ended your score is ' + this.Score);
         this.gameEnd();
+        this.hideGame = true;
+        this.hideGameOver = false;
       } else {
       }
     } else if (this.Sab == 5) {
       if (this.Counter == 25) {
         console.log('Game Ended your score is ' + this.Score);
+        this.hideGame = true;
+        this.hideGameOver = false;
         this.gameEnd();
+        
       } else {
       }
     }
