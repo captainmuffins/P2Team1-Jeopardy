@@ -59,7 +59,6 @@ export class SinglePlayerGameComponent implements OnInit {
       let randIdx = Math.floor(Math.random() * (filteredClue.length - 1));
       this.idxProgress++;
       this.curProgress = (this.idxProgress / this.maxProgress) * 100;
-      console.log(this.curProgress);
       clueSetPush.push(filteredClue[randIdx]);
     }
 
@@ -123,9 +122,8 @@ export class SinglePlayerGameComponent implements OnInit {
 
     const numCat = parseInt(this.selectedCat);
 
-    console.log(numCat);
     this.maxProgress = numCat * 5 + numCat;
-    console.log(this.maxProgress);
+
     this.retrieveGameData(numCat);
   }
 
@@ -145,7 +143,6 @@ export class SinglePlayerGameComponent implements OnInit {
           if (this.catLoadIdx < numCat) {
             this.idxProgress++;
             this.curProgress = (this.idxProgress / this.maxProgress) * 100;
-            console.log(this.curProgress);
             this.retrieveGameData(numCat);
           } else {
             console.log(
