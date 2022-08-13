@@ -22,6 +22,7 @@ import { SinglePlayerGameComponent } from './components/single-player-game/singl
 import { JeopardyService } from './services/jeopardy/jeopardy.service';
 import { CommonsComponent } from './components/commons/commons.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { CleanjstringPipe } from './custompipes/cleanjstring.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     SinglePlayerGameComponent,
     CommonsComponent,
     PageNotFoundComponent,
+    CleanjstringPipe,
   ],
   imports: [
     BrowserModule,

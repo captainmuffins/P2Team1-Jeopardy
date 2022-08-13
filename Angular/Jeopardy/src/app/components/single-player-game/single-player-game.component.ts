@@ -1,10 +1,18 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewEncapsulation,
+} from '@angular/core';
 import { JeopardyService } from 'src/app/services/jeopardy/jeopardy.service';
 
 @Component({
   selector: 'app-single-player-game',
   templateUrl: './single-player-game.component.html',
   styleUrls: ['./single-player-game.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class SinglePlayerGameComponent implements OnInit {
   constructor(private _jeopardyService: JeopardyService) {
@@ -13,7 +21,7 @@ export class SinglePlayerGameComponent implements OnInit {
   JSON: any = {};
   bootstrap: any = {};
   playerData: any = {};
-  imagePreviewUrl: string = '/assets/img/sableyeunknown.png';
+  imagePreviewUrl: string = '/assets/img/default_avatar_alt.png';
 
   categoryData: any = {};
 
@@ -29,10 +37,11 @@ export class SinglePlayerGameComponent implements OnInit {
 
   catLoadIdx = 0;
 
-  selectedCat: string = '5';
+  selectedCat: string = '1';
   hideGameOptions: boolean = false;
   hideGameLoading: boolean = true;
   hideGame: boolean = true;
+  hideGameOver: boolean = true;
 
   gameScore: number = 0;
 
@@ -40,12 +49,63 @@ export class SinglePlayerGameComponent implements OnInit {
   idxProgress: number = 1;
   curProgress: number = 0;
 
+  attemptData: any = {
+    maxClues: 0,
+    curClue: null,
+    userAnswer: '',
+    numOfAttempts: 0,
+    success: false,
+    fail: false,
+    disableSubmit: false,
+  };
+
   ngOnInit(): void {
     // test 5 categories
     // this.retrieveGameData(5);
   }
 
-  attemptClues(catNum: number, clueNum: number) {}
+  reloadCurrentPage() {
+    window.location.reload();
+  }
+
+  attemptClues(catNum: number, clueNum: number) {
+    const elem = document.getElementById(
+      'catClues-' + catNum + '-' + clueNum
+    ) as HTMLElement;
+    this.attemptData.disableSubmit = false;
+    this.attemptData.success = false;
+    this.attemptData.fail = false;
+    this.attemptData.userAnswer = '';
+    elem.style.visibility = 'hidden';
+    this.attemptData.curClue = this.jClues[catNum][clueNum];
+  }
+
+  submitAnswer() {
+    const clueAns = this.attemptData.curClue?.answer as String;
+    const cleanClueAns = clueAns.replace(/[^\w\s\']/g, '');
+    const answer = this.attemptData.userAnswer as String;
+    const value = this.attemptData.curClue?.value as number;
+    this.attemptData.disableSubmit = true;
+    if (cleanClueAns.toLowerCase() === answer.toLowerCase()) {
+      console.log('%c[correct]', 'color: green');
+      this.gameScore += value;
+      this.attemptData.success = true;
+    } else {
+      console.log('%c[wrong answer]', 'color: red');
+      this.gameScore = this.gameScore - value < 0 ? 0 : this.gameScore - value;
+      this.attemptData.fail = true;
+    }
+    this.attemptData.numOfAttempts++;
+    setTimeout(() => {
+      document.getElementById('closeOffcanvasClues')?.click();
+      if (this.attemptData.maxClues == this.attemptData.numOfAttempts) {
+        setTimeout(() => {
+          this.hideGame = true;
+          this.hideGameOver = false;
+        }, 1000);
+      }
+    }, 2000);
+  }
 
   buildCluesArray(cluesArr: Array<any>): Array<any> {
     let clueSetPush: Array<any> = [];
@@ -106,7 +166,7 @@ export class SinglePlayerGameComponent implements OnInit {
     let generateNumber: boolean = true;
     let rndInt: number = 0;
     while (generateNumber) {
-      rndInt = Math.floor(Math.random() * 100 + 1);
+      rndInt = Math.floor(Math.random() * 200 + 1);
       if (this.jCategories.filter((e) => e.id === rndInt).length > 0) {
         continue;
       } else {
@@ -123,6 +183,7 @@ export class SinglePlayerGameComponent implements OnInit {
     const numCat = parseInt(this.selectedCat);
 
     this.maxProgress = numCat * 5 + numCat;
+    this.attemptData.maxClues = numCat * 5;
 
     this.retrieveGameData(numCat);
   }
@@ -160,7 +221,11 @@ export class SinglePlayerGameComponent implements OnInit {
         }
       },
       error: (err) => {
-        console.log(err);
+        console.log(
+          '%c[Error retrieving category. Reattempting...]',
+          'color: red'
+        );
+        this.retrieveGameData(numCat);
       },
     });
   }
