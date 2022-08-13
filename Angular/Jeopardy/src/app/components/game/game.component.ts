@@ -1554,26 +1554,31 @@ export class GameComponent implements OnInit {
     if (this.Sab == 1) {
       if (this.Counter == 5) {
         console.log('Game Ended your score is ' + this.Score);
+        this.gameEnd();
       } else {
       }
     } else if (this.Sab == 2) {
       if (this.Counter == 10) {
         console.log('Game Ended your score is ' + this.Score);
+        this.gameEnd();
       } else {
       }
     } else if (this.Sab == 3) {
       if (this.Counter == 15) {
         console.log('Game Ended your score is ' + this.Score);
+        this.gameEnd();
       } else {
       }
     } else if (this.Sab == 4) {
       if (this.Counter == 20) {
         console.log('Game Ended your score is ' + this.Score);
+        this.gameEnd();
       } else {
       }
     } else if (this.Sab == 5) {
       if (this.Counter == 25) {
         console.log('Game Ended your score is ' + this.Score);
+        this.gameEnd();
       } else {
       }
     }
@@ -1586,7 +1591,8 @@ export class GameComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-    //this.gameStart();  UNCOMMENT THIS IF YOU WANT TO TEST THE DATABASE FUNCTIONALITY ON GAME START!!!!!!!!
+    //UNCOMMENT THIS IF YOU WANT TO TEST THE DATABASE FUNCTIONALITY ON GAME START!!!!!!!!
+    this.gameStart();
     this.Test2();
   }
   playerData: any = {};
@@ -1625,6 +1631,18 @@ export class GameComponent implements OnInit {
 
   gameEnd() {
     // on game end update session record
+    let sessionDTO = {
+      sessionWinnings: this.Score,
+      sessionWinner: true, // SESSION WINNER IS ALWAYS TRUE SINCE THERE IS ONLY ONE PLAYER!!!!!!
+      sessionPlayerfk: this.playerData.playerId,
+      sessionGamefk: this.currentGameId,
+    };
+    this.ss.updateSession(sessionDTO, this.currentSessionId).subscribe({
+      next: (data) => {
+        console.log('Session update results:');
+        console.log(data);
+      },
+    });
   }
 
   // Testing only

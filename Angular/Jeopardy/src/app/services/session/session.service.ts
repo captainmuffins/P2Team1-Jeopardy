@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class SessionService {
   private _sessions = 'http://localhost:8080/api/session/';
+  private _sessionsUpdate = 'http://localhost:8080/api/session/id/';
   private _games = 'http://localhost:8080/api/games/';
   constructor(private http: HttpClient) {}
   addSession(session: any) {
@@ -20,8 +21,8 @@ export class SessionService {
     });
   }
 
-  updateSession(session: any) {
-    return this.http.put<any>(this._sessions, session, {
+  updateSession(session: any, id: any) {
+    return this.http.put<any>(this._sessionsUpdate + id, session, {
       withCredentials: true,
     });
   }
