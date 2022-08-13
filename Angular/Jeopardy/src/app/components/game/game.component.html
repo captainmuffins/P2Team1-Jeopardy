@@ -1,4 +1,5 @@
 <table *ngIf="false" style="margin-left:auto;margin-right:auto; ">
+  <app-commons (newItemEvent)="getPlayerData($event)"></app-commons>
   <tr>
     <th scope="col" style="color:white; background-color: black;" *ngIf="Sab>=1"> {{this.Cat1.title | titlecase}} </th>
     <th scope="col" style="color:white; background-color: black;" *ngIf="Sab>=2"> {{this.Cat2.title | titlecase}} </th>
