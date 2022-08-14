@@ -232,6 +232,8 @@ img.showAvatar {
   background: rgba(255, 255, 255, 0.5);
 }
 
+/* SCOREBOARD PAGE STYLING --------*/
+
 #scoreboardPage {
   font-size: 25px;
   font-weight: bold;
@@ -241,7 +243,7 @@ img.showAvatar {
 
 }
 
-/* Styling */
+
 
 
 #top10 {
@@ -269,14 +271,12 @@ img.showAvatar {
   border-color: rgba(0, 0, 0, 0);
   box-shadow:rgba(0, 0, 0, 3);
   align-content: center;
+  
 }
 
-#tablePlayers :hover {
-background-color: rgba(255, 221, 0, 0.355); 
-color:rgba(255, 221, 0, 1);
 
 
-}
+
 
 #tableTop3Labels {
   
@@ -286,6 +286,8 @@ color:rgba(255, 221, 0, 1);
   text-shadow: 1px 1px 1px #000;
   font-size: large;
   text-align: center;
+  vertical-align: middle;
+  line-height: normal;
 }
 
 #tableTop3Labels :first-child {
@@ -306,6 +308,13 @@ color:rgba(255, 221, 0, 1);
   text-align: center;
 }
 
+#tablePlayers:hover td{
+  background-color: rgba(255, 221, 0, 0.355); 
+  color:rgba(255, 221, 0, 1);
+}
+
+
+
 /* ---TOP 10 Contestants Table--- */
 
 #tableGlobalLabels{
@@ -315,6 +324,11 @@ color:rgba(255, 221, 0, 1);
   text-shadow: 1px 1px 1px #000;
   font-size: large;
   text-align: center;
+ 
+  vertical-align: middle;
+  line-height: normal;
+  
+
   }
   
   #tableGlobalLabels :first-child {
@@ -323,6 +337,9 @@ color:rgba(255, 221, 0, 1);
   
   #tableGlobalLabels :last-child {
     border-radius: 0 10px 0px 0px;
+    text-align: center;
+    
+    
   }
 
 
@@ -333,6 +350,12 @@ color:rgba(255, 221, 0, 1);
   font-style: italic;
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.12);
   text-align: center;
+}
+
+#top10Scores:hover td{
+  background-color: rgba(255, 221, 0, 0.355); 
+color:rgba(255, 221, 0, 1);
+
 }
 
 .j-menu-item {

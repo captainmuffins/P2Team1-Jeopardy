@@ -1,65 +1,76 @@
-
-<div class="bg"></div>
-<app-commons></app-commons>
+<div class="m-auto d-flex flex-column h-100">
+  <app-commons></app-commons>
   <!-- MY PROFILE STUFF ENDS HERE -->
-  <div class="row">
-    <div class="col d-flex justify-content-center my-10">
-      <div class="card text-center j-menu-item" style="width: 18em">
-        <div class="menu-item-image card-img-top d-flex align-items-center justify-content-center">
-          <img src="/assets/img/playerscoreboard.png" /> <!--replace this image? or not-->
-        </div>
-        <div class="card-body">
-          <div class="card-text" style="height: 64px">
-          </div>
-          </div>
-    <h2 id="myHighScores">Personal Bests (Top 3)</h2>
-    <table class="table table-hover">
-      <thead id="tableTop3Labels">
-        <tr>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Score</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr id="tablePlayers" *ngFor="let score of top3Scores">
-          <td>{{ score.sessionPlayerfk.playerFirstname }}</td>
-          <td>{{ score.sessionPlayerfk.playerLastname }}</td>
-          <td>{{ score.sessionWinnings }}</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="container flex-grow-1">
+    <div class="row text-white text-center my-3">
+      <h2 style="text-shadow: 1px 1px 1px #000">Scoreboard</h2>
     </div>
-    </div>
-    <div class="col d-flex justify-content-center my-10">  
-      <div class="card text-center j-menu-item" style="width: 18em">
-        <div class="menu-item-image card-img-top d-flex align-items-center justify-content-center">
-          <img src="/assets/img/leaderboard.png" />
-        </div>
-        <div class="card-body">
-          <div class="card-text" style="height: 64px">
+    <div class="row">
+      <div class="col-lg d-flex justify-content-center my-3" *ngIf="!indexData.isGuest">
+        <div class="card text-center j-menu-item w-100">
+          <div class="menu-item-image card-img-top d-flex align-items-center justify-content-center">
+            <img src="/assets/img/playerscoreboard.png" />
+            <!--replace this image? or not-->
+          </div>
+          <div class="card-body">
+            <h2 id="myHighScores" class="card-title">Your Top 3 Scores</h2>
+            <div class="card-text">
+              <table class="table table-hover w-100">
+                <thead id="tableTop3Labels">
+                  <tr>
+                    <th scope="col" style="width: 33.33%">Player Name</th>
+                    <th scope="col" style="width: 33.33%">Score</th>
+                    <th scope="col" style="width: 33.33%">Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr id="tablePlayers" *ngFor="let score of top3Scores">
+                    <td>{{ score.sessionPlayerfk.playerFirstname }} {{ score.sessionPlayerfk.playerLastname }}</td>
+                    <td>{{ score.sessionWinnings }}</td>
+                    <td>{{ score.sessionGamefk.gameCreated | date:'short' }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-    <h2 id="top10">TOP 10 CONTESTANTS</h2>
-    <table class="table table-hover">
-      <thead id="tableGlobalLabels">
-        <tr>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Score</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr id="top10Scores" *ngFor="let score of top10Scores">
-          <td>{{ score.sessionPlayerfk.playerFirstname }}</td>
-          <td>{{ score.sessionPlayerfk.playerLastname }}</td>
-          <td>{{ score.sessionWinnings }}</td>
-        </tr>
-      </tbody>
-    </table>
+      </div>
+      <div class="col-lg d-flex justify-content-center my-3">
+        <div class="card text-center j-menu-item w-100">
+          <div class="menu-item-image card-img-top d-flex align-items-center justify-content-center">
+            <img src="/assets/img/leaderboard.png" />
+          </div>
+          <div class="card-body">
+            <h2 id="top10" class="card-title">Top 10 Contestants</h2>
+            <div class="card-text">
+              <table class="table table-hover w-100">
+                <thead id="tableGlobalLabels">
+                  <tr>
+                    <th scope="col" style="width: 33.33%">Player Name</th>
+                    <th scope="col" style="width: 33.33%">Score</th>
+                    <th scope="col" style="width: 33.33%">Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr id="top10Scores" *ngFor="let score of top10Scores">
+                    <td>{{ score.sessionPlayerfk.playerFirstname }} {{ score.sessionPlayerfk.playerLastname }}</td>
+                    <td>{{ score.sessionWinnings }}</td>
+                    <td>{{ score.sessionGamefk.gameCreated | date:'short' }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+  <div class="container text-white">
+    <div class="row">
+      <div class="col text-center my-3" style="text-shadow: 1px 1px 1px #000">
+        <span>Made with &#10084;&#65039; by Team One - Constantine, Danielle,
+          Duncan, Gerard, Kevin, Vontrez</span>
+      </div>
+    </div>
   </div>
-  
-  
-
+</div>

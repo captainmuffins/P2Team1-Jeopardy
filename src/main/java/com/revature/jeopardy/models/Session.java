@@ -27,7 +27,7 @@ public class Session {
 	@Column(nullable = false)
 	private boolean sessionWinner = false;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "playerId", nullable = false)
 	private Players sessionPlayerfk;
 
@@ -65,7 +65,7 @@ public class Session {
 		this.sessionId = sessionId;
 	}
 
-	public double getSessionWinnings() {
+	public int getSessionWinnings() {
 		return sessionWinnings;
 	}
 

@@ -5,16 +5,14 @@ Jeopardy! Web Application
 Registered users can play Jeopardy game and be able to see their scores.
 
 Requirements:
-* Implement user registration
-* Implement login
+* Enable users to create their account
+* Users can login or play as guest
 * Retrieve questions & answers from jService API (http://jservice.io/)
-* Implement scoreboard
-* Implement Jeopardy game sessions
-* Player can play the game, select questions and attempt to answer them for points.
-* Implement tallying of points and display them on scoreboard
-
-Stretch Goals:
-* Implement multiplayer
+* Display top scores of registered users
+* Create a interface for the Jeopardy game
+* Users can play the game and either win or lose points depending on their answers
+* Add a time limit when user is attempting to answer a question
+* Once the game is finished, tally their scores which will be stored in the DB if they're registered.
 
 ## Team 1 Members
 * Danielle Abadam

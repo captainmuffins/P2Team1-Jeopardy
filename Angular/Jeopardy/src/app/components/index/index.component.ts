@@ -12,15 +12,29 @@ export class IndexComponent implements OnInit {
     isGuest: true,
   };
 
+  playerData: any = {};
+
   constructor(
     private _player: PlayersService,
     private _cookieService: CookieService
   ) {}
 
   ngOnInit(): void {
-    this.initPlayer();
+    // this.initPlayer();
   }
 
+  isObjEmpty(obj: any) {
+    return Object.keys(obj).length === 0;
+  }
+
+  // Pass data from child (commons component) to parent (single-player-game component)
+  getPlayerData(value: any) {
+    this.playerData = value;
+    if (!this.isObjEmpty(this.playerData)) {
+      this.indexData.isGuest = false;
+    }
+  }
+  /*
   initPlayer() {
     if (this._cookieService.get('JSESSIONID') != undefined) {
       console.log('%c[User is logged in]', 'color: blue');
@@ -36,4 +50,5 @@ export class IndexComponent implements OnInit {
       console.log('%c[User is a guest]', 'color: orange');
     }
   }
+  */
 }

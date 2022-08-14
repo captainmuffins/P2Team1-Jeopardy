@@ -1,25 +1,42 @@
 <div class="m-auto d-flex flex-column h-100">
-  <app-commons></app-commons>
+  <app-commons (newItemEvent)="getPlayerData($event)"></app-commons>
   <div class="container flex-grow-1">
     <div class="row text-white text-center my-3">
       <h2 style="text-shadow: 1px 1px 1px #000">Main Menu</h2>
     </div>
     <div class="row">
-      <div class="col d-flex justify-content-center my-3">
-        <div class="card text-center j-menu-item" style="width: 18em">
+      <div class="col-lg d-flex justify-content-center my-3">
+        <div class="card text-center j-menu-item w-100">
           <div class="menu-item-image card-img-top d-flex align-items-center justify-content-center">
             <img src="/assets/img/sableyereg2.png" />
           </div>
           <div class="card-body">
             <h5 class="card-title">Singleplayer</h5>
             <div class="card-text" style="height: 64px">
-              Challenge Jeopardy on your own
+              Challenge Jeopardy on your own!
             </div>
-            <a href="#" class="btn btn3d btn-magick fw-semibold" routerLink="/SableyeTest">Play Now</a>
+            <a class="btn btn3d btn-magick fw-semibold mx-2" style="width:110px" routerLink="/GemlinTest">Fixed</a>
+            <a class="btn btn3d btn-magick fw-semibold mx-2" style="width:110px" routerLink="/single-player">Random</a>
           </div>
         </div>
       </div>
-      <div class="col d-flex justify-content-center my-3" *ngIf="!indexData.isGuest">
+      <div class="col-lg d-flex justify-content-center my-3" *ngIf="indexData.isGuest">
+        <div class="card text-center j-menu-item w-100">
+          <div class="menu-item-image card-img-top d-flex align-items-center justify-content-center">
+            <img src="/assets/img/boyorgirl.png" style="height: 100%;" />
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Login</h5>
+            <div class="card-text" style="height: 64px">
+              Login to record your scores!
+            </div>
+            <a class="btn btn3d btn-magick fw-semibold mx-2" style="width:110px" routerLink="/login">Login</a>
+            <a class="btn btn3d btn-magick fw-semibold mx-2" style="width:110px" routerLink="/sign-up">Sign-Up</a>
+          </div>
+        </div>
+      </div>
+      <!-- disable this part -->
+      <div class="col d-flex justify-content-center my-3" *ngIf="!indexData.isGuest" style="display: none !important;">
         <div class="card text-center j-menu-item" style="width: 18em">
           <div class="menu-item-image card-img-top d-flex align-items-center justify-content-center">
             <img src="/assets/img/sableyeregandshiny.png" />
@@ -27,23 +44,23 @@
           <div class="card-body">
             <h5 class="card-title">Multiplayer</h5>
             <div class="card-text" style="height: 64px">
-              Join session and play with friends
+              Join session and play with friends!
             </div>
-            <a href="#" class="btn btn3d btn-magick fw-semibold">Join Session</a>
+            <a class="btn btn3d btn-magick fw-semibold">Join Session</a>
           </div>
         </div>
       </div>
-      <div class="col d-flex justify-content-center my-3" *ngIf="!indexData.isGuest">
-        <div class="card text-center j-menu-item" style="width: 18em">
+      <div class="col-lg d-flex justify-content-center my-3">
+        <div class="card text-center j-menu-item w-100">
           <div class="menu-item-image card-img-top d-flex align-items-center justify-content-center">
             <img src="/assets/img/trophy.png" />
           </div>
           <div class="card-body">
             <h5 class="card-title">View Scoreboard</h5>
             <div class="card-text" style="height: 64px">
-              View your scores and highest multiplayer scores
+              View your scores if registered plus the top scores
             </div>
-            <a routerLink="/scoreboard" class="btn btn3d btn-magick fw-semibold">View Scores</a>
+            <a class="btn btn3d btn-magick fw-semibold" routerLink="/scoreboard">View Scores</a>
           </div>
         </div>
       </div>
