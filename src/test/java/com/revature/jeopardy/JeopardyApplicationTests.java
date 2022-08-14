@@ -2,34 +2,21 @@ package com.revature.jeopardy;
 
 import static org.junit.Assert.assertTrue;
 
-import java.sql.Timestamp;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.ContextConfiguration;
 
 import com.revature.jeopardy.controllers.GamesController;
 import com.revature.jeopardy.controllers.PlayersController;
-import com.revature.jeopardy.controllers.SessionController;
 import com.revature.jeopardy.dtos.Response;
 import com.revature.jeopardy.models.Players;
-import com.revature.jeopardy.models.Games;
-import com.revature.jeopardy.models.Session;
 
 @SpringBootTest
 class JeopardyApplicationTests {
 
 	@Autowired
 	private PlayersController pc;
-
-	@Autowired
-	private SessionController sc;
 
 	@Autowired
 	private GamesController gc;
@@ -58,7 +45,7 @@ class JeopardyApplicationTests {
 
 	@Test
 	void gamesTest(){
-		ResponseEntity<Response> response = gc.addGame(new Games());
+		ResponseEntity<Response> response = gc.addGame();
 		assertTrue(response.getBody().isStatusSuccess());
 		assertTrue(response.getBody().getStatusCode() == 202);
 	}
