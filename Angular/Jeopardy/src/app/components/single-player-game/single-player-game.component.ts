@@ -341,6 +341,7 @@ export class SinglePlayerGameComponent implements OnInit {
                 '%c[Session created, ID is ' + this.currentSessionId + ']',
                 'color: blue'
               );
+              console.log(data2);
               this.idxProgress++;
               this.curProgress = (this.idxProgress / this.maxProgress) * 10;
               this.retrieveGameData(numCat);
