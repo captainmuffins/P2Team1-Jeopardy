@@ -92,10 +92,14 @@ export class CommonsComponent implements OnInit {
         this.imagePreviewUrl =
           'http://localhost:8080/api/players/avatar/' + receivedData.playerId;
 
-          this.newItemEvent.emit(receivedData);
+        this.newItemEvent.emit(receivedData);
       },
       error: (err) => {
-        // console.log(err);
+        console.log(
+          '%c[User session may be invalid. Deleting session]',
+          'color: red'
+        );
+        this._cookieService.removeAll();
       },
     });
   }
