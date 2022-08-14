@@ -190,9 +190,29 @@ export class SinglePlayerGameComponent implements OnInit {
         return el.value === ele;
       });
 
+      let filteredClueEmpty = false;
+      if (filteredClue.length < 1) {
+        // Some categories may not have such value 100~500. Hacky substitute but what can you do.
+        filteredClueEmpty = true;
+        const substitute = ele + 100;
+        let findSub = true;
+        while (findSub) {
+          filteredClue = cluesArr.filter(function (el) {
+            return el.value === substitute;
+          });
+          if (filteredClue.length > 0) {
+            console.log(filteredClue);
+            findSub = false;
+          }
+        }
+      }
+
       let randIdx = Math.floor(Math.random() * (filteredClue.length - 1));
       this.idxProgress++;
       this.curProgress = (this.idxProgress / this.maxProgress) * 100;
+      if (filteredClueEmpty) {
+        filteredClue[randIdx].value = ele;
+      }
       clueSetPush.push(filteredClue[randIdx]);
     }
 
