@@ -284,9 +284,21 @@ j-game-card .card-text {
     text-align: center;
     color: #f1f1f1;
     text-shadow: 1px 1px 1px #000;
-    margin-top: 50px;
+    margin-top: 20px;
+    margin-bottom: 25px;
   
 
+}
+
+/*CATEGORY CARD ---------*/
+
+.card {
+    background-color: rgba(35, 0, 59, 0.274);
+    margin-left: 270px;
+    margin-right: 270px;
+    padding-bottom: 25px;
+    box-shadow: 1px 1px 1px rgba(54, 1, 72, 0.43);
+    
 }
 
 #categoryPage {
@@ -296,36 +308,49 @@ j-game-card .card-text {
   text-align: center;
   color: #fffffff6;
   text-shadow: 1px 1px 1px #000;
-  margin-top: 50px;
-
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right:auto;
+  margin-left:auto;
+  padding-top: 6px;
+  padding-left:30px;
+  padding-right:30px;
+  padding-bottom: 6px;
+ background-color: rgba(78, 0, 90, 0.456);
+ border-radius: 10px;
+ box-shadow: 2px 2px 2px rgba(45, 0, 93, 0.866);
 }
 
 /* CATEGORY BUTTONS INCOMING ----------*/
 
 .buttonHolder {
-    align-items: center;
-    align-self: center;
-   
+    
    display: inline-block;
+    margin-left: 40px; 
+    margin-right:40px;
+   align-items: center;
+    align-self: center;
+    align-content: center;
+    
 }
 
 #TestButtonChecked {
-    background-color: rgba(69, 0, 118, 0.563);
+    background-color: rgba(57, 0, 97, 0.474);
     
     border-color: rgba(83, 0, 143, 0.574);
-    box-shadow: 2px 2px 2px rgb(61, 0, 91);
+    box-shadow: 2px 2px 2px rgb(48, 0, 73);
     text-shadow: 1.5px 1.5px 1.5px rgb(1, 1, 1);;
     margin-bottom: 5px;
     margin-left: 3px;
     margin-right:3px;
+    display: inline-block;
+    align-items: center;
+    align-self: center;
+    align-content: center;
+    text-align: center;
 
    
    
-}
-
-.btn btn-dark :hover {
-    background-color: rgba(72, 0, 124, 0.588);
-
 }
 
 
@@ -339,7 +364,14 @@ j-game-card .card-text {
 }
 
 #submitButton {
-    width: 250px;
+    width: 300px;
 }
 
 
+.m-auto d-flex flex-column h-100 {
+    align-items: center;
+    display: inline-block;
+    align-self: center;
+    margin:auto;
+
+}
