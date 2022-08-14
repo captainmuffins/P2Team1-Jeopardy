@@ -86,7 +86,16 @@ export class SinglePlayerGameComponent implements OnInit {
     this.attemptData.numOfAttempts++;
     setTimeout(() => {
       document.getElementById('closeOffcanvasClues')?.click();
+
+      // Game stops when all clues have been attempted
+      if (this.attemptData.maxClues == this.attemptData.numOfAttempts) {
+        setTimeout(() => {
+          this.hideGame = true;
+          this.hideGameOver = false;
+        }, 1000);
+      }
     }, 2000);
+
   }
 
   attemptClues(catNum: number, clueNum: number) {
