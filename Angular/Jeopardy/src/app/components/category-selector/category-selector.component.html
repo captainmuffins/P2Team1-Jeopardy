@@ -1,5 +1,15 @@
-<h2>Choose up to 5 Categories! </h2>
-<button (click)="SubmitButton()">Submit</button>
+<div class="m-auto d-flex flex-column h-100">
+    <app-commons></app-commons>
+
+
+<h1 id="getReady">
+    Get ready to play!
+</h1>
+
+<h2 id="categoryPage">
+    Choose up to 5 Categories! 
+</h2>
+
 <!--e stays as a category first that worked-->
 <!-- <button (click)="buttonPress(98)" id="TestButtonChecked" >e</button> -->
 <!--Hunting stays as a category first that I saw -->
@@ -45,3 +55,5 @@
 
 <!-- <button (click)="buttonPress(810)" id="TestButtonChecked" >Women in history</button> -->
 <!-- <button (click)="buttonPress(1028)" id="TestButtonChecked" >Actress</button> -->
+
+<button id="submitButton" (click)="SubmitButton()">Submit</button>
