@@ -276,7 +276,7 @@ export class GameComponent implements OnInit {
   }
 
   catIdIteration = 1;
-  maxCats = 20;
+  maxCats = 64;
 
   doSelectCat(event: Event) {
     let elem = event.currentTarget as HTMLElement;
