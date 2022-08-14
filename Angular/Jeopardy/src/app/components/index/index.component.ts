@@ -29,8 +29,8 @@ export class IndexComponent implements OnInit {
 
   // Pass data from child (commons component) to parent (single-player-game component)
   getPlayerData(value: any) {
+    this.playerData = value;
     if (!this.isObjEmpty(this.playerData)) {
-      this.playerData = value;
       this.indexData.isGuest = false;
     }
   }
