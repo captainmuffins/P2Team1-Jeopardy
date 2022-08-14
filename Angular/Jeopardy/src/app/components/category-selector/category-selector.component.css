@@ -302,18 +302,35 @@ j-game-card .card-text {
 
 /* CATEGORY BUTTONS INCOMING ----------*/
 
-#TestButtonChecked {
-    background-color: rgba(92, 0, 158, 0.51);
+#buttonHolder {
+    align-items: center;
     margin-left: 100px;
     margin-right:100px;
+}
 
+
+#TestButtonChecked {
+    background-color: rgba(92, 0, 157, 0.563);
+    margin-left: 200px;
+    margin-right:200px;
+    border-color: rgba(59, 0, 102, 0);
+    box-shadow: 1px 1px 1px #000;
+    
+
+}
+
+
+/*SUBMIT BUTTON ------------*/
+
+#submitHolder {
+    align-items: center;
 
 }
 
 #submitButton {
-    background-color: rgba(116, 0, 198, 0.818);
-    margin-left: 100px;
-    margin-right:100px;
+    background-color: rgba(144, 0, 255, 0.599);
+    size-adjust: 50%;
 
 
 }
+
