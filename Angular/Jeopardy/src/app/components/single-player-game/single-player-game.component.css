@@ -17,6 +17,25 @@
   border-radius: 6px;
 }
 */
+.progressTimeContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.timeSeconds {
+  display: block;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+}
+
 
 .gameContainer {
   background: rgba(0, 0, 0, 0.2);

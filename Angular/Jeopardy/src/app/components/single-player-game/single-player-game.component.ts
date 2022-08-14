@@ -61,9 +61,16 @@ export class SinglePlayerGameComponent implements OnInit {
 
   audio = new Audio();
 
+  attemptTimeProgress: number = 100;
+  timeInterval: any;
+  timeSeconds: number = 15;
+  progressClass = 'bg-success';
+  failMessage = 'Wrong Answer';
+
   ngOnInit(): void {
     // Pre-load audio
     this.audio.src = '../../../assets/audio/roundabout.mp3';
+    this.audio.load();
   }
 
   playAudio() {
@@ -79,17 +86,56 @@ export class SinglePlayerGameComponent implements OnInit {
     window.location.reload();
   }
 
+  timesUp() {
+    this.attemptData.disableSubmit = true;
+    this.failMessage = "Time's Up";
+    this.attemptData.fail = true;
+    this.attemptData.numOfAttempts++;
+    setTimeout(() => {
+      document.getElementById('closeOffcanvasClues')?.click();
+
+      // Game stops when all clues have been attempted
+      if (this.attemptData.maxClues == this.attemptData.numOfAttempts) {
+        setTimeout(() => {
+          this.hideGame = true;
+          this.hideGameOver = false;
+          this.gameEnd();
+        }, 1000);
+      }
+    }, 2000);
+  }
+
   attemptClues(catNum: number, clueNum: number) {
-    this.playAudio();
     const elem = document.getElementById(
       'catClues-' + catNum + '-' + clueNum
     ) as HTMLElement;
+    elem.style.visibility = 'hidden';
     this.attemptData.disableSubmit = false;
     this.attemptData.success = false;
     this.attemptData.fail = false;
     this.attemptData.userAnswer = '';
-    elem.style.visibility = 'hidden';
     this.attemptData.curClue = this.jClues[catNum][clueNum];
+    this.attemptTimeProgress = 100;
+    this.timeSeconds = 15;
+    this.timeInterval = setInterval(() => {
+      this.attemptTimeProgress =
+        this.attemptTimeProgress - 6.67 < 0
+          ? 0
+          : this.attemptTimeProgress - 6.67;
+      this.timeSeconds--;
+      if (this.timeSeconds == 10) {
+        this.progressClass = 'bg-warning';
+      }
+      if (this.timeSeconds == 5) {
+        this.progressClass = 'bg-danger';
+      }
+      if (this.timeSeconds <= 0) {
+        // End attempt
+        clearInterval(this.timeInterval);
+        this.timesUp();
+      }
+    }, 1000);
+    this.playAudio();
   }
 
   submitAnswer() {
@@ -106,6 +152,7 @@ export class SinglePlayerGameComponent implements OnInit {
       this.attemptData.success = true;
     } else {
       console.log('%c[wrong answer]', 'color: red');
+      this.failMessage = 'Wrong Answer';
       this.gameScore = this.gameScore - value < 0 ? 0 : this.gameScore - value;
       this.attemptData.fail = true;
     }
