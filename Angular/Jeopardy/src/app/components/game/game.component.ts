@@ -749,8 +749,13 @@ export class GameComponent implements OnInit {
   public Q53: Boolean = false;
   public Q54: Boolean = false;
   public Q55: Boolean = false;
+  attemptTimeProgress: number = 100;
+  timeInterval: any;
+  timeSeconds: number = 15;
+  progressClass = 'bg-success';
   QuestionButton(value: number, Cat: number) {
     this.playAudio();
+    this.progressClass='bg-success';
     if (value == 1 && Cat == 1) {
       this.Q11 = true;
       this.N11 = true;
@@ -851,6 +856,28 @@ export class GameComponent implements OnInit {
       this.Q55 = true;
       this.N55 = true;
     }
+    this.attemptTimeProgress = 100;
+    this.timeSeconds = 30;
+    this.timeInterval = setInterval(() => {
+      this.attemptTimeProgress =
+        this.attemptTimeProgress - 10 < 0
+          ? 0
+          : this.attemptTimeProgress - 3.33;
+      this.timeSeconds--;
+      if (this.timeSeconds == 15) {
+        this.progressClass = 'bg-warning';
+      }
+      if (this.timeSeconds == 7) {
+        this.progressClass = 'bg-danger';
+      }
+      if (this.timeSeconds == 0) {
+        
+        this.Buttoon(value,Cat);
+        
+        this.endCheck();
+        
+      }
+    }, 1000);
   }
 
   public N11: Boolean = false;
@@ -908,9 +935,11 @@ export class GameComponent implements OnInit {
   public CeCe: String = '';
   Buttoon(value: number, Cat: number) {
     this.stopAudio();
+    clearInterval(this.timeInterval);
     if (value == 1 && Cat == 1) {
       this.Q11 = false;
       this.A11 = true;
+      this.Counter++;
       if (this.Answer == this.C1C1.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
@@ -921,6 +950,7 @@ export class GameComponent implements OnInit {
     if (value == 2 && Cat == 1) {
       this.Q12 = false;
       this.A12 = true;
+      this.Counter++;
       if (this.Answer == this.C1C2.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
@@ -931,6 +961,7 @@ export class GameComponent implements OnInit {
     if (value == 3 && Cat == 1) {
       this.Q13 = false;
       this.A13 = true;
+      this.Counter++;
       if (this.Answer == this.C1C3.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
@@ -941,6 +972,7 @@ export class GameComponent implements OnInit {
     if (value == 4 && Cat == 1) {
       this.Q14 = false;
       this.A14 = true;
+      this.Counter++;
       if (this.Answer == this.C1C4.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
@@ -951,6 +983,7 @@ export class GameComponent implements OnInit {
     if (value == 5 && Cat == 1) {
       this.Q15 = false;
       this.A15 = true;
+      this.Counter++;
       if (this.Answer == this.C1C5.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
@@ -961,6 +994,7 @@ export class GameComponent implements OnInit {
     if (value == 1 && Cat == 2) {
       this.Q21 = false;
       this.A21 = true;
+      this.Counter++;
       if (this.Answer == this.C2C1.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
@@ -971,6 +1005,7 @@ export class GameComponent implements OnInit {
     if (value == 2 && Cat == 2) {
       this.Q22 = false;
       this.A22 = true;
+      this.Counter++;
       if (this.Answer == this.C2C2.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
@@ -981,6 +1016,7 @@ export class GameComponent implements OnInit {
     if (value == 3 && Cat == 2) {
       this.Q23 = false;
       this.A23 = true;
+      this.Counter++;
       if (this.Answer == this.C2C3.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
@@ -991,6 +1027,7 @@ export class GameComponent implements OnInit {
     if (value == 4 && Cat == 2) {
       this.Q24 = false;
       this.A24 = true;
+      this.Counter++;
       if (this.Answer == this.C2C4.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
@@ -1001,6 +1038,7 @@ export class GameComponent implements OnInit {
     if (value == 5 && Cat == 2) {
       this.Q25 = false;
       this.A25 = true;
+      this.Counter++;
       if (this.Answer == this.C2C5.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
@@ -1011,6 +1049,7 @@ export class GameComponent implements OnInit {
     if (value == 1 && Cat == 3) {
       this.Q31 = false;
       this.A31 = true;
+      this.Counter++;
       if (this.Answer == this.C3C1.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
@@ -1021,6 +1060,7 @@ export class GameComponent implements OnInit {
     if (value == 2 && Cat == 3) {
       this.Q32 = false;
       this.A32 = true;
+      this.Counter++;
       if (this.Answer == this.C3C2.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
@@ -1031,6 +1071,7 @@ export class GameComponent implements OnInit {
     if (value == 3 && Cat == 3) {
       this.Q33 = false;
       this.A33 = true;
+      this.Counter++;
       if (this.Answer == this.C3C3.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
@@ -1041,6 +1082,7 @@ export class GameComponent implements OnInit {
     if (value == 4 && Cat == 3) {
       this.Q34 = false;
       this.A34 = true;
+      this.Counter++;
       if (this.Answer == this.C3C4.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
@@ -1051,6 +1093,7 @@ export class GameComponent implements OnInit {
     if (value == 5 && Cat == 3) {
       this.Q35 = false;
       this.A35 = true;
+      this.Counter++;
       if (this.Answer == this.C3C5.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
@@ -1061,6 +1104,7 @@ export class GameComponent implements OnInit {
     if (value == 1 && Cat == 4) {
       this.Q41 = false;
       this.A41 = true;
+      this.Counter++;
       if (this.Answer == this.C4C1.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
@@ -1071,6 +1115,7 @@ export class GameComponent implements OnInit {
     if (value == 2 && Cat == 4) {
       this.Q42 = false;
       this.A42 = true;
+      this.Counter++;
       if (this.Answer == this.C4C2.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
@@ -1081,6 +1126,7 @@ export class GameComponent implements OnInit {
     if (value == 3 && Cat == 4) {
       this.Q43 = false;
       this.A43 = true;
+      this.Counter++;
       if (this.Answer == this.C4C3.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
@@ -1091,6 +1137,7 @@ export class GameComponent implements OnInit {
     if (value == 4 && Cat == 4) {
       this.Q44 = false;
       this.A44 = true;
+      this.Counter++;
       if (this.Answer == this.C4C4.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
@@ -1101,6 +1148,7 @@ export class GameComponent implements OnInit {
     if (value == 5 && Cat == 4) {
       this.Q45 = false;
       this.A45 = true;
+      this.Counter++;
       if (this.Answer == this.C4C5.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
@@ -1111,6 +1159,7 @@ export class GameComponent implements OnInit {
     if (value == 1 && Cat == 5) {
       this.Q51 = false;
       this.A51 = true;
+      this.Counter++;
       if (this.Answer == this.C5C1.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
@@ -1121,6 +1170,7 @@ export class GameComponent implements OnInit {
     if (value == 2 && Cat == 5) {
       this.Q52 = false;
       this.A52 = true;
+      this.Counter++;
       if (this.Answer == this.C5C2.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
@@ -1131,6 +1181,7 @@ export class GameComponent implements OnInit {
     if (value == 3 && Cat == 5) {
       this.Q53 = false;
       this.A53 = true;
+      this.Counter++;
       if (this.Answer == this.C5C3.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
@@ -1141,6 +1192,7 @@ export class GameComponent implements OnInit {
     if (value == 4 && Cat == 5) {
       this.Q54 = false;
       this.A54 = true;
+      this.Counter++;
       if (this.Answer == this.C5C4.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
@@ -1151,6 +1203,7 @@ export class GameComponent implements OnInit {
     if (value == 5 && Cat == 5) {
       this.Q55 = false;
       this.A55 = true;
+      this.Counter++;
       if (this.Answer == this.C5C5.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
@@ -1158,8 +1211,53 @@ export class GameComponent implements OnInit {
         this.Score = this.Score - value * 100;
       }
     }
+    this.timeSeconds=1000;
   }
+  endCheck(){
+    if (this.Sab == 1) {
+      if (this.Counter == 5) {
+        console.log('Game Ended your score is ' + this.Score);
+        this.hideGame = true;
+        this.hideGameOver = false;
+        this.gameEnd();
+        
+      } else {
+      }
+    } else if (this.Sab == 2) {
+      if (this.Counter == 10) {
+        console.log('Game Ended your score is ' + this.Score);
+        this.gameEnd();
+        this.hideGame = true;
+        this.hideGameOver = false;
+      } else {
+      }
+    } else if (this.Sab == 3) {
+      if (this.Counter == 15) {
+        console.log('Game Ended your score is ' + this.Score);
+        this.gameEnd();
+        this.hideGame = true;
+        this.hideGameOver = false;
+      } else {
+      }
+    } else if (this.Sab == 4) {
+      if (this.Counter == 20) {
+        console.log('Game Ended your score is ' + this.Score);
+        this.gameEnd();
+        this.hideGame = true;
+        this.hideGameOver = false;
+      } else {
+      }
+    } else if (this.Sab == 5) {
+      if (this.Counter == 25) {
+        console.log('Game Ended your score is ' + this.Score);
+        this.hideGame = true;
+        this.hideGameOver = false;
+        this.gameEnd();
+        
+      }
+    }
 
+  }
   public H11: Boolean = false;
   public H12: Boolean = false;
   public H13: Boolean = false;
@@ -1194,127 +1292,104 @@ export class GameComponent implements OnInit {
     if (value == 1 && Cat == 1) {
       this.Q11 = false;
       this.A11 = false;
-      this.Counter++;
+      
     }
     if (value == 2 && Cat == 1) {
       this.Q12 = false;
       this.A12 = false;
-      this.Counter++;
+    
     }
     if (value == 3 && Cat == 1) {
       this.Q13 = false;
       this.A13 = false;
-      this.Counter++;
     }
     if (value == 4 && Cat == 1) {
       this.Q14 = false;
       this.A14 = false;
-      this.Counter++;
     }
     if (value == 5 && Cat == 1) {
       this.Q15 = false;
       this.A15 = false;
-      this.Counter++;
     }
     if (value == 1 && Cat == 2) {
       this.Q21 = false;
       this.A21 = false;
-      this.Counter++;
     }
     if (value == 2 && Cat == 2) {
       this.Q22 = false;
       this.A22 = false;
-      this.Counter++;
     }
     if (value == 3 && Cat == 2) {
       this.Q23 = false;
       this.A23 = false;
-      this.Counter++;
     }
     if (value == 4 && Cat == 2) {
       this.Q24 = false;
       this.A24 = false;
-      this.Counter++;
     }
     if (value == 5 && Cat == 2) {
       this.Q25 = false;
       this.A25 = false;
-      this.Counter++;
     }
     if (value == 1 && Cat == 3) {
       this.Q31 = false;
       this.A31 = false;
-      this.Counter++;
     }
     if (value == 2 && Cat == 3) {
       this.Q32 = false;
       this.A32 = false;
-      this.Counter++;
     }
     if (value == 3 && Cat == 3) {
       this.Q33 = false;
       this.A33 = false;
-      this.Counter++;
     }
     if (value == 4 && Cat == 3) {
       this.Q34 = false;
       this.A34 = false;
-      this.Counter++;
     }
     if (value == 5 && Cat == 3) {
       this.Q35 = false;
       this.A35 = false;
-      this.Counter++;
     }
     if (value == 1 && Cat == 4) {
       this.Q41 = false;
       this.A41 = false;
-      this.Counter++;
     }
     if (value == 2 && Cat == 4) {
       this.Q42 = false;
       this.A42 = false;
-      this.Counter++;
     }
     if (value == 3 && Cat == 4) {
       this.Q43 = false;
       this.A43 = false;
-      this.Counter++;
     }
     if (value == 4 && Cat == 4) {
       this.Q44 = false;
       this.A44 = false;
-      this.Counter++;
     }
     if (value == 5 && Cat == 4) {
       this.Q45 = false;
       this.A45 = false;
-      this.Counter++;
     }
     if (value == 1 && Cat == 5) {
       this.Q51 = false;
       this.A51 = false;
-      this.Counter++;
     }
     if (value == 2 && Cat == 5) {
       this.Q52 = false;
       this.A52 = false;
-      this.Counter++;
     }
     if (value == 3 && Cat == 5) {
       this.Q53 = false;
       this.A53 = false;
-      this.Counter++;
     }
     if (value == 4 && Cat == 5) {
       this.Q54 = false;
       this.A54 = false;
-      this.Counter++;
     }
     if (value == 5 && Cat == 5) {
       this.Q55 = false;
       this.A55 = false;
-      this.Counter++;
     }
 
     if (this.Sab == 1) {
