@@ -5,7 +5,7 @@
       <h2 style="text-shadow: 1px 1px 1px #000">Main Menu</h2>
     </div>
     <div class="row">
-      <div class="col-md d-flex justify-content-center my-3">
+      <div class="col-lg d-flex justify-content-center my-3">
         <div class="card text-center j-menu-item w-100">
           <div class="menu-item-image card-img-top d-flex align-items-center justify-content-center">
             <img src="/assets/img/sableyereg2.png" />
@@ -20,7 +20,7 @@
           </div>
         </div>
       </div>
-      <div class="col d-flex justify-content-center my-3" *ngIf="indexData.isGuest">
+      <div class="col-lg d-flex justify-content-center my-3" *ngIf="indexData.isGuest">
         <div class="card text-center j-menu-item w-100">
           <div class="menu-item-image card-img-top d-flex align-items-center justify-content-center">
             <img src="/assets/img/boyorgirl.png" style="height: 100%;" />
@@ -35,6 +35,7 @@
           </div>
         </div>
       </div>
+      <!-- disable this part -->
       <div class="col d-flex justify-content-center my-3" *ngIf="!indexData.isGuest" style="display: none !important;">
         <div class="card text-center j-menu-item" style="width: 18em">
           <div class="menu-item-image card-img-top d-flex align-items-center justify-content-center">
@@ -49,7 +50,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md d-flex justify-content-center my-3" *ngIf="!indexData.isGuest">
+      <div class="col-lg d-flex justify-content-center my-3">
         <div class="card text-center j-menu-item w-100">
           <div class="menu-item-image card-img-top d-flex align-items-center justify-content-center">
             <img src="/assets/img/trophy.png" />
@@ -57,7 +58,7 @@
           <div class="card-body">
             <h5 class="card-title">View Scoreboard</h5>
             <div class="card-text" style="height: 64px">
-              View your scores and highest multiplayer scores
+              View your scores if registered plus the top scores
             </div>
             <a class="btn btn3d btn-magick fw-semibold" routerLink="/scoreboard">View Scores</a>
           </div>
