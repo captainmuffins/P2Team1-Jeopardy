@@ -218,7 +218,9 @@
                 <div id="inputContainer">
                   <div class="form-floating text-start">
                     <input type="text" class="form-control" id="floatingInputValue" placeholder="love"
-                      [(ngModel)]="attemptData.userAnswer" (keyup.enter)="submitAnswer()">
+                      [(ngModel)]="attemptData.userAnswer" (keyup.enter)="submitAnswer()" [attr.disabled]="
+                      attemptData.disableSubmit ? 'disabled' : null
+                    ">
                     <label for="floatingInputValue">What is ...</label>
                   </div>
                 </div>
