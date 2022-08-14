@@ -1,5 +1,5 @@
 <div class="m-auto d-flex flex-column h-100">
-  <app-commons></app-commons>
+  <app-commons (newItemEvent)="getPlayerData($event)"></app-commons>
   <div class="container flex-grow-1">
     <div class="row text-white text-center my-3">
       <h2 style="text-shadow: 1px 1px 1px #000">Main Menu</h2>
