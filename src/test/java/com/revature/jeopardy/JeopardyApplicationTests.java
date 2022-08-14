@@ -2,6 +2,8 @@ package com.revature.jeopardy;
 
 import static org.junit.Assert.assertTrue;
 
+import java.sql.Timestamp;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -21,8 +23,6 @@ import com.revature.jeopardy.models.Games;
 import com.revature.jeopardy.models.Session;
 
 @SpringBootTest
-@AutoConfigureTestDatabase
-@ContextConfiguration(locations = "/test-context.xml")
 class JeopardyApplicationTests {
 
 	@Autowired
@@ -52,14 +52,19 @@ class JeopardyApplicationTests {
 
 	@Test
 	void findByPlayerUsernameTest(){
-		ResponseEntity<Response> response = pc.findByPlayerUsername("henrysmith");
+		ResponseEntity<Response> response = pc.findByPlayerUsername("BillGates");
 		assertTrue(response.getBody().isStatusSuccess());
 	}
 
 	@Test
-	void deletePlayersTest(){
-		
+	void gamesTest(){
+		ResponseEntity<Response> response = gc.addGame(new Games());
+		assertTrue(response.getBody().isStatusSuccess());
+		assertTrue(response.getBody().getStatusCode() == 202);
 	}
+
+
+
 
 
 
