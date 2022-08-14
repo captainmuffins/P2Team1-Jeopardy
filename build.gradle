@@ -23,6 +23,7 @@ dependencies {
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'junit:junit:4.12'
     
     // https://mvnrepository.com/artifact/org.postgresql/postgresql
     implementation group: 'org.postgresql', name: 'postgresql', version: '42.4.0'
