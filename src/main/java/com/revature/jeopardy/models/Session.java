@@ -65,7 +65,7 @@ public class Session {
 		this.sessionId = sessionId;
 	}
 
-	public double getSessionWinnings() {
+	public int getSessionWinnings() {
 		return sessionWinnings;
 	}
 

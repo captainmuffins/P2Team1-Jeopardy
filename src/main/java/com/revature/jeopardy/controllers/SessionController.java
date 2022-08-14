@@ -65,8 +65,9 @@ public class SessionController {
 				response = new Response(400, "New Session is null", false, null);
 				return ResponseEntity.badRequest().body(response);
 			}
-
-			newSession.setSessionPlayerfk(null);
+			
+			// response too large. this is just a quick fix.
+			newSession.getSessionPlayerfk().setPlayerAvatar(null);
 			response = new Response(202, "Session added Successfully", true, newSession);
 			return ResponseEntity.accepted().body(response);
 
