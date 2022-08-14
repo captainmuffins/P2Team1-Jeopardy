@@ -302,20 +302,29 @@ j-game-card .card-text {
 
 /* CATEGORY BUTTONS INCOMING ----------*/
 
-#buttonHolder {
+.buttonHolder {
     align-items: center;
-    margin-left: 100px;
-    margin-right:100px;
+    align-self: center;
+   
+   display: inline-block;
 }
 
-
 #TestButtonChecked {
-    background-color: rgba(92, 0, 157, 0.563);
-    margin-left: 200px;
-    margin-right:200px;
-    border-color: rgba(59, 0, 102, 0);
-    box-shadow: 1px 1px 1px #000;
+    background-color: rgba(69, 0, 118, 0.563);
     
+    border-color: rgba(83, 0, 143, 0.574);
+    box-shadow: 2px 2px 2px rgb(61, 0, 91);
+    text-shadow: 1.5px 1.5px 1.5px rgb(1, 1, 1);;
+    margin-bottom: 5px;
+    margin-left: 3px;
+    margin-right:3px;
+
+   
+   
+}
+
+.btn btn-dark :hover {
+    background-color: rgba(72, 0, 124, 0.588);
 
 }
 
@@ -324,13 +333,13 @@ j-game-card .card-text {
 
 #submitHolder {
     align-items: center;
-
+    display: inline-block;
+    align-self: center;
+    
 }
 
 #submitButton {
-    background-color: rgba(144, 0, 255, 0.599);
-    size-adjust: 50%;
-
-
+    width: 250px;
 }
+
 
