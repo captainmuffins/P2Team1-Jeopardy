@@ -110,6 +110,7 @@ export class SinglePlayerGameComponent implements OnInit {
       'catClues-' + catNum + '-' + clueNum
     ) as HTMLElement;
     elem.style.visibility = 'hidden';
+    this.progressClass = 'bg-success';
     this.attemptData.disableSubmit = false;
     this.attemptData.success = false;
     this.attemptData.fail = false;
