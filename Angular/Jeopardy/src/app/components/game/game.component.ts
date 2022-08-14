@@ -276,14 +276,14 @@ export class GameComponent implements OnInit {
   }
 
   catIdIteration = 1;
-  maxCats = 64;
+  maxCats = 100;
 
   doSelectCat(event: Event) {
     let elem = event.currentTarget as HTMLElement;
     elem.classList.toggle('checked');
   }
 
-  startGameEnabled: boolean = true;
+  // startGameEnabled: boolean = true;
 
   retrieveGameData() {
     // console.log('[numCat = ' + numCat + ' ]')
@@ -305,7 +305,7 @@ export class GameComponent implements OnInit {
               '%c[Retrieved ' + this.maxCats + ' categories]',
               'color: blue'
             );
-            this.startGameEnabled = false;
+            // this.startGameEnabled = false;
             console.log(this.jCategories);
           }
         } else {

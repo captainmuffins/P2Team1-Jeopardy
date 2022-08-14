@@ -14,7 +14,7 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col mt-3 text-start">
+                  <div class="col mt-3">
                     <button id="catButton-{{j}}" (click)="doSelectCat($event)" type="button"
                       class="btn btn btn-dark m-1 selectCatButtons fw-semibold"
                       *ngFor="let jCat of (jCategories ? jCategories : []); let j = index">{{jCat.title |
@@ -23,9 +23,7 @@
                 </div>
                 <div class="row mt-3">
                   <div class="col">
-                    <button type="button" class="btn btn-success btn3d fw-semibold" (click)="doLoad()" [attr.disabled]="
-                    startGameEnabled ? 'disabled' : null
-                  ">Start Game</button>
+                    <button type="button" class="btn btn-success btn3d fw-semibold" (click)="doLoad()">Start Game</button>
                   </div>
                 </div>
                 <div class="row">
