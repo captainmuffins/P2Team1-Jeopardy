@@ -1,9 +1,6 @@
-import {
-  Component,
-  OnInit,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { JeopardyService } from 'src/app/services/jeopardy/jeopardy.service';
+import { SessionService } from 'src/app/services/session/session.service';
 
 @Component({
   selector: 'app-single-player-game',
@@ -12,9 +9,15 @@ import { JeopardyService } from 'src/app/services/jeopardy/jeopardy.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class SinglePlayerGameComponent implements OnInit {
-  constructor(private _jeopardyService: JeopardyService) {
+  constructor(
+    private _jeopardyService: JeopardyService,
+    private ss: SessionService
+  ) {
     this.JSON = JSON;
   }
+  public currentGameId = '';
+  public currentSessionId = '';
+
   JSON: any = {};
   bootstrap: any = {};
   playerData: any = {};
@@ -60,10 +63,10 @@ export class SinglePlayerGameComponent implements OnInit {
 
   ngOnInit(): void {
     // Pre-load audio
-    this.audio.src = "../../../assets/audio/roundabout.mp3";
+    this.audio.src = '../../../assets/audio/roundabout.mp3';
   }
 
-  playAudio(){
+  playAudio() {
     this.audio.load();
     this.audio.play();
   }
@@ -115,6 +118,7 @@ export class SinglePlayerGameComponent implements OnInit {
         setTimeout(() => {
           this.hideGame = true;
           this.hideGameOver = false;
+          this.gameEnd();
         }, 1000);
       }
     }, 2000);
@@ -123,6 +127,7 @@ export class SinglePlayerGameComponent implements OnInit {
   retireEarly() {
     this.hideGame = true;
     this.hideGameOver = false;
+    this.gameEnd();
   }
 
   buildCluesArray(cluesArr: Array<any>): Array<any> {
@@ -147,7 +152,7 @@ export class SinglePlayerGameComponent implements OnInit {
     for (let i = 0; i < this.jCategories.length; i++) {
       const curCat = this.jCategories[i];
       let randClues = this.buildCluesArray(curCat.clues);
-      while(randClues.length < 5) {
+      while (randClues.length < 5) {
         randClues = this.buildCluesArray(curCat.clues);
       }
       this.jClues.push(randClues);
@@ -207,6 +212,7 @@ export class SinglePlayerGameComponent implements OnInit {
     this.attemptData.maxClues = numCat * 5;
 
     this.retrieveGameData(numCat);
+    this.gameStart();
   }
 
   retrieveGameData(numCat: number) {
@@ -247,6 +253,50 @@ export class SinglePlayerGameComponent implements OnInit {
           'color: red'
         );
         this.retrieveGameData(numCat);
+      },
+    });
+  }
+
+  // Sending requests to database on gamestart and gameend
+  gameStart() {
+    // on game start make new game record THEN make new session record
+    this.ss.addGame().subscribe({
+      next: (data) => {
+        this.currentGameId = data.statusObject.gameId;
+        let sessionDTO = {
+          sessionWinnings: 0,
+          sessionWinner: false,
+          sessionPlayerfk: this.playerData.playerId,
+          sessionGamefk: this.currentGameId,
+        };
+        console.log('GAME CREATED, ID IS ' + this.currentGameId);
+        console.log(data);
+        this.ss.addSession(sessionDTO).subscribe({
+          next: (data2) => {
+            this.currentSessionId = data2.statusObject.sessionId;
+            console.log('SESSION CREATED, ID IS ' + this.currentSessionId);
+          },
+        });
+      },
+    });
+  }
+
+  gameEnd() {
+    // on game end update session record
+    // if score is 0 don't update database
+    if (this.gameScore === 0) {
+      return;
+    }
+    let sessionDTO = {
+      sessionWinnings: this.gameScore,
+      sessionWinner: true, // SESSION WINNER IS ALWAYS TRUE SINCE THERE IS ONLY ONE PLAYER!!!!!!
+      sessionPlayerfk: this.playerData.playerId,
+      sessionGamefk: this.currentGameId,
+    };
+    this.ss.updateSession(sessionDTO, this.currentSessionId).subscribe({
+      next: (data) => {
+        console.log('Session update results:');
+        console.log(data);
       },
     });
   }
