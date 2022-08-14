@@ -353,6 +353,18 @@ j-game-card .card-text {
    
 }
 
+#TestButtonChecked:hover{
+    background-color: rgba(40, 0, 65, 0.577);
+
+}
+
+#TestButtonChecked:focus{
+    background-color: rgba(0, 0, 0, 0.507);
+}
+
+#TestButtonChecked:visited{
+    background-color: rgba(44, 5, 50, 0.724);
+}
 
 /*SUBMIT BUTTON ------------*/
 

@@ -271,14 +271,11 @@ img.showAvatar {
   border-color: rgba(0, 0, 0, 0);
   box-shadow:rgba(0, 0, 0, 3);
   align-content: center;
+  
 }
 
-#tablePlayers :hover {
-background-color: rgba(255, 221, 0, 0.355); 
-color:rgba(255, 221, 0, 1);
 
 
-}
 
 #tableTop3Labels {
   
@@ -310,6 +307,10 @@ color:rgba(255, 221, 0, 1);
   text-align: center;
 }
 
+#tablePlayers :hover{
+  background-color: rgba(255, 221, 0, 0.355); 
+  color:rgba(255, 221, 0, 1);
+}
 /* ---TOP 10 Contestants Table--- */
 
 #tableGlobalLabels{
@@ -345,6 +346,12 @@ color:rgba(255, 221, 0, 1);
   font-style: italic;
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.12);
   text-align: center;
+}
+
+#top10Scores:hover td{
+  background-color: rgba(255, 221, 0, 0.355); 
+color:rgba(255, 221, 0, 1);
+
 }
 
 .j-menu-item {
