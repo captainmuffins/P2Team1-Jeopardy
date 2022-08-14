@@ -6,7 +6,7 @@
       <h2 style="text-shadow: 1px 1px 1px #000">Scoreboard</h2>
     </div>
     <div class="row">
-      <div class="col-md d-flex justify-content-center my-3">
+      <div class="col-lg d-flex justify-content-center my-3" *ngIf="!indexData.isGuest">
         <div class="card text-center j-menu-item w-100">
           <div class="menu-item-image card-img-top d-flex align-items-center justify-content-center">
             <img src="/assets/img/playerscoreboard.png" />
@@ -18,16 +18,16 @@
               <table class="table table-hover w-100">
                 <thead id="tableTop3Labels">
                   <tr>
-                    <th scope="col" style="width: 33.33%">First Name</th>
-                    <th scope="col" style="width: 33.33%">Last Name</th>
+                    <th scope="col" style="width: 33.33%">Player Name</th>
                     <th scope="col" style="width: 33.33%">Score</th>
+                    <th scope="col" style="width: 33.33%">Date</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr id="tablePlayers" *ngFor="let score of top3Scores">
-                    <td>{{ score.sessionPlayerfk.playerFirstname }}</td>
-                    <td>{{ score.sessionPlayerfk.playerLastname }}</td>
+                    <td>{{ score.sessionPlayerfk.playerFirstname }} {{ score.sessionPlayerfk.playerLastname }}</td>
                     <td>{{ score.sessionWinnings }}</td>
+                    <td>{{ score.sessionGamefk.gameCreated | date:'short' }}</td>
                   </tr>
                 </tbody>
               </table>
@@ -35,7 +35,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md d-flex justify-content-center my-3">
+      <div class="col-lg d-flex justify-content-center my-3">
         <div class="card text-center j-menu-item w-100">
           <div class="menu-item-image card-img-top d-flex align-items-center justify-content-center">
             <img src="/assets/img/leaderboard.png" />
@@ -46,16 +46,16 @@
               <table class="table table-hover w-100">
                 <thead id="tableGlobalLabels">
                   <tr>
-                    <th scope="col" style="width: 33.33%">First Name</th>
-                    <th scope="col" style="width: 33.33%">Last Name</th>
+                    <th scope="col" style="width: 33.33%">Player Name</th>
                     <th scope="col" style="width: 33.33%">Score</th>
+                    <th scope="col" style="width: 33.33%">Date</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr id="top10Scores" *ngFor="let score of top10Scores">
-                    <td>{{ score.sessionPlayerfk.playerFirstname }}</td>
-                    <td>{{ score.sessionPlayerfk.playerLastname }}</td>
+                    <td>{{ score.sessionPlayerfk.playerFirstname }} {{ score.sessionPlayerfk.playerLastname }}</td>
                     <td>{{ score.sessionWinnings }}</td>
+                    <td>{{ score.sessionGamefk.gameCreated | date:'short' }}</td>
                   </tr>
                 </tbody>
               </table>

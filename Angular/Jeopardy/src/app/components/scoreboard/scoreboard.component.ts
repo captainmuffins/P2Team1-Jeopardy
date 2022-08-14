@@ -65,25 +65,15 @@ export class ScoreboardComponent implements OnInit {
     if (this._cookieService.get('JSESSIONID') != undefined) {
       console.log('%c[User is logged in]', 'color: blue');
       this.initPlayer();
+      this.initMyScoreboard();
       this.initScoreboard();
     } else {
       console.log('%c[User is a guest]', 'color: orange');
+      this.initScoreboard();
     }
   }
 
-  initScoreboard() {
-    this._scoreboard.getAllSessions().subscribe({
-      next: (data) => {
-        let receivedData = data.statusObject;
-        for (let i of receivedData) {
-          this.top10Scores.push(i);
-        }
-        this.top10Scores = this.top10Scores.slice(0, 10);
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
+  initMyScoreboard() {
     this._player.getCurrentSession().subscribe({
       next: (data) => {
         let receivedData = data.statusObject;
@@ -103,6 +93,22 @@ export class ScoreboardComponent implements OnInit {
       },
       error: (err) => {
         // console.log(err);
+      },
+    });
+  }
+
+  initScoreboard() {
+    this._scoreboard.getAllSessions().subscribe({
+      next: (data) => {
+        let receivedData = data.statusObject;
+        console.log(receivedData);
+        for (let i of receivedData) {
+          this.top10Scores.push(i);
+        }
+        this.top10Scores = this.top10Scores.slice(0, 10);
+      },
+      error: (err) => {
+        console.log(err);
       },
     });
   }
