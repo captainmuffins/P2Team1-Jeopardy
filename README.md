@@ -1,6 +1,8 @@
 # Project 2
 Jeopardy! Web Application
 
+Demo accessible and runs on HTTPS - [https://revaturejeopardyproject.space/](https://revaturejeopardyproject.space/)
+
 ## Summary
 Registered users can play Jeopardy game and be able to see their scores.
 
@@ -29,7 +31,21 @@ Requirements:
 * Postgres DB
 * Gradle for Java Dependencies
 * GCP Cloud SQL
-* GCP E2
+* GCP E2 (See Below)
+
+## Screenshots
+
+  * Runs in E2-Micro VM with SSL enabled
+
+![](imgs/screenshot_deployed_in_gcp_with_SSL.png)
+
+  * Screenshot of VM instance
+
+![](imgs/screenshot_e2_micro_instance.png)
+
+  * Postgres DB hosted in GCP
+
+![](imgs/uses_gcp_sql_postgres.png)
 
 ## License
 MIT
