@@ -28,8 +28,12 @@ public class JeopardyApplication {
 				 * (Frontend) Allow receiving of credentials (if using withCredentials option
 				 * with observables from angular)
 				 */
-				registry.addMapping("/**").allowedMethods("*").allowedOrigins("http://localhost", "https://localhost")
-						.allowCredentials(true);
+				registry
+				.addMapping("/**")
+				.allowedMethods("*")
+				.allowedOrigins("http://localhost", "https://localhost",
+						"https://revaturejeopardyproject.space/")
+				.allowCredentials(true);
 			}
 		};
 	}

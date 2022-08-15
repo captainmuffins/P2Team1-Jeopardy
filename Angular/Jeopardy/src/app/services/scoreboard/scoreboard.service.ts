@@ -5,8 +5,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ScoreboardService {
-  private _sessions = 'http://localhost:8443/api/session/';
-  private _playerSessions = 'http://localhost:8443/api/session/byPlayer/';
+  private _sessions = 'https://revaturejeopardyproject.space:8443/api/session/';
+  private _playerSessions = 'https://revaturejeopardyproject.space:8443/api/session/byPlayer/';
   constructor(private http: HttpClient) {}
 
   getAllSessions() {
