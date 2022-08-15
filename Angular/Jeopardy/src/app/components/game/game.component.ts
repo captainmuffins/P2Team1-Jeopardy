@@ -1494,8 +1494,8 @@ export class GameComponent implements OnInit {
   ngOnInit(): void {
     //UNCOMMENT THIS IF YOU WANT TO TEST THE DATABASE FUNCTIONALITY ON GAME START!!!!!!!!
     this.Test2();
-    
-    
+
+
     this.audio.src = "../../../assets/audio/roundabout.mp3";
   }
   playerData: any = {};
@@ -1534,7 +1534,7 @@ export class GameComponent implements OnInit {
                 'color: blue'
               );
               console.log(data2);
-              
+
             },
           });
         },
@@ -1577,7 +1577,7 @@ isObjEmpty(obj: any) {
   getPlayerData(value: any) {
     this.playerData = value;
     this.imagePreviewUrl =
-      'http://localhost:8080/api/players/avatar/' + this.playerData?.playerId;
+      'http://localhost:8443/api/players/avatar/' + this.playerData?.playerId;
     console.log(this.playerData);
     this.gameStart();
   }

@@ -244,7 +244,7 @@ export class SinglePlayerGameComponent implements OnInit {
   getPlayerData(value: any) {
     this.playerData = value;
     this.imagePreviewUrl =
-      'http://localhost:8080/api/players/avatar/' + this.playerData?.playerId;
+      'http://localhost:8443/api/players/avatar/' + this.playerData?.playerId;
     // console.log(this.playerData);
   }
 

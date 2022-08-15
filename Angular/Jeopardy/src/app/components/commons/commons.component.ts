@@ -90,7 +90,7 @@ export class CommonsComponent implements OnInit {
         this.newPlayerData = receivedData;
 
         this.imagePreviewUrl =
-          'http://localhost:8080/api/players/avatar/' + receivedData.playerId;
+          'http://localhost:8443/api/players/avatar/' + receivedData.playerId;
 
         this.newItemEvent.emit(receivedData);
       },

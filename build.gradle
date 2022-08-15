@@ -2,6 +2,10 @@ plugins {
 	id 'org.springframework.boot' version '2.7.2'
 	id 'io.spring.dependency-management' version '1.0.12.RELEASE'
 	id 'java'
+	id 'java-library'
+	id 'application'
+    id 'distribution'
+    id 'eclipse'
 }
 
 group = 'com.revature'
@@ -33,6 +37,17 @@ dependencies {
     implementation 'com.google.guava:guava:29.0-jre'
     // https://mvnrepository.com/artifact/org.apache.tika/tika-core
     implementation group: 'org.apache.tika', name: 'tika-core', version: '2.4.1'
+}
+
+// Main Class
+mainClassName = "com.revature.jeopardy.JeopardyApplication"
+
+distZip {
+  into(project.name + '-' + version + '/bin') {
+    from '.'
+    include 'configs/*'
+    include 'certs/*'
+  }
 }
 
 tasks.named('test') {

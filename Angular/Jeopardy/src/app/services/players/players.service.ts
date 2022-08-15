@@ -5,10 +5,10 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class PlayersService {
-  private _mysession = 'http://localhost:8080/api/players/mysession';
-  private _updateProfile = 'http://localhost:8080/api/players/profile';
-  private _changePassword = 'http://localhost:8080/api/players/password';
-  private _uploadAvatar = 'http://localhost:8080/api/players/avatar';
+  private _mysession = 'http://localhost:8443/api/players/mysession';
+  private _updateProfile = 'http://localhost:8443/api/players/profile';
+  private _changePassword = 'http://localhost:8443/api/players/password';
+  private _uploadAvatar = 'http://localhost:8443/api/players/avatar';
 
   constructor(private http: HttpClient) {}
   getCurrentSession() {

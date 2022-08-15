@@ -5,9 +5,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class SessionService {
-  private _sessions = 'http://localhost:8080/api/session/';
-  private _sessionsUpdate = 'http://localhost:8080/api/session/id/';
-  private _games = 'http://localhost:8080/api/games/';
+  private _sessions = 'http://localhost:8443/api/session/';
+  private _sessionsUpdate = 'http://localhost:8443/api/session/id/';
+  private _games = 'http://localhost:8443/api/games/';
   constructor(private http: HttpClient) {}
   addSession(session: any) {
     return this.http.post<any>(this._sessions, session, {

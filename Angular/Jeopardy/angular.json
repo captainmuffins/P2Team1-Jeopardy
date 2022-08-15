@@ -72,6 +72,8 @@
           },
           "defaultConfiguration": "development",
           "options": {
+            "sslKey": "/etc/letsencrypt/live/revaturejeopardyproject.space/privkey.pem",
+            "sslCert": "/etc/letsencrypt/live/revaturejeopardyproject.space/cert.pem",
             "port": 80
           }
         },
