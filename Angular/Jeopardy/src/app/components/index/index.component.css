@@ -1,0 +1,31 @@
+.j-menu-item {
+  background-color: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(30px);
+  color: #fff;
+  transition: .3s ease-in-out;
+}
+
+.j-menu-item:hover {
+  transform: scale(1.05);
+}
+
+.j-menu-item .card-text {
+  text-shadow: 1px 1px 1px #000;
+}
+
+.j-menu-item .btn3d {
+  font-size: 14px;
+}
+
+.menu-item-image {
+  height: 180px;
+  background-image: radial-gradient(circle farthest-corner at 50% 50%, rgba(255, 255, 255, 0.25) 0%, rgba(0, 0, 0, 0.25) 67%)
+}
+
+.menu-item-image img {
+  height: 50%
+}
+
+.cardW18 {
+  width: 18rem;
+}

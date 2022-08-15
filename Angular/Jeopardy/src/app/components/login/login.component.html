@@ -1,4 +1,4 @@
-<main class="bg d-flex align-content-center">
+<div class="m-auto d-flex align-content-center h-100">
   <div class="animatedBackground"></div>
   <div class="loginContainer w-100 m-auto">
     <div class="container">
@@ -18,48 +18,73 @@
                       <h1 class="h3">Login to Play!</h1>
                     </div>
                   </div>
+
+                  <!-- Username -->
                   <div class="row">
                     <div class="col">
-                      <div class="form-floating mb-2">
-                        <input type="text" class="form-control" id="inputUsername" value="" placeholder="Username"
+                      <div class="form-floating mb-3">
+                        <input type="text" [(ngModel)]="loginPlayerData.playerUsername" (keyup.enter)="loginPlayer()"
+                          name="playerUsername" class="form-control" id="playerUsername" value="" placeholder="Username"
                           required>
-                        <label for="inputUsername" class="form-label">Username</label>
+                        <label for="playerPassword" class="form-label">Username</label>
                       </div>
                     </div>
                   </div>
+
+                  <!-- Password -->
                   <div class="row">
                     <div class="col">
-                      <div class="form-floating mb-2">
-                        <input type="password" class="form-control" id="inputPassword" value="" placeholder="Password"
-                          required>
-                        <label for="inputPassword" class="form-label">Password</label>
+                      <div class="form-floating mb-3">
+                        <input type="password" [(ngModel)]="loginPlayerData.playerPassword"
+                          (keyup.enter)="loginPlayer()" name="playerPassword" class="form-control" id="playerPassword"
+                          value="" placeholder="Password" required>
+                        <label for="playerPassword" class="form-label">Password</label>
                       </div>
                     </div>
                   </div>
-                  <div class="row">
+
+                  <!-- Login Button -->
+                  <div class="row mb-2">
                     <div class="col">
-                      <button id="submitBtn" href="#" class="w-100 btn btn-sm btn3d btn-primary fw-bold" type="button">
-                        <div id="proceedText" class="proceedText">Login</div>
-                        <div id="proceedLoading" class="proceedLoading text-center hideElem">
+                      <button id="submitBtn" (click)="loginPlayer()" href="#"
+                        class="w-100 btn btn3d btn-success fw-semibold" type="button"
+                        [attr.disabled]="loginData.disableSubmit ? 'disabled' : null">
+                        <div id="proceedText" class="proceedText"
+                          [ngClass]="loginData.hideSubmitText ? 'hideElem' : ''">Login</div>
+                        <div id="proceedLoading" class="proceedLoading text-center"
+                          [ngClass]="loginData.hideSubmitLoading ? 'hideElem' : ''">
                           <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
                           Loading...
                         </div>
                       </button>
                     </div>
+
+                    <!-- Sign-up button -->
+
                     <div class="col">
-                      <button id="registerBtn" href="#" class="w-100 btn btn-sm btn3d btn-success fw-bold"
+                      <a id="guestBtn" routerLink="/" class="w-100 btn btn3d text-white btn-info fw-semibold"
+                        type="button">
+                        Continue as Guest
+                      </a>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <a id="registerBtn" routerLink="/sign-up" class="w-100 btn btn3d btn-primary fw-semibold"
                         type="button">
                         Sign-up
-                      </button>
+                      </a>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col login-message mt-3">
-                      <div id="setupAlertSuccess" class="alert alert-success text-center" role="alert">
-                        Login Success. Redirecting to main page in 1s.
+                      <div id="setupAlertSuccess" class="alert alert-success text-center"
+                        [ngClass]="loginData.hideSuccessStatus ? '' : 'activeStatus'" role="alert">
+                        <span class="welcomePlayer">{{loginData.successStatusMessage}}</span> Redirecting to main in 1s
                       </div>
-                      <div id="setupAlertFailed" class="alert alert-danger text-center" role="alert">
-                        Failed.
+                      <div id="setupAlertFailed" class="alert alert-danger text-center"
+                        [ngClass]="loginData.hideFailStatus ? '' : 'activeStatus'" role="alert">
+                        <span>{{loginData.failStatusMessage}}</span>
                       </div>
                     </div>
                   </div>
@@ -70,6 +95,5 @@
         </div>
       </div>
     </div>
-
   </div>
-</main>
+</div>

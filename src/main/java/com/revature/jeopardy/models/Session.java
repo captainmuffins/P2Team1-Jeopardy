@@ -1,95 +1,106 @@
 package com.revature.jeopardy.models;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-import javax.persistence.*;
+import org.springframework.stereotype.Component;
 
 @Entity
 @Table(name = "session")
 @Component
 public class Session {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int session_id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int sessionId;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "player_id")
-    private Players session_player_fk;
+	@Column
+	private int sessionWinnings = 0;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "game_id")
-    private Games session_game_fk;
+	@Column(nullable = false)
+	private boolean sessionWinner = false;
 
-    @Column
-    private boolean session_winner;
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+	@JoinColumn(name = "playerId", nullable = false)
+	private Players sessionPlayerfk;
 
-    // BOILERPLATE ------------------------------------------------------------------------------
-    public Session() {
-    }
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+	@JoinColumn(name = "gameId", nullable = false)
+	private Games sessionGamefk;
 
-    public Session(int session_id, Players session_player_fk, Games session_game_fk, boolean session_winner) {
-        this.session_id = session_id;
-        this.session_player_fk = session_player_fk;
-        this.session_game_fk = session_game_fk;
-        this.session_winner = session_winner;
-    }
+	public Session() {
+		super();
+	}
 
-    public Session(Players session_player_fk, Games session_game_fk, boolean session_winner) {
-        this.session_player_fk = session_player_fk;
-        this.session_game_fk = session_game_fk;
-        this.session_winner = session_winner;
-    }
+	public Session(int sessionWinnings, boolean sessionWinner, Players sessionPlayerfk, Games sessionGamefk) {
+		super();
+		this.sessionWinnings = sessionWinnings;
+		this.sessionWinner = sessionWinner;
+		this.sessionPlayerfk = sessionPlayerfk;
+		this.sessionGamefk = sessionGamefk;
+	}
 
-    @Autowired
-    public Session(Players session_player_fk) {
-        this.session_player_fk = session_player_fk;
-    }
+	public Session(int sessionId, int sessionWinnings, boolean sessionWinner, Players sessionPlayerfk,
+			Games sessionGamefk) {
+		super();
+		this.sessionId = sessionId;
+		this.sessionWinnings = sessionWinnings;
+		this.sessionWinner = sessionWinner;
+		this.sessionPlayerfk = sessionPlayerfk;
+		this.sessionGamefk = sessionGamefk;
+	}
 
-    @Autowired
-    public Session(Games session_game_fk) {
-        this.session_game_fk = session_game_fk;
-    }
+	public int getSessionId() {
+		return sessionId;
+	}
 
-    public int getSession_id() {
-        return session_id;
-    }
+	public void setSessionId(int sessionId) {
+		this.sessionId = sessionId;
+	}
 
-    public void setSession_id(int session_id) {
-        this.session_id = session_id;
-    }
+	public int getSessionWinnings() {
+		return sessionWinnings;
+	}
 
-    public Players getSession_player_fk() {
-        return session_player_fk;
-    }
+	public void setSessionWinnings(int sessionWinnings) {
+		this.sessionWinnings = sessionWinnings;
+	}
 
-    public void setSession_player_fk(Players session_player_fk) {
-        this.session_player_fk = session_player_fk;
-    }
+	public boolean isSessionWinner() {
+		return sessionWinner;
+	}
 
-    public Games getSession_game_fk() {
-        return session_game_fk;
-    }
+	public void setSessionWinner(boolean sessionWinner) {
+		this.sessionWinner = sessionWinner;
+	}
 
-    public void setSession_game_fk(Games session_game_fk) {
-        this.session_game_fk = session_game_fk;
-    }
+	public Players getSessionPlayerfk() {
+		return sessionPlayerfk;
+	}
 
-    public boolean isSession_winner() {
-        return session_winner;
-    }
+	public void setSessionPlayerfk(Players sessionPlayerfk) {
+		this.sessionPlayerfk = sessionPlayerfk;
+	}
 
-    public void setSession_winner(boolean session_winner) {
-        this.session_winner = session_winner;
-    }
+	public Games getSessionGamefk() {
+		return sessionGamefk;
+	}
 
-    @Override
-    public String toString() {
-        return "Session{" +
-                "session_id=" + session_id +
-                ", session_player_fk=" + session_player_fk +
-                ", session_game_fk=" + session_game_fk +
-                ", session_winner=" + session_winner +
-                '}';
-    }
+	public void setSessionGamefk(Games sessionGamefk) {
+		this.sessionGamefk = sessionGamefk;
+	}
+
+	@Override
+	public String toString() {
+		return "Session [sessionId=" + sessionId + ", sessionWinnings=" + sessionWinnings + ", sessionWinner="
+				+ sessionWinner + ", sessionPlayerfk=" + sessionPlayerfk + ", sessionGamefk=" + sessionGamefk + "]";
+	}
+
 }

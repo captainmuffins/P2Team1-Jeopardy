@@ -1,0 +1,112 @@
+.withShadow {
+  text-shadow: 1px 1px 1px #000;
+}
+
+.titleCase {
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+.j-game-card {
+  background-color: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(30px);
+  color: #fff;
+  transition: .3s ease-in-out;
+}
+
+<<<<<<< HEAD
+.deskPlayerAvatar {
+  width: 128px;
+  /*
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 1px 1px 1px #000;
+  padding: 8px;
+  border: 2px solid #fff;
+  */
+}
+
+.deskBody {
+  display: table;
+  border-radius: 6px;
+  background: rgb(79, 171, 223);
+  width: 192px;
+  height: 192px;
+  box-shadow: 0px 1px 6px #000;
+}
+
+.deskPlayerAvatarContainer {
+  position: absolute;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.deskContainer.d-flex.justify-content-center {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 11;
+  top: 144px;
+}
+
+.divTable {
+  display: table;
+  border-radius: 6px;
+  border: 8px solid rgb(79, 171, 223);
+  width: 192px;
+  height: 256px;
+  box-shadow: 0px 1px 6px #000;
+}
+
+.divTableRow {
+  display: table-row;
+}
+
+.deskRowColor {
+  background: rgb(79, 171, 223);
+}
+
+.deskRowBlur {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(20px);
+}
+
+.divTableHeading {
+  background-color: #EEE;
+  display: table-header-group;
+}
+
+.divTableCell,
+.divTableHead {
+  display: table-cell;
+  padding: 3px 10px;
+}
+
+.divTableHeading {
+  background-color: #EEE;
+  display: table-header-group;
+  font-weight: bold;
+}
+
+.divTableFoot {
+  background-color: #EEE;
+  display: table-footer-group;
+  font-weight: bold;
+}
+
+.divTableBody {
+  display: table-row-group;
+}
+=======
+.j-game-card:hover {
+  transform: scale(1.05);
+}
+
+.j-game-card .card-text {
+  text-shadow: 1px 1px 1px #000;
+}
+
+
+>>>>>>> d86c608de2d74cd394d84105c60d87e3c2a4dd85

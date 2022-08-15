@@ -1,0 +1,224 @@
+<!-- Nav -->
+<nav class="navbar navbar-dark navbar-expand-lg bg-transparent">
+  <div class="container" style="min-height: 68px;">
+    <span class="navbar-brand text-white">JEOPARDY!</span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item withShadow">
+          <a class="nav-link text-white" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item withShadow">
+          <a class="nav-link text-white" routerLink="/scoreboard">Scoreboard</a>
+        </li>
+      </ul>
+      <div class="d-flex">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-white">
+          <ng-template #loginLink>
+            <li class="nav-item withShadow">
+              <a class="nav-link text-white" routerLink="/login" role="button"><i
+                  class="bi bi-box-arrow-in-right me-2"></i><span>Login</span></a>
+            </li>
+          </ng-template>
+          <li class="nav-item dropdown" *ngIf="!indexData.isGuest; else loginLink">
+            <a class="nav-link dropdown-toggle text-white withShadow" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <img class="showAvatar m-2" [src]="imagePreviewUrl" /><span>Welcome, </span><span
+                class="me-1 titleCase">{{
+                currentPlayerData.playerFirstname !== undefined
+                ? currentPlayerData.playerFirstname +
+                " " +
+                currentPlayerData.playerLastname
+                : "Guest"
+                }}</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasProfile"
+                  aria-controls="offcanvasProfile">My Profile</a>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="doLogout()">Logout</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- Offcanvas -->
+<div class="offcanvas offcanvas-bottom h-100" tabindex="-1" id="offcanvasProfile"
+  aria-labelledby="offcanvasProfileLabel" data-bs-keyboard="false">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title text-white" id="offcanvasProfileLabel">
+      My Profile
+    </h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body-wrapper w-100 m-auto" style="max-width: 576px">
+    <div class="offcanvas-body">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <form id="avatar-upload" class="avatar-upload" [formGroup]="formAvatar">
+              <div class="avatar-edit form-group">
+                <input type="file" id="playerAvatar" accept=".png, .jpg, .jpeg, .gif" name="playerAvatar"
+                  (change)="selectAvatar($event)" class="form-control" />
+                <label for="playerAvatar"><i class="bi bi-pencil"></i></label>
+              </div>
+              <div class="avatar-preview container2">
+                <img id="imagePreview" [src]="imagePreviewUrl" />
+                <div id="uploadAvatarCon" class="d-flex justify-content-center"></div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <form id="updateProfileForm" class="updateProfileForm needs-validation" novalidate>
+          <div class="row">
+            <div class="col pb-2">
+              <h1 class="h3 text-center text-white">Update Information</h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="playerFirstname" name="playerFirstname"
+                  [(ngModel)]="newPlayerData.playerFirstname" placeholder="First Name" required />
+                <label for="playerFirstname" class="form-label">First Name</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="playerLastname" name="playerLastname"
+                  [(ngModel)]="newPlayerData.playerLastname" placeholder="Last Name" required />
+                <label for="playerLastname" class="form-label">Last Name</label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="playerUsername" name="playerUsername"
+                  [(ngModel)]="newPlayerData.playerUsername" placeholder="Username" required />
+                <label for="playerUsername" class="form-label">Username</label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="playerEmail" name="playerEmail"
+                  [(ngModel)]="newPlayerData.playerEmail" placeholder="email@example.com" required />
+                <label for="playerEmail" class="form-label">E-mail</label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="d-grid gap-2 mb-3">
+                <button id="updateProfileButton" href="#" class="btn btn3d btn-success" type="submit"
+                  (click)="updateProfile()" [attr.disabled]="
+                      indexData.disableSubmit ? 'disabled' : null
+                    ">
+                  <div id="updateText" class="proceedText" [ngClass]="
+                        indexData.hideProfileSubmitText ? 'hideElem' : ''
+                      ">
+                    Update
+                  </div>
+                  <div id="updateLoading" class="proceedLoading text-center" [ngClass]="
+                        indexData.hideProfileSubmitLoading ? 'hideElem' : ''
+                      ">
+                    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                    Loading...
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+          <input type="hidden" id="playerId" name="playerId" [(ngModel)]="newPlayerData.playerId" />
+        </form>
+        <form id="updatePasswordForm" class="updatePasswordForm needs-validation" novalidate>
+          <div class="row">
+            <div class="col pb-2">
+              <h1 class="h3 text-center text-white">Change Password</h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="col">
+                <div class="form-floating mb-3">
+                  <input type="password" class="form-control" id="playerPassword" name="playerPassword"
+                    [(ngModel)]="newPlayerData.playerPassword" (keyup)="checkPassword($event)" value=""
+                    placeholder="Password" required />
+                  <label for="playerPassword" class="form-label">New Password</label>
+                  <div class="password-not-match text-danger">
+                    Passwords must match
+                  </div>
+                  <div class="password-match text-success">
+                    Passwords match!
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="col">
+                <div class="form-floating mb-3">
+                  <input type="password" class="form-control" id="confirmPassword" [(ngModel)]="confirmPassword"
+                    (keyup)="checkPassword($event)" name="confirmPassword" value="" placeholder="Password" required />
+                  <label for="confirmPassword" class="form-label">Confirm Password</label>
+                  <div class="password-not-match text-danger">
+                    Passwords must match
+                  </div>
+                  <div class="password-match text-success">
+                    Passwords match!
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="d-grid gap-2 mb-3">
+                <button id="updatePasswordButton" href="#" class="btn btn3d btn-success" type="submit"
+                  (click)="changePassword()" [attr.disabled]="
+                      indexData.disableSubmit ? 'disabled' : null
+                    ">
+                  <div id="updatePasswordText" class="proceedText" [ngClass]="
+                        indexData.hidePasswordSubmitText ? 'hideElem' : ''
+                      ">
+                    Change
+                  </div>
+                  <div id="updatePasswordLoading" class="proceedLoading text-center" [ngClass]="
+                        indexData.hidePasswordSubmitLoading ? 'hideElem' : ''
+                      ">
+                    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                    Loading...
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="row">
+          <div class="col update-message">
+            <div id="updateAlertSuccess" class="alert alert-success text-center" role="alert"
+              [ngClass]="indexData.hideSuccessStatus ? '' : 'activeStatus'">
+              {{ indexData.successStatusMessage }}
+            </div>
+            <div id="updateAlertFailed" class="alert alert-danger text-center" role="alert"
+              [ngClass]="indexData.hideFailStatus ? '' : 'activeStatus'">
+              {{ indexData.failStatusMessage }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
