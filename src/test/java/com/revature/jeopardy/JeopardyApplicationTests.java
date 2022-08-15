@@ -136,7 +136,8 @@ class JeopardyApplicationTests {
 
 	@Test
 	void sessionsTest(){
-		ResponseEntity<Response> response = sc.addSession(new SessionDTO(0, false, 2, 4));
+		SessionDTO ses = new SessionDTO(0, false, 8, 160);
+		ResponseEntity<Response> response = sc.addSession(ses);
 		System.out.println(response.getStatusCode() + " " + response.getBody().getStatusObject());
 		System.out.println(response.getBody().getStatusMessage());
 		assertTrue(response.getBody().isStatusSuccess());
