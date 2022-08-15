@@ -43,6 +43,7 @@ export class GameComponent implements OnInit {
   public A: Array<number> = this.CS.Bob;
   public i: number = 0;
   public value: number = 1;
+
   public MAN: Clue = {
     id: 0,
     answer: '',
@@ -225,7 +226,7 @@ export class GameComponent implements OnInit {
     value: 0,
     category_id: 0,
   };
-  // shall I make 25 different variables so I can have one for each shell yes I shall,
+
   CheckCheck() {
     if (this.Sab >= 1) {
       console.log(this.C1C1.answer);
@@ -1288,12 +1289,10 @@ export class GameComponent implements OnInit {
     if (value == 1 && Cat == 1) {
       this.Q11 = false;
       this.A11 = false;
-
     }
     if (value == 2 && Cat == 1) {
       this.Q12 = false;
       this.A12 = false;
-
     }
     if (value == 3 && Cat == 1) {
       this.Q13 = false;
@@ -1460,42 +1459,70 @@ export class GameComponent implements OnInit {
 
   // Sending requests to database on gamestart and gameend
   gameStart() {
-    // on game start make new game record THEN make new session record
-    this.ss.addGame().subscribe({
-      next: (data) => {
-        this.currentGameId = data.statusObject.gameId;
-        let sessionDTO = {
-          sessionWinnings: 0,
-          sessionWinner: false,
-          sessionPlayerfk: this.playerData.playerId,
-          sessionGamefk: this.currentGameId,
-        };
-        console.log('GAME CREATED, ID IS ' + this.currentGameId);
-        console.log(data);
-        this.ss.addSession(sessionDTO).subscribe({
-          next: (data2) => {
-            this.currentSessionId = data2.statusObject.sessionId;
-            console.log('SESSION CREATED, ID IS ' + this.currentSessionId);
-          },
-        });
-      },
-    });
+   if (!this.isObjEmpty(this.playerData)) {
+      // on game start make new game record THEN make new session record
+      this.ss.addGame().subscribe({
+        next: (data) => {
+          this.currentGameId = data.statusObject.gameId;
+          let sessionDTO = {
+            sessionWinnings: 0,
+            sessionWinner: false,
+            sessionPlayerfk: this.playerData.playerId,
+            sessionGamefk: this.currentGameId,
+          };
+          console.log(
+            '%c[Game created, ID is ' + this.currentGameId + ']',
+            'color: blue'
+          );
+          console.log(data);
+          this.idxProgress++;
+          this.curProgress = (this.idxProgress / this.maxProgress) * 10;
+          this.ss.addSession(sessionDTO).subscribe({
+            next: (data2) => {
+              this.currentSessionId = data2.statusObject.sessionId;
+              console.log(
+                '%c[Session created, ID is ' + this.currentSessionId + ']',
+                'color: blue'
+              );
+              console.log(data2);
+              this.idxProgress++;
+              this.curProgress = (this.idxProgress / this.maxProgress) * 100;
+              this.loadClues();
+            },
+          });
+        },
+      });
+    } else {
+      console.log(
+        '%c[Not creating any game record since user is a guest]',
+        'color: orange'
+      );
+      this.loadClues();
+    }
   }
-
+isObjEmpty(obj: any) {
+    return Object.keys(obj).length === 0;
+  }
   gameEnd() {
-    // on game end update session record
-    let sessionDTO = {
-      sessionWinnings: this.Score,
-      sessionWinner: true, // SESSION WINNER IS ALWAYS TRUE SINCE THERE IS ONLY ONE PLAYER!!!!!!
-      sessionPlayerfk: this.playerData.playerId,
-      sessionGamefk: this.currentGameId,
-    };
-    this.ss.updateSession(sessionDTO, this.currentSessionId).subscribe({
-      next: (data) => {
-        console.log('Session update results:');
-        console.log(data);
-      },
-    });
+     if (!this.isObjEmpty(this.playerData)) {
+      // on game end update session record
+      // if score is 0 don't update database
+      if (this.gameScore === 0) {
+        return;
+      }
+      let sessionDTO = {
+        sessionWinnings: this.gameScore,
+        sessionWinner: true, // SESSION WINNER IS ALWAYS TRUE SINCE THERE IS ONLY ONE PLAYER!!!!!!
+        sessionPlayerfk: this.playerData.playerId,
+        sessionGamefk: this.currentGameId,
+      };
+      this.ss.updateSession(sessionDTO, this.currentSessionId).subscribe({
+        next: (data) => {
+          console.log('Updated game session results.', 'color: blue');
+          console.log(data);
+        },
+      });
+    }
   }
 
   // Testing only
