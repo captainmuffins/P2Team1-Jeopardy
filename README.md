@@ -1,6 +1,8 @@
 # Project 2
 Jeopardy! Web Application
 
+Demo accessible and runs on HTTPS - [https://revaturejeopardyproject.space/](https://revaturejeopardyproject.space/)
+
 ## Summary
 Registered users can play Jeopardy game and be able to see their scores.
 
