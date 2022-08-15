@@ -36,7 +36,7 @@ public class GamesController {
 
             newGame = gamesDAO.save(newGame);
             if(newGame != null){
-                response = new Response(202, "Game added successfully", true, newGame);
+                response = new Response(202, newGame.getGameId() + "", true, newGame);
                 return ResponseEntity.accepted().body(response);
             }
 

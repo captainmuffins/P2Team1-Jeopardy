@@ -62,7 +62,7 @@ public class SessionController {
 			Session newSession = sessionDAO.save(session);
 
 			if (newSession == null) {
-				response = new Response(400, "New Session is null", false, null);
+				response = new Response(400, newSession.getSessionId() + "", false, null);
 				return ResponseEntity.badRequest().body(response);
 			}
 			
