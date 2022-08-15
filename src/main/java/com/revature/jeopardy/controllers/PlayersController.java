@@ -62,7 +62,7 @@ public class PlayersController {
 
 		Response response = null;
 		if (createPlayer != null) {
-			response = new Response(200, "Created a new player", true, createPlayer);
+			response = new Response(200, createPlayer.getPlayerId()+"", true, createPlayer);
 			return ResponseEntity.status(response.getStatusCode()).body(response);
 		}
 

@@ -62,19 +62,22 @@ public class SessionController {
 			Session newSession = sessionDAO.save(session);
 
 			if (newSession == null) {
-				response = new Response(400, "New Session is null", false, null);
+				response = new Response(400, "Session creation failed", false, null);
+				System.out.println("Null");
 				return ResponseEntity.badRequest().body(response);
 			}
 			
 			// response too large. this is just a quick fix.
 			newSession.getSessionPlayerfk().setPlayerAvatar(null);
-			response = new Response(202, "Session added Successfully", true, newSession);
+			response = new Response(202, newSession.getSessionId() + "", true, newSession);
 			return ResponseEntity.accepted().body(response);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
+
+		System.out.println("Error");
 		response = new Response(400, "Error adding session", false, null);
 		return ResponseEntity.badRequest().body(response);
 

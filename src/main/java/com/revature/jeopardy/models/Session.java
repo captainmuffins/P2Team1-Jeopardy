@@ -31,7 +31,7 @@ public class Session {
 	@JoinColumn(name = "playerId", nullable = false)
 	private Players sessionPlayerfk;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "gameId", nullable = false)
 	private Games sessionGamefk;
 
