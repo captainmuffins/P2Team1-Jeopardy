@@ -1,5 +1,5 @@
 <app-commons (newItemEvent)="getPlayerData($event)"></app-commons>
-<div class="m-auto d-flex flex-column h-100">
+<div class="m-auto d-flex flex-column h-100" >
   
   <button *ngIf="!Bu2" (click)="SortC1()" class="btn btn-magick btn-success btn3d"
     style="margin-left:auto;margin-right:auto;">Click me</button>
@@ -23,7 +23,7 @@
         </div>
       </div>
       <div class="row">
-        <input type="text" [(ngModel)]="Answer">
+        <input type="text" [(ngModel)]="Answer" id="Answer">
 
         <div class="col">
           <div>
@@ -568,8 +568,6 @@
               </div>
             </div>
           </div>
-
-          <!-- <a class="btn btn-sm btn3d btn-danger card-link fw-semibold">Retire</a> -->
         </div>
       </div>
     </div>

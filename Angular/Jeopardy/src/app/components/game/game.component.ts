@@ -940,8 +940,10 @@ export class GameComponent implements OnInit {
       if (this.Answer == this.C1C1.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
+        this.Answer="Correct"
       } else {
         this.Score = this.Score - value * 100;
+        this.Answer="Incorrect"
       }
     }
     if (value == 2 && Cat == 1) {
@@ -951,8 +953,10 @@ export class GameComponent implements OnInit {
       if (this.Answer == this.C1C2.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
+        this.Answer="Correct"
       } else {
         this.Score = this.Score - value * 100;
+        this.Answer="Incorrect"
       }
     }
     if (value == 3 && Cat == 1) {
@@ -962,8 +966,10 @@ export class GameComponent implements OnInit {
       if (this.Answer == this.C1C3.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
+        this.Answer="Correct"
       } else {
         this.Score = this.Score - value * 100;
+        this.Answer="Incorrect"
       }
     }
     if (value == 4 && Cat == 1) {
@@ -973,8 +979,10 @@ export class GameComponent implements OnInit {
       if (this.Answer == this.C1C4.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
+        this.Answer="Correct"
       } else {
         this.Score = this.Score - value * 100;
+        this.Answer="NO"
       }
     }
     if (value == 5 && Cat == 1) {
@@ -984,8 +992,10 @@ export class GameComponent implements OnInit {
       if (this.Answer == this.C1C5.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
+        this.Answer="Correct"
       } else {
         this.Score = this.Score - value * 100;
+        this.Answer="Incorrect"
       }
     }
     if (value == 1 && Cat == 2) {
@@ -995,8 +1005,10 @@ export class GameComponent implements OnInit {
       if (this.Answer == this.C2C1.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
+        this.Answer="Correct"
       } else {
         this.Score = this.Score - value * 100;
+        this.Answer="Incorrect"
       }
     }
     if (value == 2 && Cat == 2) {
@@ -1006,8 +1018,10 @@ export class GameComponent implements OnInit {
       if (this.Answer == this.C2C2.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
+        this.Answer="Correct"
       } else {
         this.Score = this.Score - value * 100;
+        this.Answer="Incorrect"
       }
     }
     if (value == 3 && Cat == 2) {
@@ -1017,8 +1031,10 @@ export class GameComponent implements OnInit {
       if (this.Answer == this.C2C3.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
+        this.Answer="Correct"
       } else {
         this.Score = this.Score - value * 100;
+        this.Answer="Incorrect"
       }
     }
     if (value == 4 && Cat == 2) {
@@ -1028,8 +1044,10 @@ export class GameComponent implements OnInit {
       if (this.Answer == this.C2C4.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
+        this.Answer="Correct"
       } else {
         this.Score = this.Score - value * 100;
+        this.Answer="Incorrect"
       }
     }
     if (value == 5 && Cat == 2) {
@@ -1039,8 +1057,10 @@ export class GameComponent implements OnInit {
       if (this.Answer == this.C2C5.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
+        this.Answer="Correct"
       } else {
         this.Score = this.Score - value * 100;
+        this.Answer="Incorrect"
       }
     }
     if (value == 1 && Cat == 3) {
@@ -1050,8 +1070,10 @@ export class GameComponent implements OnInit {
       if (this.Answer == this.C3C1.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
+        this.Answer="Correct"
       } else {
         this.Score = this.Score - value * 100;
+        this.Answer="Incorrect"
       }
     }
     if (value == 2 && Cat == 3) {
@@ -1061,8 +1083,10 @@ export class GameComponent implements OnInit {
       if (this.Answer == this.C3C2.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
+        this.Answer="Correct"
       } else {
         this.Score = this.Score - value * 100;
+        this.Answer="Incorrect"
       }
     }
     if (value == 3 && Cat == 3) {
@@ -1072,8 +1096,10 @@ export class GameComponent implements OnInit {
       if (this.Answer == this.C3C3.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
+        this.Answer="Correct"
       } else {
         this.Score = this.Score - value * 100;
+        this.Answer="Incorrect"
       }
     }
     if (value == 4 && Cat == 3) {
@@ -1083,8 +1109,10 @@ export class GameComponent implements OnInit {
       if (this.Answer == this.C3C4.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
+        this.Answer="Correct"
       } else {
         this.Score = this.Score - value * 100;
+        this.Answer="Incorrect"
       }
     }
     if (value == 5 && Cat == 3) {
@@ -1094,8 +1122,10 @@ export class GameComponent implements OnInit {
       if (this.Answer == this.C3C5.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
+        this.Answer="Correct"
       } else {
         this.Score = this.Score - value * 100;
+        this.Answer="Incorrect"
       }
     }
     if (value == 1 && Cat == 4) {
@@ -1105,8 +1135,10 @@ export class GameComponent implements OnInit {
       if (this.Answer == this.C4C1.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
+        this.Answer="Correct"
       } else {
         this.Score = this.Score - value * 100;
+        this.Answer="Incorrect"
       }
     }
     if (value == 2 && Cat == 4) {
@@ -1116,8 +1148,10 @@ export class GameComponent implements OnInit {
       if (this.Answer == this.C4C2.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
+        this.Answer="Correct"
       } else {
         this.Score = this.Score - value * 100;
+        this.Answer="Incorrect"
       }
     }
     if (value == 3 && Cat == 4) {
@@ -1127,8 +1161,10 @@ export class GameComponent implements OnInit {
       if (this.Answer == this.C4C3.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
+        this.Answer="Correct"
       } else {
         this.Score = this.Score - value * 100;
+        this.Answer="Incorrect"
       }
     }
     if (value == 4 && Cat == 4) {
@@ -1138,8 +1174,10 @@ export class GameComponent implements OnInit {
       if (this.Answer == this.C4C4.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
+        this.Answer="Correct"
       } else {
         this.Score = this.Score - value * 100;
+        this.Answer="Incorrect"
       }
     }
     if (value == 5 && Cat == 4) {
@@ -1149,8 +1187,10 @@ export class GameComponent implements OnInit {
       if (this.Answer == this.C4C5.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
+        this.Answer="Correct"
       } else {
         this.Score = this.Score - value * 100;
+        this.Answer="Incorrect"
       }
     }
     if (value == 1 && Cat == 5) {
@@ -1160,8 +1200,10 @@ export class GameComponent implements OnInit {
       if (this.Answer == this.C5C1.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
+        this.Answer="Correct"
       } else {
         this.Score = this.Score - value * 100;
+        this.Answer="Bad is You"
       }
     }
     if (value == 2 && Cat == 5) {
@@ -1171,8 +1213,10 @@ export class GameComponent implements OnInit {
       if (this.Answer == this.C5C2.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
+        this.Answer="Correct"
       } else {
         this.Score = this.Score - value * 100;
+        this.Answer="Incorrect"
       }
     }
     if (value == 3 && Cat == 5) {
@@ -1182,8 +1226,10 @@ export class GameComponent implements OnInit {
       if (this.Answer == this.C5C3.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
+        this.Answer="Correct"
       } else {
         this.Score = this.Score - value * 100;
+        this.Answer="Incorrect"
       }
     }
     if (value == 4 && Cat == 5) {
@@ -1193,8 +1239,10 @@ export class GameComponent implements OnInit {
       if (this.Answer == this.C5C4.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
+        this.Answer="Correct"
       } else {
         this.Score = this.Score - value * 100;
+        this.Answer="Incorrect"
       }
     }
     if (value == 5 && Cat == 5) {
@@ -1204,8 +1252,10 @@ export class GameComponent implements OnInit {
       if (this.Answer == this.C5C5.answer) {
         console.log('correct');
         this.Score = this.Score + value * 100;
+        this.Answer="Correct"
       } else {
         this.Score = this.Score - value * 100;
+        this.Answer="Not close :)"
       }
     }
     this.timeSeconds=1000;
